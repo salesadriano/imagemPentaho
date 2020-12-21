@@ -9,3 +9,5 @@ RUN apt -y remove irc
 RUN apt -y install openjdk-8-jdk
 RUN apt -y install wget
 RUN apt -y autoremove
+RUN wget -O pentaho.zip https://sourceforge.net/projects/pentaho/files/latest/download
+
