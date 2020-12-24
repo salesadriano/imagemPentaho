@@ -383,12 +383,12 @@
       <exec_per_row>N</exec_per_row>
       <clear_rows>Y</clear_rows>
       <clear_files>Y</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <set_logfile>Y</set_logfile>
+      <logfile>${Internal.Job.Filename.Directory}/${Internal.Job.Filename.Name}</logfile>
+      <logext>log</logext>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel>Detailed</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
@@ -422,15 +422,15 @@
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <set_logfile>Y</set_logfile>
+      <logfile>${Internal.Job.Filename.Directory}/${Internal.Job.Filename.Name}</logfile>
+      <logext>log</logext>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel>Detailed</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
+      <set_append_logfile>Y</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
@@ -461,15 +461,15 @@
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <set_logfile>Y</set_logfile>
+      <logfile>${Internal.Job.Filename.Directory}/${Internal.Job.Filename.Name}</logfile>
+      <logext>log</logext>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel>Detailed</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
+      <set_append_logfile>Y</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
@@ -500,15 +500,15 @@
       <exec_per_row>N</exec_per_row>
       <clear_rows>Y</clear_rows>
       <clear_files>Y</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <set_logfile>Y</set_logfile>
+      <logfile>${Internal.Job.Filename.Directory}/${Internal.Job.Filename.Name}</logfile>
+      <logext>log</logext>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel>Detailed</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
+      <set_append_logfile>Y</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
@@ -539,15 +539,15 @@
       <exec_per_row>N</exec_per_row>
       <clear_rows>Y</clear_rows>
       <clear_files>Y</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <set_logfile>Y</set_logfile>
+      <logfile>${Internal.Job.Filename.Directory}/${Internal.Job.Filename.Name}</logfile>
+      <logext>log</logext>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel>Detailed</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
+      <set_append_logfile>Y</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
@@ -578,15 +578,15 @@
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <set_logfile>Y</set_logfile>
+      <logfile>${Internal.Job.Filename.Directory}/${Internal.Job.Filename.Name}</logfile>
+      <logext>log</logext>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel>Detailed</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
+      <set_append_logfile>Y</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
@@ -617,15 +617,15 @@
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <set_logfile>Y</set_logfile>
+      <logfile>${Internal.Job.Filename.Directory}/${Internal.Job.Filename.Name}</logfile>
+      <logext>log</logext>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel>Detailed</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
+      <set_append_logfile>Y</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
@@ -656,15 +656,15 @@
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
+      <set_logfile>Y</set_logfile>
+      <logfile>${Internal.Job.Filename.Directory}/${Internal.Job.Filename.Name}</logfile>
+      <logext>log</logext>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel>Detailed</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
+      <set_append_logfile>Y</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
