@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etl
+spec:
+  selector:
+    matchLabels:
+      app: etl
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: etl
+    spec:
+      containers:
+        - name: etl
+          image: salesadriano/etl
+          resources:
+            limits:
+              cpu: 200m
+              memory: 500Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
+          ports:
+            - containerPort: 8000
+          env:
+            - name: GITUSER
+              value: "git"
+            - name: GITPASSWORD
+              value: "Senha123"
+            - name: AMBIENTE
+              value: "master"        
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: etl
+  namespace: default
+spec:
+  selector:
+    app: etl
+  type: ClusterIP
+  ports:
+  - name: etl
+    port: 80
+    targetPort: 8000
+    protocol: TCP
+
+---
+
+# https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: etl
+  namespace: default
+spec:
+  rules:
+  - host: etl.novoacre.gov.br
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: etl
+            port:
+              number: 80
