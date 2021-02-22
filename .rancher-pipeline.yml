@@ -1,0 +1,11 @@
+stages:
+- name: Publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: devseict/etl
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./kubernetes.yml

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: etl
-          image: salesadriano/etl
+          image: devseict/etl
           resources:
             limits:
               cpu: 200m
@@ -48,9 +48,8 @@ metadata:
 spec:
   selector:
     app: etl
-  type: ClusterIP
   ports:
-  - name: etl
+  - name: http
     port: 80
     targetPort: 8000
     protocol: TCP
@@ -66,7 +65,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: etl.novoacre.gov.br
+  - host: localhost
     http:
       paths:
       - path: /
