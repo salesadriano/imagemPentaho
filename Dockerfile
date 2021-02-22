@@ -1,8 +1,8 @@
 FROM advox/crontab-ui
 
-VOLUME [ "/cron/db" ]
+# VOLUME [ "/cron/db" ]
 
-COPY etl  /etl
+COPY etl/*  /etl/
 
 RUN mkdir  /usr/share/man/man1 && \
     apt -y update && \ 
