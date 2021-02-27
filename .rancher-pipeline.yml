@@ -4,7 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: devseict/etl
+      tag: etl
 - name: Deploy
   steps:
   - applyYamlConfig:
