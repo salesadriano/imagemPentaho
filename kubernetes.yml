@@ -36,9 +36,7 @@ spec:
             - name: GITUSER
               value: "git"
             - name: GITPASSWORD
-              value: "Senha123"
-            - name: AMBIENTE
-              value: "master"        
+              value: "Senha123"      
       restartPolicy: Always
 
 ---
