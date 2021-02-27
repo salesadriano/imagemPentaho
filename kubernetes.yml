@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: etl
+  namespace: default
 spec:
   selector:
     matchLabels:
@@ -19,7 +20,7 @@ spec:
     spec:
       containers:
         - name: etl
-          image: devseict/etl
+          image: etl
           resources:
             limits:
               cpu: 200m
