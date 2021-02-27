@@ -18,9 +18,11 @@ spec:
       labels:
         app: etl
     spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
       containers:
         - name: etl
-          image: etl
+          image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
           resources:
             limits:
               cpu: 200m
