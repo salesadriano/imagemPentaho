@@ -9,3 +9,7 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./kubernetes.yml
+branch:
+  include:
+  - master
+notification: {}
