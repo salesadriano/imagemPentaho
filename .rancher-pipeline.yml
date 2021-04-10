@@ -12,4 +12,9 @@ stages:
 branch:
   include:
   - master
-notification: {}
+notification:
+  recipients:
+  - recipient: dev.seict@ac.gov.br
+    notifier: c-4t79h:n-56xfw
+  condition:
+  - Success
