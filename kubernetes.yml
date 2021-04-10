@@ -23,13 +23,6 @@ spec:
       containers:
         - name: etl
           image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
-          resources:
-            limits:
-              cpu: 200m
-              memory: 500Mi
-            requests:
-              cpu: 100m
-              memory: 200Mi
           ports:
             - containerPort: 8000
           env:
