@@ -21,6 +21,5 @@ RUN mkdir  /usr/share/man/man1 && \
     mkdir /pentaho && \
     mv data-integration/* pentaho/ && \
     rm -Rf data-integration pentaho.zip && \
-    ln -sf /usr/share/zoneinfo/America/Rio_Branco /etc/localtime && \
-    ntpd -q -g
+    ln -sf /usr/share/zoneinfo/America/Rio_Branco /etc/localtime 
 COPY ./drivers/* /pentaho/lib/
