@@ -5,22 +5,32 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: etl:${CICD_EXECUTION_SEQUENCE}
-
 - name: Deploy develop
-  when: 
-    branch: develop
   steps:
   - applyYamlConfig:
       path: ./kubernetes_dev.yml
-
+  when:
+    branch:
+      include:
+      - develop
 - name: Deploy Prod
-  when: 
-    branch: master
   steps:
   - applyYamlConfig:
       path: ./kubernetes_prod.yml
+  when:
+    branch:
+      include:
+      - master
 branch:
   include:
   - master
   - develop
-notification: {}
+notification:
+  recipients:
+  - recipient: dev.seict@ac.gov.br
+    notifier: c-4t79h:n-56xfw
+  - recipient: jose.rodrigo@ac.gov.br
+    notifier: c-4t79h:n-56xfw
+  condition:
+  - Success
+  - Failed
