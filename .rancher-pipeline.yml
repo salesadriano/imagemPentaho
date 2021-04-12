@@ -28,9 +28,7 @@ branch:
 notification:
   recipients:
   - recipient: dev.seict@ac.gov.br
-    notifier: c-4t79h:n-56xfw
-  - recipient: jose.rodrigo@ac.gov.br
-    notifier: c-4t79h:n-56xfw
+    notifier: c-rb59d:n-lgbgm
   condition:
   - Success
   - Failed
