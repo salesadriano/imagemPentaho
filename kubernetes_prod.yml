@@ -44,7 +44,7 @@ spec:
     app: etl
   ports:
   - name: http
-    port: 443
+    port: 80
     targetPort: 8000
     protocol: TCP
 
@@ -68,4 +68,4 @@ spec:
           service:
             name: etl
             port:
-              number: 443
+              number: 80
