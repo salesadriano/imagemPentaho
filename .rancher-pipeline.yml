@@ -23,12 +23,11 @@ stages:
       - master
 branch:
   include:
-  - master
   - develop
 notification:
   recipients:
   - recipient: dev.seict@ac.gov.br
-    notifier: c-rb59d:n-lgbgm
+    notifier: c-4t79h:n-56xfw
   condition:
   - Success
   - Failed
