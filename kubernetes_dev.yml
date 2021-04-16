@@ -57,6 +57,10 @@ kind: Ingress
 metadata:
   name: etl
   namespace: default
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: default
 spec:
   rules:
   - host: etl.novoacre.gov.br
