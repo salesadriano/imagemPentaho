@@ -1,5 +1,1 @@
 # etlPentaho
-git   
-
-
-x,gjlçjkjxclkv
