@@ -1,8 +1,8 @@
-FROM advox/crontab-ui
+FROM nginx
 
-# VOLUME [ "/cron/db" ]
+COPY etl  /etl
 
-COPY etl/*  /etl/
+COPY sources.list /etc/apt/
 
 RUN mkdir  /usr/share/man/man1 && \
     apt -y update && \ 
@@ -13,7 +13,7 @@ RUN mkdir  /usr/share/man/man1 && \
     add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ && \
     apt -y update && \
     apt -y remove libgcc-8-dev && \
-    apt -y install adoptopenjdk-8-hotspot && \
+    apt -y install adoptopenjdk-8-hotspot unzip && \
     apt -y upgrade && \
     apt -y autoremove && \
     wget -O pentaho.zip https://sourceforge.net/projects/pentaho/files/latest/download && \
@@ -21,5 +21,5 @@ RUN mkdir  /usr/share/man/man1 && \
     mkdir /pentaho && \
     mv data-integration/* pentaho/ && \
     rm -Rf data-integration pentaho.zip && \
-    ln -sf /usr/share/zoneinfo/America/Rio_Branco /etc/localtime 
+    ln -sf /usr/share/zoneinfo/America/Rio_Branco /etc/localtime
 COPY ./drivers/* /pentaho/lib/

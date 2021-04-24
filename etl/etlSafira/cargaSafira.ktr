@@ -1139,8 +1139,8 @@ FROM VW_SERVIDOR
 , TRIM(CODIGOAGENCIA) CODIGOAGENCIA
 , TRIM(CONTABANCARIA) CONTABANCARIA
 , TRIM(NATUREZAPAGAMENTO) NATUREZAPAGAMENTO
-, REPLACE(REPLACE(TRIM(VALORDESPESAEXTRA),'.',''),',','.') VALORDESPESAEXTRA
-, REPLACE(REPLACE(TRIM(TOTALANULADODESPESAEXTRA),'.',''),',','.') TOTALANULADODESPESAEXTRA
+, REPLACE(TRIM(VALORDESPESAEXTRA),',','.') VALORDESPESAEXTRA
+, REPLACE(TRIM(TOTALANULADODESPESAEXTRA),',','.') TOTALANULADODESPESAEXTRA
 , TRIM(CONTAFINANCEIRA) CONTAFINANCEIRA
 , TRIM(FORMAPAGAMENTO) FORMAPAGAMENTO
 , TRIM(TIPOOPERACAOBANCARIA) TIPOOPERACAOBANCARIA
@@ -1174,7 +1174,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1197,7 +1197,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1220,7 +1220,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1243,7 +1243,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1266,7 +1266,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1289,7 +1289,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1312,7 +1312,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1335,7 +1335,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1358,7 +1358,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1381,7 +1381,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1404,7 +1404,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1427,7 +1427,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1450,7 +1450,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1473,7 +1473,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1496,7 +1496,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1519,7 +1519,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1542,7 +1542,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1565,7 +1565,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1588,7 +1588,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1611,7 +1611,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1634,7 +1634,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1657,7 +1657,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1680,7 +1680,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1703,7 +1703,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1726,7 +1726,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1749,7 +1749,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1772,7 +1772,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1795,7 +1795,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1818,7 +1818,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1841,7 +1841,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -1864,7 +1864,7 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2072,8 +2072,8 @@ NUMERODOCUMENTOORIGEM,
 ANODOCUMENTOORIGEM,
 TO_CHAR(TO_DATE(TRIM(DATAEMISSAO), 'DD/MM/YY'), 'YYYY-MM-DD') DATAEMISSAO,
 TO_CHAR(TO_DATE(TRIM(DATABAIXA), 'DD/MM/YY'), 'YYYY-MM-DD') DATABAIXA,
-REPLACE(REPLACE(TRIM(VALORDOCUMENTO),'.',''),',','.') VALORDOCUMENTO,
-REPLACE(REPLACE(TRIM(VALORANULADO),'.',''),',','.') VALORANULADO
+REPLACE(TRIM(VALORDOCUMENTO),',','.') VALORDOCUMENTO,
+REPLACE(TRIM(VALORANULADO),',','.') VALORANULADO
 FROM SAFIRA.TCU_DESPESA_COVID19</sql>
     <limit>0</limit>
     <lookup/>
@@ -2470,7 +2470,7 @@ SELECT Distinct
 , TRIM(DESPESAORCAMENTARIA) DESPESAORCAMENTARIA
 , TRIM(FONTERECURSO) FONTERECURSO
 , TRIM(DETALHAMENTOFONTE) DETALHAMENTOFONTE
-, REPLACE(REPLACE(TRIM(VALOREMPENHADO),'.',''),',','.') VALOREMPENHADO
+, REPLACE(TRIM(VALOREMPENHADO),',','.') VALOREMPENHADO
 , TRIM(NATUREZARECURSO) NATUREZARECURSO
 , TRIM(NUMEROCONVENIO) NUMEROCONVENIO
 , TRIM(ANOCONVENIO) ANOCONVENIO
@@ -2508,7 +2508,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2531,7 +2531,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2554,7 +2554,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2577,7 +2577,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2600,7 +2600,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2623,7 +2623,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2646,7 +2646,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2669,7 +2669,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2692,7 +2692,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2715,7 +2715,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2738,7 +2738,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2761,7 +2761,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2784,7 +2784,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2807,7 +2807,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2830,7 +2830,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2853,7 +2853,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2876,7 +2876,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2899,7 +2899,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2922,7 +2922,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2945,7 +2945,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2968,7 +2968,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -2991,7 +2991,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3014,7 +3014,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3037,7 +3037,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3060,7 +3060,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3083,7 +3083,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3106,7 +3106,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3129,7 +3129,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3152,7 +3152,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3175,7 +3175,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3198,7 +3198,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3221,7 +3221,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3244,7 +3244,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3267,7 +3267,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3290,7 +3290,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3313,7 +3313,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3336,7 +3336,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3359,7 +3359,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3382,7 +3382,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3405,7 +3405,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3428,7 +3428,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3451,7 +3451,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3474,7 +3474,7 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3795,12 +3795,12 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
 , TRIM(FUNCIONALPROGRAMATICA) FUNCIONALPROGRAMATICA
 , TRIM(DESPESAORCAMENTARIA) DESPESAORCAMENTARIA
 , TRIM(FONTERECURSO) FONTERECURSO
-, REPLACE(REPLACE(TRIM(VALORDALIQUIDACAO),'.',''),',','.') VALORDALIQUIDACAO
-, REPLACE(REPLACE(TRIM(ANULADOLIQUIDACAO),'.',''),',','.') ANULADOLIQUIDACAO
-, REPLACE(REPLACE(TRIM(VALOREMPENHO),'.',''),',','.') VALOREMPENHO
-, REPLACE(REPLACE(TRIM(TOTALALIQUIDAR),'.',''),',','.') TOTALALIQUIDAR
-, REPLACE(REPLACE(TRIM(PAGODALIQUIDACAO),'.',''),',','.') PAGODALIQUIDACAO
-, REPLACE(REPLACE(TRIM(TOTALAPAGAR),'.',''),',','.') TOTALAPAGAR
+, REPLACE(TRIM(VALORDALIQUIDACAO),',','.') VALORDALIQUIDACAO
+, REPLACE(TRIM(ANULADOLIQUIDACAO),',','.') ANULADOLIQUIDACAO
+, REPLACE(TRIM(VALOREMPENHO),',','.') VALOREMPENHO
+, REPLACE(TRIM(TOTALALIQUIDAR),',','.') TOTALALIQUIDAR
+, REPLACE(TRIM(PAGODALIQUIDACAO),',','.') PAGODALIQUIDACAO
+, REPLACE(TRIM(TOTALAPAGAR),',','.') TOTALAPAGAR
 , TRIM(DESCRITIVOLIQUIDACAO) DESCRITIVOLIQUIDACAO
 , TRIM(TIPODOCUMENTO) TIPODOCUMENTO
 , TRIM(DOCUMENTOCOMPROBATORIO) DOCUMENTOCOMPROBATORIO
@@ -3837,7 +3837,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3860,7 +3860,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3883,7 +3883,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3906,7 +3906,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3929,7 +3929,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3952,7 +3952,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3975,7 +3975,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -3998,7 +3998,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4021,7 +4021,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4044,7 +4044,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4067,7 +4067,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4090,7 +4090,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4113,7 +4113,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4136,7 +4136,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4159,7 +4159,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4182,7 +4182,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4205,7 +4205,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4228,7 +4228,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4251,7 +4251,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4274,7 +4274,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4297,7 +4297,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4320,7 +4320,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4343,7 +4343,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4366,7 +4366,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4389,7 +4389,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4412,7 +4412,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4435,7 +4435,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4458,7 +4458,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4481,7 +4481,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4504,7 +4504,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4527,7 +4527,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4550,7 +4550,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4573,7 +4573,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4596,7 +4596,7 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4828,9 +4828,9 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
 , TRIM(CODIGONATUREZAPAGAMENTO) CODIGONATUREZAPAGAMENTO
 , TRIM(DESCRICAONATUREZAPAGAMENTO) DESCRICAONATUREZAPAGAMENTO
 , TRIM(NUMEROEMISSOES) NUMEROEMISSOES
-, REPLACE(REPLACE(TRIM(VALORPAGAMENTO),'.',''),',','.') VALORPAGAMENTO
-, REPLACE(REPLACE(TRIM(TOTALCONSIGNACOES),'.',''),',','.') TOTALCONSIGNACOES
-, REPLACE(REPLACE(TRIM(TOTALDESCONTO),'.',''),',','.') TOTALDESCONTO
+, REPLACE(TRIM(VALORPAGAMENTO),',','.') VALORPAGAMENTO
+, REPLACE(TRIM(TOTALCONSIGNACOES),',','.') TOTALCONSIGNACOES
+, REPLACE(TRIM(TOTALDESCONTO),',','.') TOTALDESCONTO
 , TRIM(FORMAPAGAMENTO) FORMAPAGAMENTO
 , TRIM(TIPOOPERACAOBANCARIA) TIPOOPERACAOBANCARIA
 , TRIM(DOCUMENTOPAGAMENTO) DOCUMENTOPAGAMENTO
@@ -4863,7 +4863,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4886,7 +4886,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4909,7 +4909,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4932,7 +4932,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4955,7 +4955,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -4978,7 +4978,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5001,7 +5001,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5024,7 +5024,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5047,7 +5047,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5070,7 +5070,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5093,7 +5093,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5116,7 +5116,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5139,7 +5139,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5162,7 +5162,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5185,7 +5185,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5208,7 +5208,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5231,7 +5231,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5254,7 +5254,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5277,7 +5277,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5300,7 +5300,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5323,7 +5323,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5346,7 +5346,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5369,7 +5369,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5392,7 +5392,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5415,7 +5415,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5438,7 +5438,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5461,7 +5461,7 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>pt_BR</date_format_locale>
+        <date_format_locale>en_US</date_format_locale>
         <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -5721,7 +5721,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
 , ANODOCUMENTO
 , TIPODOCUMENTO
 , HISTORICO
-, REPLACE(REPLACE(TRIM(VALOR),'.',''),',','.') VALOREMPENHADO 
+, REPLACE(TRIM(VALOR),',','.') VALOREMPENHADO 
 , NATUREZA
 FROM SAFIRA.TCU_FINANCEIRO_COVID19
 </sql>
