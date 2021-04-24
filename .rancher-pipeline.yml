@@ -9,6 +9,10 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./kubernetes_dev.yml
+    envFrom:
+    - sourceName: variaveis
+      sourceKey: dominio
+      targetKey: dominio
   when:
     branch:
       include:
