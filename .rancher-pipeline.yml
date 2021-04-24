@@ -12,9 +12,8 @@ stages:
     envFrom:
     - sourceName: variaveis
       sourceKey: dominio
-      targetKey: DOMINIO
     env:
-      DOMINIO: DOMINIO
+      PLUGIN_BUILD_ARGS_FROM_ENV: dominio
 branch:
   include:
   - develop
