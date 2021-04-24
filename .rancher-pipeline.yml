@@ -4,21 +4,12 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: etl:${CICD_EXECUTION_SEQUENCE}
+      tag: etl
 
-- name: Deploy develop
-  when: 
-    branch: develop
+- name: Deploy 
   steps:
   - applyYamlConfig:
-      path: ./kubernetes_dev.yml
-
-- name: Deploy Prod
-  when: 
-    branch: master
-  steps:
-  - applyYamlConfig:
-      path: ./kubernetes_prod.yml
+      path: ./kubernetes.yml
 branch:
   include:
   - master
