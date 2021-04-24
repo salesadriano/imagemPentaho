@@ -55,7 +55,7 @@ metadata:
   namespace: default
 spec:
   rules:
-  - host: etl.${dominio}
+  - host: etl.novoacre.gov.br
     http:
       paths:
       - path: /
