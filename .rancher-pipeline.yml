@@ -16,6 +16,9 @@ stages:
       path: ./kubernetes.yml
     env:
       dominio: novoacre.gov.br
+    envFrom:
+    - sourceName: variaveis
+      sourceKey: dominio
 branch:
   include:
   - develop
