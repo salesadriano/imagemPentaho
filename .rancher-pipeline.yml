@@ -5,11 +5,14 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: etl:${CICD_EXECUTION_SEQUENCE}
-
-- name: Deploy 
+- name: Deploy
   steps:
   - applyYamlConfig:
       path: ./kubernetes.yml
+    envFrom:
+    - sourceName: variaveis
+      sourceKey: dominio
+      targetKey: dominio
 branch:
   include:
   - master
