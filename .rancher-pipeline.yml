@@ -9,10 +9,13 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./kubernetes.yml
+  - runScriptConfig:
+      image: php:latest
+      shellScript: echo ${DOMINIO}
     envFrom:
     - sourceName: variaveis
       sourceKey: dominio
-      targetKey: dominio
+      targetKey: DOMINIO
 branch:
   include:
   - develop
