@@ -1,8 +1,8 @@
 FROM nginx
 
-VOLUME [ "/cron/db" ]
+COPY etl  /etl
 
-COPY etl/*  /etl/
+COPY sources.list /etc/apt/
 
 RUN mkdir  /usr/share/man/man1 && \
     apt -y update && \ 

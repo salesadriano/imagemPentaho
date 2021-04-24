@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: etl
-  replicas: 1
+  replicas: 2
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -25,11 +25,7 @@ spec:
           image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
           ports:
             - containerPort: 8000
-          env:
-            - name: GITUSER
-              value: "git"
-            - name: GITPASSWORD
-              value: $TESTE      
+              
       restartPolicy: Always
 
 ---
