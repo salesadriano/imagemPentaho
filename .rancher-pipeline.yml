@@ -8,10 +8,7 @@ stages:
 - name: Deploy
   steps:
   - applyYamlConfig:
-      path: ./kubernetes.yml
-  - runScriptConfig:
-      image: php:latest
-      shellScript: echo ${DOMINIO}
+      path: ./kubernetes.yml  
     envFrom:
     - sourceName: variaveis
       sourceKey: dominio
