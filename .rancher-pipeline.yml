@@ -16,6 +16,8 @@ stages:
     - sourceName: variaveis
       sourceKey: dominio
       targetKey: DOMINIO
+    env:
+      DOMINIO: DOMINIO
 branch:
   include:
   - develop
