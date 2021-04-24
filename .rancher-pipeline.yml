@@ -4,21 +4,18 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: etl:${CICD_EXECUTION_SEQUENCE}      
+      tag: etl:${CICD_EXECUTION_SEQUENCE}
+    env:
+      PLUGIN_BUILD_ARGS_FROM_ENV: dominio
     envFrom:
     - sourceName: variaveis
       sourceKey: dominio
-    env:
-      PLUGIN_BUILD_ARGS_FROM_ENV: dominio
 - name: Deploy
   steps:
   - applyYamlConfig:
-      path: ./kubernetes.yml  
-      envFrom:
-        - sourceName: variaveis
-          sourceKey: dominio
-      env:
-        PLUGIN_BUILD_ARGS_FROM_ENV: dominio
+      path: ./kubernetes.yml
+    env:
+      dominio: novoacre.gov.br
 branch:
   include:
   - develop
