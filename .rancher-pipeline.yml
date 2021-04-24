@@ -4,16 +4,21 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: etl:${CICD_EXECUTION_SEQUENCE}
-- name: Deploy
-  steps:
-  - applyYamlConfig:
-      path: ./kubernetes.yml  
+      tag: etl:${CICD_EXECUTION_SEQUENCE}      
     envFrom:
     - sourceName: variaveis
       sourceKey: dominio
     env:
       PLUGIN_BUILD_ARGS_FROM_ENV: dominio
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./kubernetes.yml  
+      envFrom:
+        - sourceName: variaveis
+          sourceKey: dominio
+      env:
+        PLUGIN_BUILD_ARGS_FROM_ENV: dominio
 branch:
   include:
   - develop
