@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: etl
-          image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE} 
+          image: ${CICD_IMAGE} 
           # imagePullPolicy: Never
           ports:
             - containerPort: 80              
