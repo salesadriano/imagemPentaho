@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: etl
-  replicas: 1
+  replicas: 2
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -18,13 +18,16 @@ spec:
       labels:
         app: etl
     spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
       containers:
         - name: etl
-          image: ${CICD_IMAGE} 
-          # imagePullPolicy: Never
+          image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
           ports:
-            - containerPort: 80              
+            - containerPort: 80
+              
       restartPolicy: Always
+
 ---
 
 apiVersion: v1
