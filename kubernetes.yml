@@ -22,7 +22,7 @@ spec:
       - name: pipeline-docker-registry
       containers:
         - name: etl
-          image: etl 
+          image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE} 
           # imagePullPolicy: Never
           ports:
             - containerPort: 80              

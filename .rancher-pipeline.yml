@@ -4,12 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: etl:${CICD_EXECUTION_SEQUENCE}
-    env:
-      PLUGIN_BUILD_ARGS_FROM_ENV: dominio
-    envFrom:
-    - sourceName: variaveis
-      sourceKey: dominio
+      tag: etl:${CICD_EXECUTION_SEQUENCE}    
 - name: Deploy
   steps:
   - applyYamlConfig:
