@@ -14,12 +14,6 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./kubernetes.yml
-      env:
-        - name:  dominio
-          valueFrom:
-            secretKeyRef:
-              name:  variaveis
-              key:  dominio
     env:
       dominio: novoacre.gov.br
     envFrom:
