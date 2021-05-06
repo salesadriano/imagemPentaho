@@ -5,16 +5,27 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: etl:${CICD_EXECUTION_SEQUENCE}
+    env:
+      PLUGIN_BUILD_ARGS_FROM_ENV: dominio
+    envFrom:
+    - sourceName: variaveis
+      sourceKey: dominio
 - name: Deploy
   steps:
   - applyYamlConfig:
       path: ./kubernetes.yml
+      env:
+        - name:  dominio
+          valueFrom:
+            secretKeyRef:
+              name:  variaveis
+              key:  dominio
+    env:
+      dominio: novoacre.gov.br
     envFrom:
     - sourceName: variaveis
       sourceKey: dominio
-      targetKey: dominio
 branch:
   include:
-  - master
   - develop
 notification: {}

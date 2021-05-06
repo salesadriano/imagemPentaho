@@ -13,7 +13,7 @@ RUN mkdir  /usr/share/man/man1 && \
     add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ && \
     apt -y update && \
     apt -y remove libgcc-8-dev && \
-    apt -y install adoptopenjdk-8-hotspot unzip && \
+    apt -y install adoptopenjdk-8-hotspot unzip cron && \
     apt -y upgrade && \
     apt -y autoremove && \
     wget -O pentaho.zip https://sourceforge.net/projects/pentaho/files/latest/download && \
