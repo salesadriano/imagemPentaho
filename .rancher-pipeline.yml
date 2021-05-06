@@ -19,7 +19,5 @@ stages:
     envFrom:
     - sourceName: variaveis
       sourceKey: dominio
-branch:
-  include:
-  - develop
+branch: {}
 notification: {}
