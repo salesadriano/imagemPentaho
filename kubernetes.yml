@@ -18,8 +18,6 @@ spec:
       labels:
         app: etl
     spec:
-      imagePullSecrets:
-      - name: pipeline-docker-registry
       containers:
         - name: etl
           image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE} 
