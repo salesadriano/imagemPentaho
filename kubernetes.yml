@@ -94,12 +94,7 @@ spec:
         paths:
           - backend:
               serviceName: etl
-              servicePort: 80
-      ssh:
-        paths:
-          - backend:
-              serviceName: etl
-              servicePort: 22
+              servicePort: 80      
   tls:
     - hosts:
       - 'etl.ac.gov.br'
