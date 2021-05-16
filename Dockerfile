@@ -2,8 +2,6 @@ FROM nginx
 
 COPY etl  /etl
 
-COPY sources.list /etc/apt/
-
 RUN mkdir  /usr/share/man/man1 && \
     apt -y update && \ 
     apt -y install apt-transport-https \
