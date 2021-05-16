@@ -1,68 +1,105 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
-  name: etl
+  name: servidorweb-pvc
   namespace: default
 spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: servidorweb
+  namespace: default
+  labels:
+    allow.http: "false"
+    application: servidorweb
+spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: etl
-  replicas: 1
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+      application: servidorweb
   template:
     metadata:
       labels:
-        app: etl
+        application: servidorweb
     spec:
       imagePullSecrets:
-      - name: pipeline-docker-registry
+       - name: pipeline-docker-registry
       containers:
-        - name: etl
-          image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
-          ports:
-            - containerPort: 80
-              
-      restartPolicy: Always
+      - name: servidorweb
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        # imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
+        securityContext:
+          privileged: true
+        volumeMounts:
+          - name:  servidorweb-volume
+            mountPath:  /code
+      volumes:
+      - name: servidorweb-volume
+        persistentVolumeClaim:
+          claimName: servidorweb-pvc
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
-  name: etl
+  name: servidorweb
   namespace: default
 spec:
   selector:
-    app: etl
+    application: servidorweb
+  type: ClusterIP
   ports:
-  - name: http
+  - name: servidorweb
     port: 80
     targetPort: 80
     protocol: TCP
+  - name: servidorweb
+    port: 22
+    targetPort: 22
+    protocol: TCP
 
 ---
+
 kind: Ingress
-apiVersion: networking.k8s.io/v1
+apiVersion: extensions/v1beta1
 metadata:
-  name: etl
+  name: servidorweb  
+  namespace: default
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.tls.certresolver: default
 spec:
   rules:
-    - host: etl.ac.gov.br
+    - host: 'etl.ac.gov.br'
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: etl
-                port:
-                  number: 80
+          - backend:
+              serviceName: servidorweb
+              servicePort: 80
+      ssh:
+        paths:
+          - backend:
+              serviceName: servidorweb
+              servicePort: 22
+  tls:
+    - hosts:
+      - 'etl.ac.gov.br'
 
