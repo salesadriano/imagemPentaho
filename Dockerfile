@@ -1,6 +1,8 @@
 FROM nginx
 
 ADD etl  /etl
+ADD sources.list /etc/apt
+ADD cron.list /
 
 RUN mkdir  /usr/share/man/man1 && \
     apt -y update && \ 
