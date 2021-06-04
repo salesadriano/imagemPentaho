@@ -9,7 +9,7 @@ spec:
   storageClassName: longhorn
   resources:
     requests:
-      storage: 1Gi
+      storage: 10Mi
 
 ---
 kind: Deployment
@@ -71,10 +71,6 @@ spec:
     port: 80
     targetPort: 80
     protocol: TCP
-  - name: ssh
-    port: 22
-    targetPort: 22
-    protocol: TCP
 
 ---
 
@@ -85,7 +81,9 @@ metadata:
   namespace: default
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/frontend-entry-points: http
+    traefik.ingress.kubernetes.io/redirect-entry-point: http
+    traefik.ingress.kubernetes.io/router.tls: "false"
     traefik.ingress.kubernetes.io/router.tls.certresolver: default
 spec:
   rules:
@@ -95,7 +93,7 @@ spec:
           - backend:
               serviceName: etl
               servicePort: 80      
-  tls:
-    - hosts:
-      - 'etl.ac.gov.br'
+  # tls:
+  #   - hosts:
+  #     - 'etl.ac.gov.br'
 
