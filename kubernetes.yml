@@ -76,10 +76,10 @@ spec:
       #   volumeMounts:
       #     - name:  etl-volume
       #       mountPath:  /code
-      # volumes:
-      # - name: etl-volume
-      #   persistentVolumeClaim:
-      #     claimName: etl-pvc
+      volumes:
+      - name: etl-volume
+        persistentVolumeClaim:
+          claimName: etl-pvc
 
 ---
 apiVersion: v1
