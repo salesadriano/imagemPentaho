@@ -50,13 +50,13 @@ spec:
         - containerPort: 22
         securityContext:
           privileged: true
-        volumeMounts:
-          - name:  etl-volume
-            mountPath:  /code
-      volumes:
-      - name: etl-volume
-        persistentVolumeClaim:
-          claimName: etl-pvc
+      #   volumeMounts:
+      #     - name:  etl-volume
+      #       mountPath:  /code
+      # volumes:
+      # - name: etl-volume
+      #   persistentVolumeClaim:
+      #     claimName: etl-pvc
 
 ---
 apiVersion: v1
