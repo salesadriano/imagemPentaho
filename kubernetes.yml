@@ -6,7 +6,7 @@ metadata:
   namespace: default
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: ""
   selector:
     matchLabels:
@@ -25,7 +25,7 @@ metadata:
   namespace: default
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: longhorn
   selector:
     matchLabels:
