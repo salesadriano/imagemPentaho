@@ -1,21 +1,21 @@
 
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: nfsteste
-  namespace: default
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: ""
-  selector:
-    matchLabels:
-      pv: nfsteste
-  resources:
-    requests:
-      storage: 20Mi
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: nfsteste
+#   namespace: default
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   storageClassName: ""
+#   selector:
+#     matchLabels:
+#       pv: nfsteste
+#   resources:
+#     requests:
+#       storage: 20Mi
 
----
+# ---
 
 
 apiVersion: v1
