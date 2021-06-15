@@ -1,0 +1,10 @@
+="INSERT INTO pacto.isolamentosocial (dataisolamentosocial, nomemunicipio, indiceisolamento) VALUES('"&B1&"', '"&A1&"', "&C1&");"
+
+="INSERT INTO pacto.casos (idmunicipio, notificacoes, confirmacoes, datacasos) select idmunicipio,"&B2&","&C2&",'"&A2&"' from pacto.municipio where nomemunicipio = '"&D2&"';"
+
+="INSERT INTO pacto.internacoes (datainternacoes, idmunicipio, internacoes, obitos, leitosclinicos, leitosuti)  select '"&A2&"', idmunicipio,"&E2&","&H2&", "&F2&", "&G2&" from pacto.municipio where nomemunicipio = '"&D2&"';"
+
+select * from pacto.extratocalculo('2021-05-29'); 
+
+select nomeregional, descricaoindice, valocalculoincide, pesoindice from pacto.notas n where datacalculo = '2020-11-21' order by 1,2;
+

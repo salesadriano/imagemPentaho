@@ -321,7 +321,7 @@
       <destinationBCc/>
       <replyto>adriano.santos@ac.gov.br</replyto>
       <replytoname>ETL SEI Treinar</replytoname>
-      <subject/>
+      <subject>ETL SEI Treinar</subject>
       <include_date>N</include_date>
       <contact_person/>
       <contact_phone/>
@@ -366,7 +366,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>752</xloc>
+      <xloc>768</xloc>
       <yloc>32</yloc>
       <attributes_kjc/>
     </entry>

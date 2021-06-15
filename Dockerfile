@@ -3,6 +3,7 @@ FROM nginx
 ADD etl  /etl
 ADD sources.list /etc/apt
 ADD cron.list /
+ADD todas.sh /
 
 RUN mkdir  /usr/share/man/man1 && \
     apt -y update && \ 
@@ -21,5 +22,6 @@ RUN mkdir  /usr/share/man/man1 && \
     mkdir /pentaho && \
     mv data-integration/* pentaho/ && \
     rm -Rf data-integration pentaho.zip && \
-    ln -sf /usr/share/zoneinfo/America/Rio_Branco /etc/localtime
+    ln -sf /usr/share/zoneinfo/America/Rio_Branco /etc/localtime && \
+    chmod 755 /todas.sh
 ADD ./drivers/* /pentaho/lib/

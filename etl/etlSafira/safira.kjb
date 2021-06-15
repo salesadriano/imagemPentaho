@@ -4,13 +4,19 @@
   <description/>
   <extended_description/>
   <job_version/>
+  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
   <created_date>2021/06/10 08:32:54.751</created_date>
   <modified_user>-</modified_user>
   <modified_date>2021/06/10 08:32:54.751</modified_date>
   <parameters>
-    </parameters>
+    <parameter>
+      <name>oracle.jdbc.timezoneAsRegion</name>
+      <default_value>false</default_value>
+      <description/>
+    </parameter>
+  </parameters>
   <slaveservers>
     </slaveservers>
   <job-log-table>
@@ -398,12 +404,12 @@
       <destinationBCc/>
       <replyto>adriano.santos@ac.gov.br</replyto>
       <replytoname>ETL SEI Treinar</replytoname>
-      <subject/>
+      <subject>ETL Safira</subject>
       <include_date>N</include_date>
       <contact_person/>
       <contact_phone/>
       <comment/>
-      <include_files>N</include_files>
+      <include_files>Y</include_files>
       <zip_files>N</zip_files>
       <zip_name/>
       <use_auth>Y</use_auth>
@@ -419,13 +425,31 @@
       <sensitivity>normal</sensitivity>
       <secureconnectiontype>TLS</secureconnectiontype>
       <replyToAddresses/>
-      <filetypes>      </filetypes>
+      <filetypes>
+        <filetype>GENERAL</filetype>
+        <filetype>LOG</filetype>
+        <filetype>ERRORLINE</filetype>
+        <filetype>ERROR</filetype>
+        <filetype>WARNING</filetype>
+      </filetypes>
       <embeddedimages>
       </embeddedimages>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>496</xloc>
+      <xloc>480</xloc>
+      <yloc>96</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Success</name>
+      <description/>
+      <type>SUCCESS</type>
+      <attributes/>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>560</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -452,6 +476,15 @@
     <hop>
       <from>cargaAuxiliar</from>
       <to>Mail</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Mail</from>
+      <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
