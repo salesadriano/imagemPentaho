@@ -9,6 +9,11 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>oracle.jdbc.timezoneAsRegion</name>
+        <default_value>false</default_value>
+        <description/>
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>

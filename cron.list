@@ -1,1 +1,2 @@
 @daily /docker-entrypoint.d/50-atualizar.sh
+@daily /todas.sh

@@ -23,5 +23,6 @@ RUN mkdir  /usr/share/man/man1 && \
     mv data-integration/* pentaho/ && \
     rm -Rf data-integration pentaho.zip && \
     ln -sf /usr/share/zoneinfo/America/Rio_Branco /etc/localtime && \
-    chmod 755 /todas.sh
+    chmod 755 /todas.sh && \
+    crontab /cron.list
 ADD ./drivers/* /pentaho/lib/
