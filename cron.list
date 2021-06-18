@@ -1,2 +1,2 @@
-@daily /docker-entrypoint.d/50-atualizar.sh
-@daily /todas.sh
+00 01 * * * /docker-entrypoint.d/50-atualizar.sh
+00 01 * * * /todas.sh
