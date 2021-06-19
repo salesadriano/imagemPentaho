@@ -1,2 +1,2 @@
-00 01 * * * /docker-entrypoint.d/50-atualizar.sh
-00 01 * * * /todas.sh
+0 19 * * * /docker-entrypoint.d/50-atualizar.sh
+0 19 * * * /todas.sh
