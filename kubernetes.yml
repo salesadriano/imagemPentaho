@@ -28,7 +28,7 @@ spec:
   storageClassName: longhorn
   resources:
     requests:
-      storage: 70Mi
+      storage: 80Mi
 
 ---
 kind: Deployment
