@@ -108,9 +108,9 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls.certresolver: default
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/preserve-host: "true"
-    # traefik.ingress.kubernetes.io/redirect-permanent: "true"
-    # traefik.ingress.kubernetes.io/redirect-regex: ^http://www.capacitacao.seict.ac.gov.br/(.*)
-    # traefik.ingress.kubernetes.io/redirect-replacement: http://capacitacao.seict.ac.gov.br/$1
+    traefik.ingress.kubernetes.io/redirect-permanent: "true"
+    traefik.ingress.kubernetes.io/redirect-regex: ^http://etl.ac.gov.br/(.*)
+    traefik.ingress.kubernetes.io/redirect-replacement: https://etl.ac.gov.br/$1
 spec:
   rules:
     - host: 'etl.ac.gov.br'
