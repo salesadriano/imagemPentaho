@@ -102,15 +102,8 @@ metadata:
   namespace: default
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/frontend-entry-points: http, https
-    traefik.ingress.kubernetes.io/redirect-entry-point: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: default
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/preserve-host: "true"
-    traefik.ingress.kubernetes.io/redirect-permanent: "true"
-    traefik.ingress.kubernetes.io/redirect-regex: ^http://etl.ac.gov.br
-    traefik.ingress.kubernetes.io/redirect-replacement: https://etl.ac.gov.br
+    traefik.ingress.kubernetes.io/router.tls.certresolver: default    
 spec:
   rules:
     - host: 'etl.ac.gov.br'
