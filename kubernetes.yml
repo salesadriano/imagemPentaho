@@ -111,8 +111,5 @@ spec:
         paths:
           - backend:
               serviceName: etl
-              servicePort: 80      
-  # tls:
-  #   - hosts:
-  #     - 'etl.ac.gov.br'
+              servicePort: 80  
 
