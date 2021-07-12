@@ -838,8 +838,8 @@ order by 1,2 </sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
-      <yloc>464</yloc>
+      <xloc>816</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -906,8 +906,8 @@ order by 1,2 </sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>256</yloc>
+      <xloc>672</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1111,8 +1111,8 @@ FROM VW_SERVIDOR
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>256</yloc>
+      <xloc>512</xloc>
+      <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1891,8 +1891,8 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>16</yloc>
+      <xloc>512</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2059,8 +2059,8 @@ FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>16</yloc>
+      <xloc>672</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2335,8 +2335,8 @@ FROM SAFIRA.TCU_DESPESA_COVID19</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>352</yloc>
+      <xloc>192</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2419,8 +2419,8 @@ FROM SAFIRA.TCU_DESPESA_COVID19</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>352</yloc>
+      <xloc>352</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3501,8 +3501,8 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>176</yloc>
+      <xloc>192</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3713,8 +3713,8 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>176</yloc>
+      <xloc>352</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3769,8 +3769,8 @@ FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>464</yloc>
+      <xloc>976</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4623,8 +4623,8 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>96</yloc>
+      <xloc>192</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4803,8 +4803,8 @@ FROM SAFIRA.TRANSPARENCIA_LIQUIDACAO
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>96</yloc>
+      <xloc>352</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5488,8 +5488,8 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>96</yloc>
+      <xloc>512</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5640,8 +5640,8 @@ FROM SAFIRA.TRANSPARENCIA_PAGAMENTO
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>96</yloc>
+      <xloc>672</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6469,8 +6469,8 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
-      <yloc>384</yloc>
+      <xloc>512</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6514,8 +6514,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
-      <yloc>544</yloc>
+      <xloc>816</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6594,8 +6594,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>544</yloc>
+      <xloc>976</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6766,8 +6766,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1168</xloc>
-      <yloc>384</yloc>
+      <xloc>672</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
