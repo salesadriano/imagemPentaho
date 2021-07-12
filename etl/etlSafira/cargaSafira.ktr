@@ -6469,8 +6469,8 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>176</yloc>
+      <xloc>1008</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -6766,8 +6766,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>176</yloc>
+      <xloc>1168</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>receita</name>
+    <name>receita_geral</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -793,135 +793,102 @@
     <fields>
       <field>
         <name>ANO</name>
-        <rename/>
       </field>
       <field>
         <name>ENTIDADE</name>
-        <rename/>
       </field>
       <field>
         <name>ORGAO</name>
-        <rename/>
       </field>
       <field>
         <name>CODIGO_RECEITA</name>
-        <rename/>
       </field>
       <field>
         <name>DESCRICAO_RECEITA</name>
-        <rename/>
       </field>
       <field>
         <name>TIPO</name>
-        <rename/>
       </field>
       <field>
         <name>FONTE_RECURSO</name>
-        <rename/>
       </field>
       <field>
         <name>PREVISAO_INICIAL</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_JANEIRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_FEVEREIRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_MARÇO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_ABRIL</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_MAIO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_JUNHO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_JULHO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_AGOSTO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_SETEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_OUTUBRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_NOVEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_DEZEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_JANEIRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_FEVEREIRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_MARÇO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_ABRIL</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_MAIO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_JUNHO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_JULHO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_AGOSTO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_SETEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_OUTUBRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_NOVEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_DEZEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>HASHCOMPLETO</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1610,7 +1577,7 @@ FROM transparenciaDB.entidade
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${Internal.Job.Filename.Directory}/receita_covid</name>
+      <name>${Internal.Transformation.Filename.Directory}/receita_geral</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>log</extention>

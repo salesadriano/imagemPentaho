@@ -772,6 +772,86 @@
     </GUI>
   </step>
   <step>
+    <name>insertPortal</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Portal</connection>
+    <schema>transparenciaDB</schema>
+    <table>receita_covid</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>CONTAFINANCEIRA</column_name>
+        <stream_name>CONTAFINANCEIRA</stream_name>
+      </field>
+      <field>
+        <column_name>DATAMOVIMENTO</column_name>
+        <stream_name>DATAMOVIMENTO</stream_name>
+      </field>
+      <field>
+        <column_name>ORGAO</column_name>
+        <stream_name>ORGAO</stream_name>
+      </field>
+      <field>
+        <column_name>NUMERODOCUMENTO</column_name>
+        <stream_name>NUMERODOCUMENTO</stream_name>
+      </field>
+      <field>
+        <column_name>ANODOCUMENTO</column_name>
+        <stream_name>ANODOCUMENTO</stream_name>
+      </field>
+      <field>
+        <column_name>TIPODOCUMENTO</column_name>
+        <stream_name>TIPODOCUMENTO</stream_name>
+      </field>
+      <field>
+        <column_name>HISTORICO</column_name>
+        <stream_name>HISTORICO</stream_name>
+      </field>
+      <field>
+        <column_name>VALOR</column_name>
+        <stream_name>VALOR</stream_name>
+      </field>
+      <field>
+        <column_name>NATUREZA</column_name>
+        <stream_name>NATUREZA</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>logErro</name>
     <type>TextFileOutput</type>
     <description/>
@@ -796,7 +876,7 @@
     <fileNameField/>
     <create_parent_folder>Y</create_parent_folder>
     <file>
-      <name>${Internal.Job.Filename.Directory}/receita_covid</name>
+      <name>${Internal.Transformation.Filename.Directory}/receita_covid</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>log</extention>
@@ -1372,86 +1452,6 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>insertPortal</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Portal</connection>
-    <schema>transparenciaDB</schema>
-    <table>receita_covid</table>
-    <commit>1000</commit>
-    <truncate>Y</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>CONTAFINANCEIRA</column_name>
-        <stream_name>CONTAFINANCEIRA</stream_name>
-      </field>
-      <field>
-        <column_name>DATAMOVIMENTO</column_name>
-        <stream_name>DATAMOVIMENTO</stream_name>
-      </field>
-      <field>
-        <column_name>ORGAO</column_name>
-        <stream_name>ORGAO</stream_name>
-      </field>
-      <field>
-        <column_name>NUMERODOCUMENTO</column_name>
-        <stream_name>NUMERODOCUMENTO</stream_name>
-      </field>
-      <field>
-        <column_name>ANODOCUMENTO</column_name>
-        <stream_name>ANODOCUMENTO</stream_name>
-      </field>
-      <field>
-        <column_name>TIPODOCUMENTO</column_name>
-        <stream_name>TIPODOCUMENTO</stream_name>
-      </field>
-      <field>
-        <column_name>HISTORICO</column_name>
-        <stream_name>HISTORICO</stream_name>
-      </field>
-      <field>
-        <column_name>VALOR</column_name>
-        <stream_name>VALOR</stream_name>
-      </field>
-      <field>
-        <column_name>NATUREZA</column_name>
-        <stream_name>NATUREZA</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>368</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
     </GUI>
