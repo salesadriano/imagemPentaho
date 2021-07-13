@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>empenho_consolidado</name>
+    <name>despesa_covid</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -548,28 +548,43 @@
   </connection>
   <order>
     <hop>
-      <from>empenhoSafira</from>
+      <from>despesaExtraSafira</from>
       <to>ajusteTiposDadosEmpenho</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>InsertReceitas</from>
+      <from>InsertDespesaExtra</from>
       <to>logErro</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>entidadePortal</from>
+      <to>ajusteTiposDadosEntidade</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>ajusteTiposDadosEmpenho</from>
-      <to>Database lookup</to>
+      <to>Merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database lookup</from>
-      <to>InsertReceitas</to>
+      <from>ajusteTiposDadosEntidade</from>
+      <to>Merge join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join</from>
+      <to>InsertDespesaExtra</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>InsertDespesaExtra</from>
+      <to>logErro</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>InsertReceitas</name>
+    <name>InsertDespesaExtra</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -581,7 +596,7 @@
     </partitioning>
     <connection>Portal</connection>
     <schema>transparenciaDB</schema>
-    <table>empenho_consolidado</table>
+    <table>despesa_extra</table>
     <commit>1000</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
@@ -598,108 +613,40 @@
     <return_field/>
     <fields>
       <field>
-        <column_name>NUMEROEMPENHO</column_name>
-        <stream_name>NUMEROEMPENHO</stream_name>
+        <column_name>NUMERODESPESAEXTRA</column_name>
+        <stream_name>NUMERODESPESAEXTRA</stream_name>
       </field>
       <field>
-        <column_name>ANOEMPENHO</column_name>
-        <stream_name>ANOEMPENHO</stream_name>
+        <column_name>ANODESPESAEXTRA</column_name>
+        <stream_name>ANODESPESAEXTRA</stream_name>
       </field>
       <field>
         <column_name>ENTIDADE</column_name>
         <stream_name>ENTIDADE</stream_name>
       </field>
       <field>
-        <column_name>DATAEMPENHO</column_name>
-        <stream_name>DATAEMPENHO</stream_name>
+        <column_name>DATAEMISSAO</column_name>
+        <stream_name>DATAEMISSAO</stream_name>
       </field>
       <field>
-        <column_name>TIPOEMPENHO</column_name>
-        <stream_name>TIPOEMPENHO</stream_name>
+        <column_name>DATABORDERO</column_name>
+        <stream_name>DATABORDERO</stream_name>
       </field>
       <field>
-        <column_name>DATAPROGRAMACAO</column_name>
-        <stream_name>DATAPROGRAMACAO</stream_name>
+        <column_name>DATAPAGAMENTO</column_name>
+        <stream_name>DATAPAGAMENTO</stream_name>
       </field>
       <field>
-        <column_name>NUMEROEMISSOES</column_name>
-        <stream_name>NUMEROEMISSOES</stream_name>
+        <column_name>DATABAIXA</column_name>
+        <stream_name>DATABAIXA</stream_name>
       </field>
       <field>
         <column_name>STATUS</column_name>
         <stream_name>STATUS</stream_name>
       </field>
       <field>
-        <column_name>MOTIVOEMPENHO</column_name>
-        <stream_name>MOTIVOEMPENHO</stream_name>
-      </field>
-      <field>
-        <column_name>NUMEROCONTRATO</column_name>
-        <stream_name>NUMEROCONTRATO</stream_name>
-      </field>
-      <field>
-        <column_name>PEDIDOEMPENHO</column_name>
-        <stream_name>PEDIDOEMPENHO</stream_name>
-      </field>
-      <field>
-        <column_name>DATAPEDIDO</column_name>
-        <stream_name>DATAPEDIDO</stream_name>
-      </field>
-      <field>
-        <column_name>MODALIDADELICITACAO</column_name>
-        <stream_name>MODALIDADELICITACAO</stream_name>
-      </field>
-      <field>
-        <column_name>NUMEROLICITACAO</column_name>
-        <stream_name>NUMEROLICITACAO</stream_name>
-      </field>
-      <field>
-        <column_name>HISTORICO</column_name>
-        <stream_name>HISTORICO</stream_name>
-      </field>
-      <field>
-        <column_name>CODIGOCREDOR</column_name>
-        <stream_name>CODIGOCREDOR</stream_name>
-      </field>
-      <field>
-        <column_name>RAZAOSOCIAL</column_name>
-        <stream_name>RAZAOSOCIAL</stream_name>
-      </field>
-      <field>
-        <column_name>CPFCNPJCREDOR</column_name>
-        <stream_name>CPFCNPJCREDOR</stream_name>
-      </field>
-      <field>
-        <column_name>CPFCNPJCREDOR_</column_name>
-        <stream_name>CPFCNPJCREDOR_</stream_name>
-      </field>
-      <field>
-        <column_name>CLASSECREDOR</column_name>
-        <stream_name>CLASSECREDOR</stream_name>
-      </field>
-      <field>
-        <column_name>BANCO</column_name>
-        <stream_name>BANCO</stream_name>
-      </field>
-      <field>
-        <column_name>BANCO_</column_name>
-        <stream_name>BANCO_</stream_name>
-      </field>
-      <field>
-        <column_name>AGENCIA</column_name>
-        <stream_name>AGENCIA</stream_name>
-      </field>
-      <field>
-        <column_name>AGENCIA_</column_name>
-        <stream_name>AGENCIA_</stream_name>
-      </field>
-      <field>
-        <column_name>CONTA</column_name>
-        <stream_name>CONTA</stream_name>
-      </field>
-      <field>
-        <column_name>CONTA_</column_name>
-        <stream_name>CONTA_</stream_name>
+        <column_name>NUMEROEMISSOES</column_name>
+        <stream_name>NUMEROEMISSOES</stream_name>
       </field>
       <field>
         <column_name>ORGAO</column_name>
@@ -710,68 +657,84 @@
         <stream_name>UNIDADE</stream_name>
       </field>
       <field>
-        <column_name>REDUZIDOFUNCIONAL</column_name>
-        <stream_name>REDUZIDOFUNCIONAL</stream_name>
+        <column_name>TIPOGUIA</column_name>
+        <stream_name>TIPOGUIA</stream_name>
       </field>
       <field>
-        <column_name>FUNCIONALPROGRAMATICA</column_name>
-        <stream_name>FUNCIONALPROGRAMATICA</stream_name>
+        <column_name>CONTAEXTRAORCAMENTARIA</column_name>
+        <stream_name>CONTAEXTRAORCAMENTARIA</stream_name>
       </field>
       <field>
-        <column_name>DESPESAORCAMENTARIA</column_name>
-        <stream_name>DESPESAORCAMENTARIA</stream_name>
+        <column_name>HISTORICO</column_name>
+        <stream_name>HISTORICO</stream_name>
       </field>
       <field>
-        <column_name>FONTERECURSO</column_name>
-        <stream_name>FONTERECURSO</stream_name>
+        <column_name>DESCRICAO</column_name>
+        <stream_name>DESCRICAO</stream_name>
       </field>
       <field>
-        <column_name>DETALHAMENTOFONTE</column_name>
-        <stream_name>DETALHAMENTOFONTE</stream_name>
+        <column_name>CODIGOCREDOR</column_name>
+        <stream_name>CODIGOCREDOR</stream_name>
       </field>
       <field>
-        <column_name>VALOREMPENHADO</column_name>
-        <stream_name>VALOREMPENHADO</stream_name>
+        <column_name>RAZAOSOCIAL</column_name>
+        <stream_name>RAZAOSOCIAL</stream_name>
       </field>
       <field>
-        <column_name>NATUREZARECURSO</column_name>
-        <stream_name>NATUREZARECURSO</stream_name>
+        <column_name>CODIGOCLASSECREDOR</column_name>
+        <stream_name>CODIGOCLASSECREDOR</stream_name>
       </field>
       <field>
-        <column_name>NUMEROCONVENIO</column_name>
-        <stream_name>NUMEROCONVENIO</stream_name>
+        <column_name>NOMECLASSECREDOR</column_name>
+        <stream_name>NOMECLASSECREDOR</stream_name>
       </field>
       <field>
-        <column_name>ANOCONVENIO</column_name>
-        <stream_name>ANOCONVENIO</stream_name>
+        <column_name>CODIGOBANCO</column_name>
+        <stream_name>CODIGOBANCO</stream_name>
       </field>
       <field>
-        <column_name>NUMEROPROCESSO</column_name>
-        <stream_name>NUMEROPROCESSO</stream_name>
+        <column_name>CODIGOAGENCIA</column_name>
+        <stream_name>CODIGOAGENCIA</stream_name>
       </field>
       <field>
-        <column_name>ANOPROCESSO</column_name>
-        <stream_name>ANOPROCESSO</stream_name>
+        <column_name>CONTABANCARIA</column_name>
+        <stream_name>CONTABANCARIA</stream_name>
+      </field>
+      <field>
+        <column_name>NATUREZAPAGAMENTO</column_name>
+        <stream_name>NATUREZAPAGAMENTO</stream_name>
+      </field>
+      <field>
+        <column_name>VALORDESPESAEXTRA</column_name>
+        <stream_name>VALORDESPESAEXTRA</stream_name>
+      </field>
+      <field>
+        <column_name>TOTALANULADODESPESAEXTRA</column_name>
+        <stream_name>TOTALANULADODESPESAEXTRA</stream_name>
+      </field>
+      <field>
+        <column_name>CONTAFINANCEIRA</column_name>
+        <stream_name>CONTAFINANCEIRA</stream_name>
+      </field>
+      <field>
+        <column_name>FORMAPAGAMENTO</column_name>
+        <stream_name>FORMAPAGAMENTO</stream_name>
+      </field>
+      <field>
+        <column_name>TIPOOPERACAOBANCARIA</column_name>
+        <stream_name>TIPOOPERACAOBANCARIA</stream_name>
+      </field>
+      <field>
+        <column_name>DOCUMENTODESPESAEXTRA</column_name>
+        <stream_name>DOCUMENTODESPESAEXTRA</stream_name>
+      </field>
+      <field>
+        <column_name>TAC</column_name>
+        <stream_name>TAC</stream_name>
       </field>
       <field>
         <column_name>EVENTOCONTABIL</column_name>
         <stream_name>EVENTOCONTABIL</stream_name>
-      </field>
-      <field>
-        <column_name>TOTALLIQUIDADO</column_name>
-        <stream_name>TOTALLIQUIDADO</stream_name>
-      </field>
-      <field>
-        <column_name>TOTALPAGO</column_name>
-        <stream_name>TOTALPAGO</stream_name>
-      </field>
-      <field>
-        <column_name>COMPLETO</column_name>
-        <stream_name>COMPLETO</stream_name>
-      </field>
-      <field>
-        <column_name>HASHCOMPLETO</column_name>
-        <stream_name>HASHCOMPLETO</stream_name>
       </field>
       <field>
         <column_name>IDENTIDADE</column_name>
@@ -787,7 +750,41 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>724</xloc>
+      <xloc>768</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge join</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>ajusteTiposDadosEmpenho</step1>
+    <step2>ajusteTiposDadosEntidade</step2>
+    <keys_1>
+      <key>HASHCOMPLETO</key>
+    </keys_1>
+    <keys_2>
+      <key>HASHCOMPLETO</key>
+    </keys_2>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
       <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
@@ -805,82 +802,31 @@
     </partitioning>
     <fields>
       <field>
-        <name>NUMEROEMPENHO</name>
+        <name>NUMERODESPESAEXTRA</name>
       </field>
       <field>
-        <name>ANOEMPENHO</name>
+        <name>ANODESPESAEXTRA</name>
       </field>
       <field>
         <name>ENTIDADE</name>
       </field>
       <field>
-        <name>DATAEMPENHO</name>
+        <name>DATAEMISSAO</name>
       </field>
       <field>
-        <name>TIPOEMPENHO</name>
+        <name>DATABORDERO</name>
       </field>
       <field>
-        <name>DATAPROGRAMACAO</name>
+        <name>DATAPAGAMENTO</name>
       </field>
       <field>
-        <name>NUMEROEMISSOES</name>
+        <name>DATABAIXA</name>
       </field>
       <field>
         <name>STATUS</name>
       </field>
       <field>
-        <name>MOTIVOEMPENHO</name>
-      </field>
-      <field>
-        <name>NUMEROCONTRATO</name>
-      </field>
-      <field>
-        <name>PEDIDOEMPENHO</name>
-      </field>
-      <field>
-        <name>DATAPEDIDO</name>
-      </field>
-      <field>
-        <name>MODALIDADELICITACAO</name>
-      </field>
-      <field>
-        <name>NUMEROLICITACAO</name>
-      </field>
-      <field>
-        <name>HISTORICO</name>
-      </field>
-      <field>
-        <name>CODIGOCREDOR</name>
-      </field>
-      <field>
-        <name>RAZAOSOCIAL</name>
-      </field>
-      <field>
-        <name>CPFCNPJCREDOR</name>
-      </field>
-      <field>
-        <name>CPFCNPJCREDOR_</name>
-      </field>
-      <field>
-        <name>CLASSECREDOR</name>
-      </field>
-      <field>
-        <name>BANCO</name>
-      </field>
-      <field>
-        <name>BANCO_</name>
-      </field>
-      <field>
-        <name>AGENCIA</name>
-      </field>
-      <field>
-        <name>AGENCIA_</name>
-      </field>
-      <field>
-        <name>CONTA</name>
-      </field>
-      <field>
-        <name>CONTA_</name>
+        <name>NUMEROEMISSOES</name>
       </field>
       <field>
         <name>ORGAO</name>
@@ -889,57 +835,72 @@
         <name>UNIDADE</name>
       </field>
       <field>
-        <name>REDUZIDOFUNCIONAL</name>
+        <name>TIPOGUIA</name>
       </field>
       <field>
-        <name>FUNCIONALPROGRAMATICA</name>
+        <name>CONTAEXTRAORCAMENTARIA</name>
       </field>
       <field>
-        <name>DESPESAORCAMENTARIA</name>
+        <name>HISTORICO</name>
       </field>
       <field>
-        <name>FONTERECURSO</name>
+        <name>DESCRICAO</name>
       </field>
       <field>
-        <name>DETALHAMENTOFONTE</name>
+        <name>CODIGOCREDOR</name>
       </field>
       <field>
-        <name>VALOREMPENHADO</name>
+        <name>RAZAOSOCIAL</name>
       </field>
       <field>
-        <name>NATUREZARECURSO</name>
+        <name>CODIGOCLASSECREDOR</name>
       </field>
       <field>
-        <name>NUMEROCONVENIO</name>
+        <name>NOMECLASSECREDOR</name>
       </field>
       <field>
-        <name>ANOCONVENIO</name>
+        <name>CODIGOBANCO</name>
       </field>
       <field>
-        <name>NUMEROPROCESSO</name>
+        <name>CODIGOAGENCIA</name>
       </field>
       <field>
-        <name>ANOPROCESSO</name>
+        <name>CONTABANCARIA</name>
+      </field>
+      <field>
+        <name>NATUREZAPAGAMENTO</name>
+      </field>
+      <field>
+        <name>VALORDESPESAEXTRA</name>
+      </field>
+      <field>
+        <name>TOTALANULADODESPESAEXTRA</name>
+      </field>
+      <field>
+        <name>CONTAFINANCEIRA</name>
+      </field>
+      <field>
+        <name>FORMAPAGAMENTO</name>
+      </field>
+      <field>
+        <name>TIPOOPERACAOBANCARIA</name>
+      </field>
+      <field>
+        <name>DOCUMENTODESPESAEXTRA</name>
+      </field>
+      <field>
+        <name>TAC</name>
       </field>
       <field>
         <name>EVENTOCONTABIL</name>
-      </field>
-      <field>
-        <name>TOTALLIQUIDADO</name>
-      </field>
-      <field>
-        <name>TOTALPAGO</name>
-      </field>
-      <field>
-        <name>COMPLETO</name>
       </field>
       <field>
         <name>HASHCOMPLETO</name>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
-        <name>NUMEROEMPENHO</name>
-        <rename>NUMEROEMPENHO</rename>
+        <name>NUMERODESPESAEXTRA</name>
+        <rename>NUMERODESPESAEXTRA</rename>
         <type>None</type>
         <length>40</length>
         <precision>-2</precision>
@@ -955,8 +916,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>ANOEMPENHO</name>
-        <rename>ANOEMPENHO</rename>
+        <name>ANODESPESAEXTRA</name>
+        <rename>ANODESPESAEXTRA</rename>
         <type>None</type>
         <length>40</length>
         <precision>-2</precision>
@@ -989,8 +950,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>DATAEMPENHO</name>
-        <rename>DATAEMPENHO</rename>
+        <name>DATAEMISSAO</name>
+        <rename>DATAEMISSAO</rename>
         <type>Date</type>
         <length>0</length>
         <precision>-2</precision>
@@ -1006,25 +967,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>TIPOEMPENHO</name>
-        <rename>TIPOEMPENHO</rename>
-        <type>None</type>
-        <length>1</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>DATAPROGRAMACAO</name>
-        <rename>DATAPROGRAMACAO</rename>
+        <name>DATABORDERO</name>
+        <rename>DATABORDERO</rename>
         <type>Date</type>
         <length>0</length>
         <precision>-2</precision>
@@ -1040,12 +984,29 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>NUMEROEMISSOES</name>
-        <rename>NUMEROEMISSOES</rename>
-        <type>None</type>
-        <length>40</length>
+        <name>DATAPAGAMENTO</name>
+        <rename>DATAPAGAMENTO</rename>
+        <type>Date</type>
+        <length>0</length>
         <precision>-2</precision>
-        <conversion_mask/>
+        <conversion_mask>yyyy/MM/dd HH:mm:ss.SSS</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>DATABAIXA</name>
+        <rename>DATABAIXA</rename>
+        <type>Date</type>
+        <length>0</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy/MM/dd HH:mm:ss.SSS</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
@@ -1074,10 +1035,10 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>MOTIVOEMPENHO</name>
-        <rename>MOTIVOEMPENHO</rename>
+        <name>NUMEROEMISSOES</name>
+        <rename>NUMEROEMISSOES</rename>
         <type>None</type>
-        <length>250</length>
+        <length>40</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1091,10 +1052,10 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>NUMEROCONTRATO</name>
-        <rename>NUMEROCONTRATO</rename>
+        <name>ORGAO</name>
+        <rename>ORGAO</rename>
         <type>None</type>
-        <length>15</length>
+        <length>3</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1108,10 +1069,10 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>PEDIDOEMPENHO</name>
-        <rename>PEDIDOEMPENHO</rename>
+        <name>UNIDADE</name>
+        <rename>UNIDADE</rename>
         <type>None</type>
-        <length>20</length>
+        <length>3</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1125,10 +1086,10 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>DATAPEDIDO</name>
-        <rename>DATAPEDIDO</rename>
+        <name>TIPOGUIA</name>
+        <rename>TIPOGUIA</rename>
         <type>None</type>
-        <length>0</length>
+        <length>40</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1142,27 +1103,10 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>MODALIDADELICITACAO</name>
-        <rename>MODALIDADELICITACAO</rename>
+        <name>CONTAEXTRAORCAMENTARIA</name>
+        <rename>CONTAEXTRAORCAMENTARIA</rename>
         <type>None</type>
-        <length>200</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>NUMEROLICITACAO</name>
-        <rename>NUMEROLICITACAO</rename>
-        <type>None</type>
-        <length>30</length>
+        <length>40</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1178,6 +1122,23 @@
       <meta>
         <name>HISTORICO</name>
         <rename>HISTORICO</rename>
+        <type>None</type>
+        <length>40</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>DESCRICAO</name>
+        <rename>DESCRICAO</rename>
         <type>None</type>
         <length>1875</length>
         <precision>-2</precision>
@@ -1227,10 +1188,10 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>CPFCNPJCREDOR</name>
-        <rename>CPFCNPJCREDOR</rename>
+        <name>CODIGOCLASSECREDOR</name>
+        <rename>CODIGOCLASSECREDOR</rename>
         <type>None</type>
-        <length>14</length>
+        <length>40</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1244,25 +1205,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>CPFCNPJCREDOR_</name>
-        <rename>CPFCNPJCREDOR_</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>CLASSECREDOR</name>
-        <rename>CLASSECREDOR</rename>
+        <name>NOMECLASSECREDOR</name>
+        <rename>NOMECLASSECREDOR</rename>
         <type>None</type>
         <length>150</length>
         <precision>-2</precision>
@@ -1278,25 +1222,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>BANCO</name>
-        <rename>BANCO</rename>
-        <type>None</type>
-        <length>7</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>BANCO_</name>
-        <rename>BANCO_</rename>
+        <name>CODIGOBANCO</name>
+        <rename>CODIGOBANCO</rename>
         <type>None</type>
         <length>4</length>
         <precision>-2</precision>
@@ -1312,25 +1239,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>AGENCIA</name>
-        <rename>AGENCIA</rename>
-        <type>None</type>
-        <length>7</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AGENCIA_</name>
-        <rename>AGENCIA_</rename>
+        <name>CODIGOAGENCIA</name>
+        <rename>CODIGOAGENCIA</rename>
         <type>None</type>
         <length>5</length>
         <precision>-2</precision>
@@ -1346,8 +1256,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>CONTA</name>
-        <rename>CONTA</rename>
+        <name>CONTABANCARIA</name>
+        <rename>CONTABANCARIA</rename>
         <type>None</type>
         <length>15</length>
         <precision>-2</precision>
@@ -1363,59 +1273,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>CONTA_</name>
-        <rename>CONTA_</rename>
-        <type>None</type>
-        <length>15</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ORGAO</name>
-        <rename>ORGAO</rename>
-        <type>None</type>
-        <length>3</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>UNIDADE</name>
-        <rename>UNIDADE</rename>
-        <type>None</type>
-        <length>3</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>REDUZIDOFUNCIONAL</name>
-        <rename>REDUZIDOFUNCIONAL</rename>
+        <name>NATUREZAPAGAMENTO</name>
+        <rename>NATUREZAPAGAMENTO</rename>
         <type>None</type>
         <length>40</length>
         <precision>-2</precision>
@@ -1431,76 +1290,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>FUNCIONALPROGRAMATICA</name>
-        <rename>FUNCIONALPROGRAMATICA</rename>
-        <type>None</type>
-        <length>18</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>DESPESAORCAMENTARIA</name>
-        <rename>DESPESAORCAMENTARIA</rename>
-        <type>None</type>
-        <length>12</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>FONTERECURSO</name>
-        <rename>FONTERECURSO</rename>
-        <type>None</type>
-        <length>40</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>DETALHAMENTOFONTE</name>
-        <rename>DETALHAMENTOFONTE</rename>
-        <type>None</type>
-        <length>10</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>VALOREMPENHADO</name>
-        <rename>VALOREMPENHADO</rename>
+        <name>VALORDESPESAEXTRA</name>
+        <rename>VALORDESPESAEXTRA</rename>
         <type>Number</type>
         <length>14</length>
         <precision>2</precision>
@@ -1516,12 +1307,12 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>NATUREZARECURSO</name>
-        <rename>NATUREZARECURSO</rename>
-        <type>None</type>
-        <length>1</length>
-        <precision>-2</precision>
-        <conversion_mask/>
+        <name>TOTALANULADODESPESAEXTRA</name>
+        <rename>TOTALANULADODESPESAEXTRA</rename>
+        <type>Number</type>
+        <length>14</length>
+        <precision>2</precision>
+        <conversion_mask>0.00</conversion_mask>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
@@ -1533,8 +1324,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>NUMEROCONVENIO</name>
-        <rename>NUMEROCONVENIO</rename>
+        <name>CONTAFINANCEIRA</name>
+        <rename>CONTAFINANCEIRA</rename>
         <type>None</type>
         <length>40</length>
         <precision>-2</precision>
@@ -1550,8 +1341,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>ANOCONVENIO</name>
-        <rename>ANOCONVENIO</rename>
+        <name>FORMAPAGAMENTO</name>
+        <rename>FORMAPAGAMENTO</rename>
         <type>None</type>
         <length>40</length>
         <precision>-2</precision>
@@ -1567,10 +1358,10 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>NUMEROPROCESSO</name>
-        <rename>NUMEROPROCESSO</rename>
+        <name>TIPOOPERACAOBANCARIA</name>
+        <rename>TIPOOPERACAOBANCARIA</rename>
         <type>None</type>
-        <length>5</length>
+        <length>40</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1584,10 +1375,27 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>ANOPROCESSO</name>
-        <rename>ANOPROCESSO</rename>
+        <name>DOCUMENTODESPESAEXTRA</name>
+        <rename>DOCUMENTODESPESAEXTRA</rename>
         <type>None</type>
-        <length>40</length>
+        <length>10</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>TAC</name>
+        <rename>TAC</rename>
+        <type>None</type>
+        <length>2</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1618,61 +1426,10 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>TOTALLIQUIDADO</name>
-        <rename>TOTALLIQUIDADO</rename>
-        <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>0.00</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>TOTALPAGO</name>
-        <rename>TOTALPAGO</rename>
-        <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>0.00</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>COMPLETO</name>
-        <rename>COMPLETO</rename>
-        <type>None</type>
-        <length>380</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
         <name>HASHCOMPLETO</name>
         <rename>HASHCOMPLETO</rename>
         <type>None</type>
-        <length>370</length>
+        <length>1000</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1695,13 +1452,81 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>380</xloc>
-      <yloc>480</yloc>
+      <xloc>384</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>empenhoSafira</name>
+    <name>ajusteTiposDadosEntidade</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>IDENTIDADE</name>
+      </field>
+      <field>
+        <name>HASHCOMPLETO</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>IDENTIDADE</name>
+        <rename>IDENTIDADE</rename>
+        <type>None</type>
+        <length>15</length>
+        <precision>0</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>HASHCOMPLETO</name>
+        <rename>HASHCOMPLETO</rename>
+        <type>None</type>
+        <length>1000</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>384</xloc>
+      <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>despesaExtraSafira</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1712,66 +1537,41 @@
       <schema_name/>
     </partitioning>
     <connection>safira</connection>
-    <sql>
-SELECT Distinct
-  TRIM(NUMEROEMPENHO) NUMEROEMPENHO
-, TRIM(ANOEMPENHO) ANOEMPENHO
+    <sql>SELECT distinct
+  TRIM(NUMERODESPESAEXTRA) NUMERODESPESAEXTRA
+, TRIM(ANODESPESAEXTRA) ANODESPESAEXTRA
 , CONVERT(TRIM(ENTIDADE),'UTF8') ENTIDADE
-, DATAEMPENHO
-, TRIM(TIPOEMPENHO) TIPOEMPENHO
-, DATAPROGRAMACAO
-, TRIM(NUMEROEMISSOES) NUMEROEMISSOES
+, DATAEMISSAO
+, DATABORDERO
+, DATAPAGAMENTO
+, DATABAIXA
 , TRIM(STATUS) STATUS
-, CONVERT(TRIM(MOTIVOEMPENHO),'UTF8') MOTIVOEMPENHO
-, TRIM(NUMEROCONTRATO) NUMEROCONTRATO
-, TRIM(PEDIDOEMPENHO) PEDIDOEMPENHO
-, DATAPEDIDO
-, CONVERT(TRIM(MODALIDADELICITACAO),'UTF8') MODALIDADELICITACAO
-, TRIM(NUMEROLICITACAO) NUMEROLICITACAO
-, CONVERT(TRIM(HISTORICO),'UTF8') HISTORICO
-, TRIM(CODIGOCREDOR) CODIGOCREDOR
-, CONVERT(TRIM(RAZAOSOCIAL),'UTF8') RAZAOSOCIAL
-, CASE    
-    WHEN LENGTH(TRIM(CPFCNPJCREDOR)) &lt; 13 THEN CONCAT(SUBSTR(CPFCNPJCREDOR,0,3),'.***.***-**')
-    ELSE TRIM(CPFCNPJCREDOR)
-  END CPFCNPJCREDOR
-, TRIM(CPFCNPJCREDOR) CPFCNPJCREDOR_
-, CONVERT(TRIM(CLASSECREDOR),'UTF8') CLASSECREDOR
-, CASE    
-    WHEN LENGTH(TRIM(CPFCNPJCREDOR)) &lt; 13 THEN '*******'       
-    ELSE TRIM(BANCO)
-  END BANCO
-, TRIM(BANCO) BANCO_
-, CASE    
-    WHEN LENGTH(TRIM(CPFCNPJCREDOR)) &lt; 13 THEN '*******'       
-    ELSE TRIM(AGENCIA)
-  END AGENCIA
-, TRIM(AGENCIA) AGENCIA_
-, CASE    
-    WHEN LENGTH(TRIM(CPFCNPJCREDOR)) &lt; 13 THEN '*******'       
-    ELSE TRIM(CONTA)
-  END CONTA
-, TRIM(CONTA) CONTA_
+, TRIM(NUMEROEMISSOES) NUMEROEMISSOES
 , TRIM(ORGAO) ORGAO
 , TRIM(UNIDADE) UNIDADE
-, TRIM(REDUZIDOFUNCIONAL) REDUZIDOFUNCIONAL
-, TRIM(FUNCIONALPROGRAMATICA) FUNCIONALPROGRAMATICA
-, TRIM(DESPESAORCAMENTARIA) DESPESAORCAMENTARIA
-, TRIM(FONTERECURSO) FONTERECURSO
-, TRIM(DETALHAMENTOFONTE) DETALHAMENTOFONTE
-, VALOREMPENHADO
-, TRIM(NATUREZARECURSO) NATUREZARECURSO
-, TRIM(NUMEROCONVENIO) NUMEROCONVENIO
-, TRIM(ANOCONVENIO) ANOCONVENIO
-, TRIM(NUMEROPROCESSO) NUMEROPROCESSO
-, TRIM(ANOPROCESSO) ANOPROCESSO
+, TRIM(TIPOGUIA) TIPOGUIA
+, TRIM(CONTAEXTRAORCAMENTARIA) CONTAEXTRAORCAMENTARIA
+, TRIM(HISTORICO) HISTORICO
+, CONVERT(TRIM(DESCRICAO),'UTF8') DESCRICAO
+, TRIM(CODIGOCREDOR) CODIGOCREDOR
+, CONVERT(TRIM(RAZAOSOCIAL),'UTF8') RAZAOSOCIAL
+, TRIM(CODIGOCLASSECREDOR) CODIGOCLASSECREDOR
+, CONVERT(TRIM(NOMECLASSECREDOR),'UTF8') NOMECLASSECREDOR
+, TRIM(CODIGOBANCO) CODIGOBANCO
+, TRIM(CODIGOAGENCIA) CODIGOAGENCIA
+, TRIM(CONTABANCARIA) CONTABANCARIA
+, TRIM(NATUREZAPAGAMENTO) NATUREZAPAGAMENTO
+, VALORDESPESAEXTRA
+, TOTALANULADODESPESAEXTRA
+, TRIM(CONTAFINANCEIRA) CONTAFINANCEIRA
+, TRIM(FORMAPAGAMENTO) FORMAPAGAMENTO
+, TRIM(TIPOOPERACAOBANCARIA) TIPOOPERACAOBANCARIA
+, TRIM(DOCUMENTODESPESAEXTRA) DOCUMENTODESPESAEXTRA
+, TRIM(TAC) TAC
 , TRIM(EVENTOCONTABIL) EVENTOCONTABIL
-, (SELECT sum(li.VALORDALIQUIDACAO) FROM SAFIRA.TRANSPARENCIA_liquidacao li WHERE li.ANOEMPENHO = EC.ANOEMPENHO AND li.NUMEROEMPENHO = EC.NUMEROEMPENHO  AND li.ORGAO  = EC.ORGAO ) TOTALLIQUIDADO
-, (SELECT sum(p.VALORPAGAMENTO) FROM SAFIRA.TRANSPARENCIA_liquidacao li INNER JOIN SAFIRA.TRANSPARENCIA_pagamento p ON p.ANOLIQUIDACAO = li.ANOLIQUIDACAO AND p.NUMEROLIQUIDACAO = li.NUMEROLIQUIDACAO WHERE li.ANOEMPENHO = ec.ANOEMPENHO  and li.NUMEROEMPENHO = ec.NUMEROEMPENHO  and li.ORGAO  = ec.ORGAO ) TOTALPAGO
-, CONVERT(ORGAO || ' - ' || ENTIDADE,'UTF8') COMPLETO
 , REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CONVERT(TRIM(COALESCE(ORGAO || '-' || ENTIDADE,'')),'US7ASCII'),' '),'-'),','),'.'),'/') HASHCOMPLETO
-FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
-ORDER BY 44, 3</sql>
+FROM SAFIRA.TRANSPARENCIA_DESPESAEXTRA
+ORDER BY 32</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1786,11 +1586,11 @@ ORDER BY 44, 3</sql>
           <value-meta>
             <type>String</type>
             <storagetype>normal</storagetype>
-            <name>NUMEROEMPENHO</name>
+            <name>NUMERODESPESAEXTRA</name>
             <length>40</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
-            <comments>NUMEROEMPENHO</comments>
+            <comments>NUMERODESPESAEXTRA</comments>
             <conversion_Mask/>
             <decimal_symbol>,</decimal_symbol>
             <grouping_symbol>.</grouping_symbol>
@@ -1807,11 +1607,11 @@ ORDER BY 44, 3</sql>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
-        <name>NUMEROEMPENHO</name>
+        <name>NUMERODESPESAEXTRA</name>
         <length>40</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>NUMEROEMPENHO</comments>
+        <comments>NUMERODESPESAEXTRA</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -1834,11 +1634,11 @@ ORDER BY 44, 3</sql>
           <value-meta>
             <type>String</type>
             <storagetype>normal</storagetype>
-            <name>ANOEMPENHO</name>
+            <name>ANODESPESAEXTRA</name>
             <length>40</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
-            <comments>ANOEMPENHO</comments>
+            <comments>ANODESPESAEXTRA</comments>
             <conversion_Mask/>
             <decimal_symbol>,</decimal_symbol>
             <grouping_symbol>.</grouping_symbol>
@@ -1855,11 +1655,11 @@ ORDER BY 44, 3</sql>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
-        <name>ANOEMPENHO</name>
+        <name>ANODESPESAEXTRA</name>
         <length>40</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>ANOEMPENHO</comments>
+        <comments>ANODESPESAEXTRA</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -1926,59 +1726,11 @@ ORDER BY 44, 3</sql>
       <value-meta>
         <type>Timestamp</type>
         <storagetype>normal</storagetype>
-        <name>DATAEMPENHO</name>
+        <name>DATAEMISSAO</name>
         <length>0</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>DATAEMPENHO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>TIPOEMPENHO</name>
-            <length>1</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>TIPOEMPENHO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>TIPOEMPENHO</name>
-        <length>1</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>TIPOEMPENHO</comments>
+        <comments>DATAEMISSAO</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -1997,11 +1749,11 @@ ORDER BY 44, 3</sql>
       <value-meta>
         <type>Timestamp</type>
         <storagetype>normal</storagetype>
-        <name>DATAPROGRAMACAO</name>
+        <name>DATABORDERO</name>
         <length>0</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>DATAPROGRAMACAO</comments>
+        <comments>DATABORDERO</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -2018,38 +1770,36 @@ ORDER BY 44, 3</sql>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>NUMEROEMISSOES</name>
-            <length>40</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>NUMEROEMISSOES</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>NUMEROEMISSOES</name>
-        <length>40</length>
+        <type>Timestamp</type>
+        <storagetype>normal</storagetype>
+        <name>DATAPAGAMENTO</name>
+        <length>0</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>NUMEROEMISSOES</comments>
+        <comments>DATAPAGAMENTO</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Timestamp</type>
+        <storagetype>normal</storagetype>
+        <name>DATABAIXA</name>
+        <length>0</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>DATABAIXA</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -2120,322 +1870,11 @@ ORDER BY 44, 3</sql>
           <value-meta>
             <type>String</type>
             <storagetype>normal</storagetype>
-            <name>MOTIVOEMPENHO</name>
-            <length>250</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>MOTIVOEMPENHO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>MOTIVOEMPENHO</name>
-        <length>250</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>MOTIVOEMPENHO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>NUMEROCONTRATO</name>
-            <length>15</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>NUMEROCONTRATO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>NUMEROCONTRATO</name>
-        <length>15</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>NUMEROCONTRATO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>PEDIDOEMPENHO</name>
-            <length>20</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>PEDIDOEMPENHO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>PEDIDOEMPENHO</name>
-        <length>20</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>PEDIDOEMPENHO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Timestamp</type>
-        <storagetype>normal</storagetype>
-        <name>DATAPEDIDO</name>
-        <length>0</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>DATAPEDIDO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>MODALIDADELICITACAO</name>
-            <length>200</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>MODALIDADELICITACAO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>MODALIDADELICITACAO</name>
-        <length>200</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>MODALIDADELICITACAO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>NUMEROLICITACAO</name>
-            <length>30</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>NUMEROLICITACAO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>NUMEROLICITACAO</name>
-        <length>30</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>NUMEROLICITACAO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>HISTORICO</name>
-            <length>1875</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>HISTORICO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>HISTORICO</name>
-        <length>1875</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>HISTORICO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>CODIGOCREDOR</name>
+            <name>NUMEROEMISSOES</name>
             <length>40</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
-            <comments>CODIGOCREDOR</comments>
+            <comments>NUMEROEMISSOES</comments>
             <conversion_Mask/>
             <decimal_symbol>,</decimal_symbol>
             <grouping_symbol>.</grouping_symbol>
@@ -2452,491 +1891,11 @@ ORDER BY 44, 3</sql>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
-        <name>CODIGOCREDOR</name>
+        <name>NUMEROEMISSOES</name>
         <length>40</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>CODIGOCREDOR</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>RAZAOSOCIAL</name>
-            <length>200</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>RAZAOSOCIAL</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>RAZAOSOCIAL</name>
-        <length>200</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>RAZAOSOCIAL</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>CPFCNPJCREDOR</name>
-            <length>14</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>CPFCNPJCREDOR</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>CPFCNPJCREDOR</name>
-        <length>14</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>CPFCNPJCREDOR</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>CPFCNPJCREDOR_</name>
-            <length>14</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>CPFCNPJCREDOR_</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>CPFCNPJCREDOR_</name>
-        <length>14</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>CPFCNPJCREDOR_</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>CLASSECREDOR</name>
-            <length>150</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>CLASSECREDOR</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>CLASSECREDOR</name>
-        <length>150</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>CLASSECREDOR</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>BANCO</name>
-            <length>7</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>BANCO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>BANCO</name>
-        <length>7</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>BANCO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>BANCO_</name>
-            <length>4</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>BANCO_</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>BANCO_</name>
-        <length>4</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>BANCO_</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>AGENCIA</name>
-            <length>7</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>AGENCIA</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>AGENCIA</name>
-        <length>7</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>AGENCIA</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>AGENCIA_</name>
-            <length>5</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>AGENCIA_</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>AGENCIA_</name>
-        <length>5</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>AGENCIA_</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>CONTA</name>
-            <length>15</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>CONTA</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>CONTA</name>
-        <length>15</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>CONTA</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>CONTA_</name>
-            <length>15</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>CONTA_</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>CONTA_</name>
-        <length>15</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>CONTA_</comments>
+        <comments>NUMEROEMISSOES</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -3055,11 +2014,11 @@ ORDER BY 44, 3</sql>
           <value-meta>
             <type>String</type>
             <storagetype>normal</storagetype>
-            <name>REDUZIDOFUNCIONAL</name>
+            <name>TIPOGUIA</name>
             <length>40</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
-            <comments>REDUZIDOFUNCIONAL</comments>
+            <comments>TIPOGUIA</comments>
             <conversion_Mask/>
             <decimal_symbol>,</decimal_symbol>
             <grouping_symbol>.</grouping_symbol>
@@ -3076,11 +2035,11 @@ ORDER BY 44, 3</sql>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
-        <name>REDUZIDOFUNCIONAL</name>
+        <name>TIPOGUIA</name>
         <length>40</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>REDUZIDOFUNCIONAL</comments>
+        <comments>TIPOGUIA</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -3103,107 +2062,11 @@ ORDER BY 44, 3</sql>
           <value-meta>
             <type>String</type>
             <storagetype>normal</storagetype>
-            <name>FUNCIONALPROGRAMATICA</name>
-            <length>18</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>FUNCIONALPROGRAMATICA</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>FUNCIONALPROGRAMATICA</name>
-        <length>18</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>FUNCIONALPROGRAMATICA</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>DESPESAORCAMENTARIA</name>
-            <length>12</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>DESPESAORCAMENTARIA</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>DESPESAORCAMENTARIA</name>
-        <length>12</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>DESPESAORCAMENTARIA</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>FONTERECURSO</name>
+            <name>CONTAEXTRAORCAMENTARIA</name>
             <length>40</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
-            <comments>FONTERECURSO</comments>
+            <comments>CONTAEXTRAORCAMENTARIA</comments>
             <conversion_Mask/>
             <decimal_symbol>,</decimal_symbol>
             <grouping_symbol>.</grouping_symbol>
@@ -3220,11 +2083,11 @@ ORDER BY 44, 3</sql>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
-        <name>FONTERECURSO</name>
+        <name>CONTAEXTRAORCAMENTARIA</name>
         <length>40</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>FONTERECURSO</comments>
+        <comments>CONTAEXTRAORCAMENTARIA</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -3247,11 +2110,11 @@ ORDER BY 44, 3</sql>
           <value-meta>
             <type>String</type>
             <storagetype>normal</storagetype>
-            <name>DETALHAMENTOFONTE</name>
-            <length>10</length>
+            <name>HISTORICO</name>
+            <length>40</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
-            <comments>DETALHAMENTOFONTE</comments>
+            <comments>HISTORICO</comments>
             <conversion_Mask/>
             <decimal_symbol>,</decimal_symbol>
             <grouping_symbol>.</grouping_symbol>
@@ -3268,11 +2131,443 @@ ORDER BY 44, 3</sql>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
-        <name>DETALHAMENTOFONTE</name>
-        <length>10</length>
+        <name>HISTORICO</name>
+        <length>40</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>DETALHAMENTOFONTE</comments>
+        <comments>HISTORICO</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>DESCRICAO</name>
+            <length>1875</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>DESCRICAO</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>DESCRICAO</name>
+        <length>1875</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>DESCRICAO</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>CODIGOCREDOR</name>
+            <length>40</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>CODIGOCREDOR</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>CODIGOCREDOR</name>
+        <length>40</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>CODIGOCREDOR</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>RAZAOSOCIAL</name>
+            <length>200</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>RAZAOSOCIAL</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>RAZAOSOCIAL</name>
+        <length>200</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>RAZAOSOCIAL</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>CODIGOCLASSECREDOR</name>
+            <length>40</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>CODIGOCLASSECREDOR</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>CODIGOCLASSECREDOR</name>
+        <length>40</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>CODIGOCLASSECREDOR</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>NOMECLASSECREDOR</name>
+            <length>150</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>NOMECLASSECREDOR</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>NOMECLASSECREDOR</name>
+        <length>150</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>NOMECLASSECREDOR</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>CODIGOBANCO</name>
+            <length>4</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>CODIGOBANCO</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>CODIGOBANCO</name>
+        <length>4</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>CODIGOBANCO</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>CODIGOAGENCIA</name>
+            <length>5</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>CODIGOAGENCIA</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>CODIGOAGENCIA</name>
+        <length>5</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>CODIGOAGENCIA</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>CONTABANCARIA</name>
+            <length>15</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>CONTABANCARIA</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>CONTABANCARIA</name>
+        <length>15</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>CONTABANCARIA</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>NATUREZAPAGAMENTO</name>
+            <length>40</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>NATUREZAPAGAMENTO</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>NATUREZAPAGAMENTO</name>
+        <length>40</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>NATUREZAPAGAMENTO</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -3291,11 +2586,34 @@ ORDER BY 44, 3</sql>
       <value-meta>
         <type>Number</type>
         <storagetype>normal</storagetype>
-        <name>VALOREMPENHADO</name>
+        <name>VALORDESPESAEXTRA</name>
         <length>14</length>
         <precision>2</precision>
         <origin>empenhoSafira</origin>
-        <comments>VALOREMPENHADO</comments>
+        <comments>VALORDESPESAEXTRA</comments>
+        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Number</type>
+        <storagetype>normal</storagetype>
+        <name>TOTALANULADODESPESAEXTRA</name>
+        <length>14</length>
+        <precision>2</precision>
+        <origin>empenhoSafira</origin>
+        <comments>TOTALANULADODESPESAEXTRA</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -3318,59 +2636,11 @@ ORDER BY 44, 3</sql>
           <value-meta>
             <type>String</type>
             <storagetype>normal</storagetype>
-            <name>NATUREZARECURSO</name>
-            <length>1</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>NATUREZARECURSO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>NATUREZARECURSO</name>
-        <length>1</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>NATUREZARECURSO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>NUMEROCONVENIO</name>
+            <name>CONTAFINANCEIRA</name>
             <length>40</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
-            <comments>NUMEROCONVENIO</comments>
+            <comments>CONTAFINANCEIRA</comments>
             <conversion_Mask/>
             <decimal_symbol>,</decimal_symbol>
             <grouping_symbol>.</grouping_symbol>
@@ -3387,11 +2657,11 @@ ORDER BY 44, 3</sql>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
-        <name>NUMEROCONVENIO</name>
+        <name>CONTAFINANCEIRA</name>
         <length>40</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>NUMEROCONVENIO</comments>
+        <comments>CONTAFINANCEIRA</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -3414,11 +2684,11 @@ ORDER BY 44, 3</sql>
           <value-meta>
             <type>String</type>
             <storagetype>normal</storagetype>
-            <name>ANOCONVENIO</name>
+            <name>FORMAPAGAMENTO</name>
             <length>40</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
-            <comments>ANOCONVENIO</comments>
+            <comments>FORMAPAGAMENTO</comments>
             <conversion_Mask/>
             <decimal_symbol>,</decimal_symbol>
             <grouping_symbol>.</grouping_symbol>
@@ -3435,11 +2705,11 @@ ORDER BY 44, 3</sql>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
-        <name>ANOCONVENIO</name>
+        <name>FORMAPAGAMENTO</name>
         <length>40</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>ANOCONVENIO</comments>
+        <comments>FORMAPAGAMENTO</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -3462,59 +2732,11 @@ ORDER BY 44, 3</sql>
           <value-meta>
             <type>String</type>
             <storagetype>normal</storagetype>
-            <name>NUMEROPROCESSO</name>
-            <length>5</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>NUMEROPROCESSO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>NUMEROPROCESSO</name>
-        <length>5</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>NUMEROPROCESSO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>ANOPROCESSO</name>
+            <name>TIPOOPERACAOBANCARIA</name>
             <length>40</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
-            <comments>ANOPROCESSO</comments>
+            <comments>TIPOOPERACAOBANCARIA</comments>
             <conversion_Mask/>
             <decimal_symbol>,</decimal_symbol>
             <grouping_symbol>.</grouping_symbol>
@@ -3531,11 +2753,107 @@ ORDER BY 44, 3</sql>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
-        <name>ANOPROCESSO</name>
+        <name>TIPOOPERACAOBANCARIA</name>
         <length>40</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
-        <comments>ANOPROCESSO</comments>
+        <comments>TIPOOPERACAOBANCARIA</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>DOCUMENTODESPESAEXTRA</name>
+            <length>10</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>DOCUMENTODESPESAEXTRA</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>DOCUMENTODESPESAEXTRA</name>
+        <length>10</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>DOCUMENTODESPESAEXTRA</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>TAC</name>
+            <length>2</length>
+            <precision>-1</precision>
+            <origin>empenhoSafira</origin>
+            <comments>TAC</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>TAC</name>
+        <length>2</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>TAC</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -3584,100 +2902,6 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
         <comments>EVENTOCONTABIL</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>BigNumber</type>
-        <storagetype>normal</storagetype>
-        <name>TOTALLIQUIDADO</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>TOTALLIQUIDADO</comments>
-        <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>BigNumber</type>
-        <storagetype>normal</storagetype>
-        <name>TOTALPAGO</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>TOTALPAGO</comments>
-        <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>COMPLETO</name>
-            <length>380</length>
-            <precision>-1</precision>
-            <origin>empenhoSafira</origin>
-            <comments>COMPLETO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>COMPLETO</name>
-        <length>380</length>
-        <precision>-1</precision>
-        <origin>empenhoSafira</origin>
-        <comments>COMPLETO</comments>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
@@ -3752,7 +2976,93 @@ ORDER BY 44, 3</sql>
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>480</yloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>entidadePortal</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Portal</connection>
+    <sql>SELECT
+  IDENTIDADE
+, HASHCOMPLETO
+FROM transparenciaDB.entidade
+ORDER BY 2
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cached_row_meta_active>N</cached_row_meta_active>
+    <row-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>IDENTIDADE</name>
+        <length>15</length>
+        <precision>0</precision>
+        <origin>entidadePortal</origin>
+        <comments>IDENTIDADE</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>HASHCOMPLETO</name>
+        <length>8000</length>
+        <precision>-1</precision>
+        <origin>entidadePortal</origin>
+        <comments>HASHCOMPLETO</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+    </row-meta>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3799,7 +3109,7 @@ ORDER BY 44, 3</sql>
     </file>
     <fields>
       <field>
-        <name>NUMEROEMPENHO</name>
+        <name>NUMERODESPESAEXTRA</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3811,7 +3121,7 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>ANOEMPENHO</name>
+        <name>ANODESPESAEXTRA</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3835,9 +3145,9 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATAEMPENHO</name>
-        <type>Timestamp</type>
-        <format/>
+        <name>DATAEMISSAO</name>
+        <type>Date</type>
+        <format>yyyy/MM/dd HH:mm:ss.SSS</format>
         <currency/>
         <decimal/>
         <group/>
@@ -3847,21 +3157,9 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>TIPOEMPENHO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DATAPROGRAMACAO</name>
-        <type>Timestamp</type>
-        <format/>
+        <name>DATABORDERO</name>
+        <type>Date</type>
+        <format>yyyy/MM/dd HH:mm:ss.SSS</format>
         <currency/>
         <decimal/>
         <group/>
@@ -3871,15 +3169,27 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMEROEMISSOES</name>
-        <type>String</type>
-        <format/>
+        <name>DATAPAGAMENTO</name>
+        <type>Date</type>
+        <format>yyyy/MM/dd HH:mm:ss.SSS</format>
         <currency/>
         <decimal/>
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>40</length>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DATABAIXA</name>
+        <type>Date</type>
+        <format>yyyy/MM/dd HH:mm:ss.SSS</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>0</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -3895,7 +3205,7 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>MOTIVOEMPENHO</name>
+        <name>NUMEROEMISSOES</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3903,11 +3213,11 @@ ORDER BY 44, 3</sql>
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>250</length>
+        <length>40</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMEROCONTRATO</name>
+        <name>ORGAO</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3915,11 +3225,11 @@ ORDER BY 44, 3</sql>
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>15</length>
+        <length>3</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>PEDIDOEMPENHO</name>
+        <name>UNIDADE</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3927,23 +3237,11 @@ ORDER BY 44, 3</sql>
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>20</length>
+        <length>3</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>DATAPEDIDO</name>
-        <type>Timestamp</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>0</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>MODALIDADELICITACAO</name>
+        <name>TIPOGUIA</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3951,11 +3249,11 @@ ORDER BY 44, 3</sql>
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>200</length>
+        <length>40</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>NUMEROLICITACAO</name>
+        <name>CONTAEXTRAORCAMENTARIA</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -3963,11 +3261,23 @@ ORDER BY 44, 3</sql>
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>30</length>
+        <length>40</length>
         <precision>-1</precision>
       </field>
       <field>
         <name>HISTORICO</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>40</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DESCRICAO</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4003,7 +3313,7 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>CPFCNPJCREDOR</name>
+        <name>CODIGOCLASSECREDOR</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4011,23 +3321,11 @@ ORDER BY 44, 3</sql>
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>14</length>
+        <length>40</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>CPFCNPJCREDOR_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CLASSECREDOR</name>
+        <name>NOMECLASSECREDOR</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4039,19 +3337,7 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>BANCO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>7</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>BANCO_</name>
+        <name>CODIGOBANCO</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4063,19 +3349,7 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>AGENCIA</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>7</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>AGENCIA_</name>
+        <name>CODIGOAGENCIA</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4087,7 +3361,7 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>CONTA</name>
+        <name>CONTABANCARIA</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4099,43 +3373,7 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>CONTA_</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>15</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ORGAO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>3</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>UNIDADE</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>3</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>REDUZIDOFUNCIONAL</name>
+        <name>NATUREZAPAGAMENTO</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4147,31 +3385,31 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>FUNCIONALPROGRAMATICA</name>
-        <type>String</type>
-        <format/>
+        <name>VALORDESPESAEXTRA</name>
+        <type>Number</type>
+        <format>0.00</format>
         <currency/>
-        <decimal/>
-        <group/>
+        <decimal>,</decimal>
+        <group>.</group>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>18</length>
-        <precision>-1</precision>
+        <length>14</length>
+        <precision>2</precision>
       </field>
       <field>
-        <name>DESPESAORCAMENTARIA</name>
-        <type>String</type>
-        <format/>
+        <name>TOTALANULADODESPESAEXTRA</name>
+        <type>Number</type>
+        <format>0.00</format>
         <currency/>
-        <decimal/>
-        <group/>
+        <decimal>,</decimal>
+        <group>.</group>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>12</length>
-        <precision>-1</precision>
+        <length>14</length>
+        <precision>2</precision>
       </field>
       <field>
-        <name>FONTERECURSO</name>
+        <name>CONTAFINANCEIRA</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4183,7 +3421,31 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>DETALHAMENTOFONTE</name>
+        <name>FORMAPAGAMENTO</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>40</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>TIPOOPERACAOBANCARIA</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>40</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>DOCUMENTODESPESAEXTRA</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4195,19 +3457,7 @@ ORDER BY 44, 3</sql>
         <precision>-1</precision>
       </field>
       <field>
-        <name>VALOREMPENHADO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>NATUREZARECURSO</name>
+        <name>TAC</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -4215,55 +3465,7 @@ ORDER BY 44, 3</sql>
         <group/>
         <nullif/>
         <trim_type>none</trim_type>
-        <length>1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>NUMEROCONVENIO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>40</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ANOCONVENIO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>40</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>NUMEROPROCESSO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>5</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ANOPROCESSO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>40</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4276,42 +3478,6 @@ ORDER BY 44, 3</sql>
         <nullif/>
         <trim_type>none</trim_type>
         <length>6</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TOTALLIQUIDADO</name>
-        <type>BigNumber</type>
-        <format>######0.0###################;-######0.0###################</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TOTALPAGO</name>
-        <type>BigNumber</type>
-        <format>######0.0###################;-######0.0###################</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>COMPLETO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>380</length>
         <precision>-1</precision>
       </field>
       <field>
@@ -4331,8 +3497,8 @@ ORDER BY 44, 3</sql>
         <type>Integer</type>
         <format>####0;-####0</format>
         <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal>,</decimal>
+        <group>.</group>
         <nullif/>
         <trim_type>none</trim_type>
         <length>15</length>
@@ -4372,62 +3538,14 @@ ORDER BY 44, 3</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Portal</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>entidade</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>HASHCOMPLETO</name>
-        <field>HASHCOMPLETO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>IDENTIDADE</name>
-        <rename>IDENTIDADE</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>552</xloc>
+      <xloc>928</xloc>
       <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
     <error>
-      <source_step>InsertReceitas</source_step>
+      <source_step>InsertDespesaExtra</source_step>
       <target_step>logErro</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>

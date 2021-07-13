@@ -554,16 +554,11 @@
     </hop>
     <hop>
       <from>ajusteTiposDados</from>
-      <to>Merge join</to>
+      <to>Database lookup</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>entidadePortal</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge join</from>
+      <from>Database lookup</from>
       <to>InsertReceitas</to>
       <enabled>Y</enabled>
     </hop>
@@ -730,6 +725,10 @@
         <column_name>AJUSTE_RECEITA_DEZEMBRO</column_name>
         <stream_name>AJUSTE_RECEITA_DEZEMBRO</stream_name>
       </field>
+      <field>
+        <column_name>IDENTIDADE</column_name>
+        <stream_name>IDENTIDADE</stream_name>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -741,40 +740,6 @@
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge join</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <join_type>LEFT OUTER</join_type>
-    <step1>ajusteTiposDados</step1>
-    <step2>entidadePortal</step2>
-    <keys_1>
-      <key>HASHCOMPLETO</key>
-    </keys_1>
-    <keys_2>
-      <key>HASHCOMPLETO</key>
-    </keys_2>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>416</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
@@ -793,102 +758,135 @@
     <fields>
       <field>
         <name>ANO</name>
+        <rename/>
       </field>
       <field>
         <name>ENTIDADE</name>
+        <rename/>
       </field>
       <field>
         <name>ORGAO</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGO_RECEITA</name>
+        <rename/>
       </field>
       <field>
         <name>DESCRICAO_RECEITA</name>
+        <rename/>
       </field>
       <field>
         <name>TIPO</name>
+        <rename/>
       </field>
       <field>
         <name>FONTE_RECURSO</name>
+        <rename/>
       </field>
       <field>
         <name>PREVISAO_INICIAL</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_JANEIRO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_FEVEREIRO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_MARÇO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_ABRIL</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_MAIO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_JUNHO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_JULHO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_AGOSTO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_SETEMBRO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_OUTUBRO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_NOVEMBRO</name>
+        <rename/>
       </field>
       <field>
         <name>ARRECADADO_DEZEMBRO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_JANEIRO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_FEVEREIRO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_MARÇO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_ABRIL</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_MAIO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_JUNHO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_JULHO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_AGOSTO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_SETEMBRO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_OUTUBRO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_NOVEMBRO</name>
+        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_DEZEMBRO</name>
+        <rename/>
       </field>
       <field>
         <name>HASHCOMPLETO</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1464,91 +1462,6 @@
     <GUI>
       <xloc>320</xloc>
       <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>entidadePortal</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Portal</connection>
-    <sql>SELECT
-  IDENTIDADE
-, HASHCOMPLETO
-FROM transparenciaDB.entidade
-</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cached_row_meta_active>N</cached_row_meta_active>
-    <row-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>IDENTIDADE</name>
-        <length>15</length>
-        <precision>0</precision>
-        <origin>entidadePortal</origin>
-        <comments>IDENTIDADE</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>HASHCOMPLETO</name>
-        <length>1000</length>
-        <precision>-1</precision>
-        <origin>entidadePortal</origin>
-        <comments>HASHCOMPLETO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-    </row-meta>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
-      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2991,6 +2904,84 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Database lookup</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Portal</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>entidade</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>HASHCOMPLETO</name>
+        <field>HASHCOMPLETO</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>IDENTIDADE</name>
+        <rename>IDENTIDADE</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>ORGAO</name>
+        <rename>ORGAO</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+      <value>
+        <name>ENTIDADE</name>
+        <rename>ENTIDADE</rename>
+        <default/>
+        <type>String</type>
+      </value>
+      <value>
+        <name>NOMEENTIDADE</name>
+        <rename>NOMEENTIDADE</rename>
+        <default/>
+        <type>String</type>
+      </value>
+      <value>
+        <name>SIGLA</name>
+        <rename>SIGLA</rename>
+        <default/>
+        <type>String</type>
+      </value>
+      <value>
+        <name>HASHCOMPLETO</name>
+        <rename>HASHCOMPLETO</rename>
+        <default/>
+        <type>String</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
