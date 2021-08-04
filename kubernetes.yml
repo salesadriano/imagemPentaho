@@ -58,19 +58,3 @@ spec:
         persistentVolumeClaim:
           claimName: etl1-pvc
 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: etl
-  namespace: default
-spec:
-  selector:
-    application: etl
-  type: ClusterIP
-  ports:
-  - name: http
-    port: 80
-    targetPort: 80
-    protocol: TCP
-
