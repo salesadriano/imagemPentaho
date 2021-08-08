@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # apiVersion: v1
 # kind: PersistentVolumeClaim
 # metadata:
@@ -93,23 +94,4 @@ spec:
     targetPort: 80
     protocol: TCP
 
----
-
-kind: Ingress
-apiVersion: extensions/v1beta1
-metadata:
-  name: etl  
-  namespace: default
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: default    
-spec:
-  rules:
-    - host: 'etl.ac.gov.br'
-      http:
-        paths:
-          - backend:
-              serviceName: etl
-              servicePort: 80  
 
