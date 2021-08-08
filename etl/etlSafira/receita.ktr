@@ -487,94 +487,20 @@
       </attribute>
     </attributes>
   </connection>
-  <connection>
-    <name>safira</name>
-    <server/>
-    <type>ORACLE</type>
-    <access>Native</access>
-    <database>(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.81.0.2)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = safira)(FAILOVER_MODE =(TYPE = SELECT)(METHOD = BASIC)(RETRIES = 180)(DELAY = 5))))</database>
-    <port>-1</port>
-    <username>transparencia</username>
-    <password>Encrypted 405470dff6dcb80bd5978aa810af228ec3f6fa</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_ORACLE.SET NAMES</code>
-        <attribute>utf8</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>-1</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>STRICT_NUMBER_38_INTERPRETATION</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
   <order>
     <hop>
-      <from>receitaSafira</from>
-      <to>ajusteTiposDados</to>
+      <from>cargaRecita</from>
+      <to>InsertPagamento</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>ajusteTiposDados</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>entidadePortal</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge join</from>
-      <to>InsertReceitas</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>InsertReceitas</from>
-      <to>logErro</to>
+      <from>InsertPagamento</from>
+      <to>Write to log</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>InsertReceitas</name>
+    <name>InsertPagamento</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -586,8 +512,8 @@
     </partitioning>
     <connection>Portal</connection>
     <schema>transparenciaDB</schema>
-    <table>receita_geral</table>
-    <commit>1000</commit>
+    <table>receitas</table>
+    <commit>100</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
@@ -603,888 +529,41 @@
     <return_field/>
     <fields>
       <field>
-        <column_name>ANO</column_name>
-        <stream_name>ANO</stream_name>
-      </field>
-      <field>
-        <column_name>ENTIDADE</column_name>
-        <stream_name>ENTIDADE</stream_name>
+        <column_name>IDENTIDADE</column_name>
+        <stream_name>IDENTIDADE</stream_name>
       </field>
       <field>
         <column_name>ORGAO</column_name>
         <stream_name>ORGAO</stream_name>
       </field>
       <field>
-        <column_name>CODIGO_RECEITA</column_name>
-        <stream_name>CODIGO_RECEITA</stream_name>
+        <column_name>ENTIDADE</column_name>
+        <stream_name>ENTIDADE</stream_name>
+      </field>
+      <field>
+        <column_name>ANORECEITA</column_name>
+        <stream_name>ANORECEITA</stream_name>
       </field>
       <field>
         <column_name>DESCRICAO_RECEITA</column_name>
         <stream_name>DESCRICAO_RECEITA</stream_name>
       </field>
       <field>
-        <column_name>TIPO</column_name>
-        <stream_name>TIPO</stream_name>
-      </field>
-      <field>
         <column_name>FONTE_RECURSO</column_name>
         <stream_name>FONTE_RECURSO</stream_name>
       </field>
       <field>
-        <column_name>PREVISAO_INICIAL</column_name>
-        <stream_name>PREVISAO_INICIAL</stream_name>
+        <column_name>ORCADOINICIAL</column_name>
+        <stream_name>ORCADOINICIAL</stream_name>
       </field>
       <field>
-        <column_name>ARRECADADO_JANEIRO</column_name>
-        <stream_name>ARRECADADO_JANEIRO</stream_name>
+        <column_name>RECEITAREALIZADA</column_name>
+        <stream_name>RECEITAREALIZADA</stream_name>
       </field>
       <field>
-        <column_name>ARRECADADO_FEVEREIRO</column_name>
-        <stream_name>ARRECADADO_FEVEREIRO</stream_name>
+        <column_name>RECEITAAREALIZAR</column_name>
+        <stream_name>RECEITAAREALIZAR</stream_name>
       </field>
-      <field>
-        <column_name>ARRECADADO_MARÇO</column_name>
-        <stream_name>ARRECADADO_MARÇO</stream_name>
-      </field>
-      <field>
-        <column_name>ARRECADADO_ABRIL</column_name>
-        <stream_name>ARRECADADO_ABRIL</stream_name>
-      </field>
-      <field>
-        <column_name>ARRECADADO_MAIO</column_name>
-        <stream_name>ARRECADADO_MAIO</stream_name>
-      </field>
-      <field>
-        <column_name>ARRECADADO_JUNHO</column_name>
-        <stream_name>ARRECADADO_JUNHO</stream_name>
-      </field>
-      <field>
-        <column_name>ARRECADADO_JULHO</column_name>
-        <stream_name>ARRECADADO_JULHO</stream_name>
-      </field>
-      <field>
-        <column_name>ARRECADADO_AGOSTO</column_name>
-        <stream_name>ARRECADADO_AGOSTO</stream_name>
-      </field>
-      <field>
-        <column_name>ARRECADADO_SETEMBRO</column_name>
-        <stream_name>ARRECADADO_SETEMBRO</stream_name>
-      </field>
-      <field>
-        <column_name>ARRECADADO_OUTUBRO</column_name>
-        <stream_name>ARRECADADO_OUTUBRO</stream_name>
-      </field>
-      <field>
-        <column_name>ARRECADADO_NOVEMBRO</column_name>
-        <stream_name>ARRECADADO_NOVEMBRO</stream_name>
-      </field>
-      <field>
-        <column_name>ARRECADADO_DEZEMBRO</column_name>
-        <stream_name>ARRECADADO_DEZEMBRO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_JANEIRO</column_name>
-        <stream_name>AJUSTE_RECEITA_JANEIRO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_FEVEREIRO</column_name>
-        <stream_name>AJUSTE_RECEITA_FEVEREIRO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_MARÇO</column_name>
-        <stream_name>AJUSTE_RECEITA_MARÇO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_ABRIL</column_name>
-        <stream_name>AJUSTE_RECEITA_ABRIL</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_MAIO</column_name>
-        <stream_name>AJUSTE_RECEITA_MAIO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_JUNHO</column_name>
-        <stream_name>AJUSTE_RECEITA_JUNHO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_JULHO</column_name>
-        <stream_name>AJUSTE_RECEITA_JULHO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_AGOSTO</column_name>
-        <stream_name>AJUSTE_RECEITA_AGOSTO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_SETEMBRO</column_name>
-        <stream_name>AJUSTE_RECEITA_SETEMBRO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_OUTUBRO</column_name>
-        <stream_name>AJUSTE_RECEITA_OUTUBRO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_NOVEMBRO</column_name>
-        <stream_name>AJUSTE_RECEITA_NOVEMBRO</stream_name>
-      </field>
-      <field>
-        <column_name>AJUSTE_RECEITA_DEZEMBRO</column_name>
-        <stream_name>AJUSTE_RECEITA_DEZEMBRO</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge join</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <join_type>LEFT OUTER</join_type>
-    <step1>ajusteTiposDados</step1>
-    <step2>entidadePortal</step2>
-    <keys_1>
-      <key>HASHCOMPLETO</key>
-    </keys_1>
-    <keys_2>
-      <key>HASHCOMPLETO</key>
-    </keys_2>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>416</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>ajusteTiposDados</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>ANO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ENTIDADE</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ORGAO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>CODIGO_RECEITA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DESCRICAO_RECEITA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>TIPO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>FONTE_RECURSO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>PREVISAO_INICIAL</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_JANEIRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_FEVEREIRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_MARÇO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_ABRIL</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_MAIO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_JUNHO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_JULHO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_AGOSTO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_SETEMBRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_OUTUBRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_NOVEMBRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ARRECADADO_DEZEMBRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_JANEIRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_FEVEREIRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_MARÇO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_ABRIL</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_MAIO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_JUNHO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_JULHO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_AGOSTO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_SETEMBRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_OUTUBRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_NOVEMBRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_DEZEMBRO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>HASHCOMPLETO</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>ANO</name>
-        <rename>ANO</rename>
-        <type>None</type>
-        <length>4</length>
-        <precision>0</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ENTIDADE</name>
-        <rename>ENTIDADE</rename>
-        <type>None</type>
-        <length>350</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ORGAO</name>
-        <rename>ORGAO</rename>
-        <type>None</type>
-        <length>3</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>CODIGO_RECEITA</name>
-        <rename>CODIGO_RECEITA</rename>
-        <type>None</type>
-        <length>12</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>DESCRICAO_RECEITA</name>
-        <rename>DESCRICAO_RECEITA</rename>
-        <type>None</type>
-        <length>525</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>TIPO</name>
-        <rename>TIPO</rename>
-        <type>None</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>FONTE_RECURSO</name>
-        <rename>FONTE_RECURSO</rename>
-        <type>None</type>
-        <length>4</length>
-        <precision>0</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>PREVISAO_INICIAL</name>
-        <rename>PREVISAO_INICIAL</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_JANEIRO</name>
-        <rename>ARRECADADO_JANEIRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_FEVEREIRO</name>
-        <rename>ARRECADADO_FEVEREIRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_MARÇO</name>
-        <rename>ARRECADADO_MARÇO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_ABRIL</name>
-        <rename>ARRECADADO_ABRIL</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_MAIO</name>
-        <rename>ARRECADADO_MAIO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_JUNHO</name>
-        <rename>ARRECADADO_JUNHO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_JULHO</name>
-        <rename>ARRECADADO_JULHO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_AGOSTO</name>
-        <rename>ARRECADADO_AGOSTO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_SETEMBRO</name>
-        <rename>ARRECADADO_SETEMBRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_OUTUBRO</name>
-        <rename>ARRECADADO_OUTUBRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_NOVEMBRO</name>
-        <rename>ARRECADADO_NOVEMBRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ARRECADADO_DEZEMBRO</name>
-        <rename>ARRECADADO_DEZEMBRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_JANEIRO</name>
-        <rename>AJUSTE_RECEITA_JANEIRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_FEVEREIRO</name>
-        <rename>AJUSTE_RECEITA_FEVEREIRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_MARÇO</name>
-        <rename>AJUSTE_RECEITA_MARÇO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_ABRIL</name>
-        <rename>AJUSTE_RECEITA_ABRIL</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_MAIO</name>
-        <rename>AJUSTE_RECEITA_MAIO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_JUNHO</name>
-        <rename>AJUSTE_RECEITA_JUNHO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_JULHO</name>
-        <rename>AJUSTE_RECEITA_JULHO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_AGOSTO</name>
-        <rename>AJUSTE_RECEITA_AGOSTO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_SETEMBRO</name>
-        <rename>AJUSTE_RECEITA_SETEMBRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_OUTUBRO</name>
-        <rename>AJUSTE_RECEITA_OUTUBRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_NOVEMBRO</name>
-        <rename>AJUSTE_RECEITA_NOVEMBRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>AJUSTE_RECEITA_DEZEMBRO</name>
-        <rename>AJUSTE_RECEITA_DEZEMBRO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>HASHCOMPLETO</name>
-        <rename>HASHCOMPLETO</rename>
-        <type>None</type>
-        <length>370</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1496,12 +575,74 @@
     </remotesteps>
     <GUI>
       <xloc>320</xloc>
-      <yloc>416</yloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>entidadePortal</name>
+    <name>Write to log</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <loglevel>log_level_detailed</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage/>
+    <fields>
+      <field>
+        <name>IDENTIDADE</name>
+      </field>
+      <field>
+        <name>ORGAO</name>
+      </field>
+      <field>
+        <name>ENTIDADE</name>
+      </field>
+      <field>
+        <name>ANORECEITA</name>
+      </field>
+      <field>
+        <name>DESCRICAO_RECEITA</name>
+      </field>
+      <field>
+        <name>FONTE_RECURSO</name>
+      </field>
+      <field>
+        <name>ORCADOINICIAL</name>
+      </field>
+      <field>
+        <name>RECEITAREALIZADA</name>
+      </field>
+      <field>
+        <name>RECEITAAREALIZAR</name>
+      </field>
+      <field>
+        <name>erro</name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>464</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>cargaRecita</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1512,616 +653,72 @@
       <schema_name/>
     </partitioning>
     <connection>Portal</connection>
-    <sql>SELECT
+    <sql>select
   IDENTIDADE
-, HASHCOMPLETO
-FROM transparenciaDB.entidade
-</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cached_row_meta_active>N</cached_row_meta_active>
-    <row-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>IDENTIDADE</name>
-        <length>15</length>
-        <precision>0</precision>
-        <origin>entidadePortal</origin>
-        <comments>IDENTIDADE</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>HASHCOMPLETO</name>
-        <length>1000</length>
-        <precision>-1</precision>
-        <origin>entidadePortal</origin>
-        <comments>HASHCOMPLETO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-    </row-meta>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
-      <yloc>512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>logErro</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <separator>	</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>${Internal.Job.Filename.Directory}/receita_covid</name>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>log</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery/>
-    </file>
-    <fields>
-      <field>
-        <name>ANO</name>
-        <type>Integer</type>
-        <format>####0;-####0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>4</length>
-        <precision>0</precision>
-      </field>
-      <field>
-        <name>ENTIDADE</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>350</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ORGAO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>3</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CODIGO_RECEITA</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>12</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DESCRICAO_RECEITA</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>525</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TIPO</name>
-        <type>BigNumber</type>
-        <format>######0.0###################;-######0.0###################</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>FONTE_RECURSO</name>
-        <type>Integer</type>
-        <format>####0;-####0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>4</length>
-        <precision>0</precision>
-      </field>
-      <field>
-        <name>PREVISAO_INICIAL</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_JANEIRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_FEVEREIRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_MARÇO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_ABRIL</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_MAIO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_JUNHO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_JULHO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_AGOSTO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_SETEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_OUTUBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_NOVEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_DEZEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_JANEIRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_FEVEREIRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_MARÇO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_ABRIL</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_MAIO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_JUNHO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_JULHO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_AGOSTO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_SETEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_OUTUBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_NOVEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_DEZEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>HASHCOMPLETO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>370</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>IDENTIDADE</name>
-        <type>Integer</type>
-        <format>####0;-####0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>15</length>
-        <precision>0</precision>
-      </field>
-      <field>
-        <name>HASHCOMPLETO_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>1000</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>erro</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>672</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>receitaSafira</name>
-    <type>TableInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>safira</connection>
-    <sql>SELECT
-  ANO
-, CONVERT(TRIM(ENTIDADE),'UTF8') ENTIDADE
-, "CODIGO DO ORGAO" ORGAO
-, "CODIGO DA RECEITA" CODIGO_RECEITA
-, CONVERT(TRIM("DESCRIÇÃO DA RECEITA"),'UTF8') DESCRICAO_RECEITA
-, "TIPO 1- SINTETICA 2- ANALITICA" TIPO
-, "FONTE DE RECURSO" FONTE_RECURSO
-, "PREVISÃO INICIAL" PREVISAO_INICIAL
-, "ARRECADADO JANEIRO" ARRECADADO_JANEIRO
-, "ARRECADADO FEVEREIRO" ARRECADADO_FEVEREIRO
-, "ARRECADADO MARÇO" ARRECADADO_MARÇO
-, "ARRECADADO ABRIL" ARRECADADO_ABRIL
-, "ARRECADADO MAIO" ARRECADADO_MAIO
-, "ARRECADADO JUNHO" ARRECADADO_JUNHO
-, "ARRECADADO JULHO" ARRECADADO_JULHO
-, "ARRECADADO AGOSTO" ARRECADADO_AGOSTO
-, "ARRECADADO SETEMBRO" ARRECADADO_SETEMBRO
-, "ARRECADADO OUTUBRO" ARRECADADO_OUTUBRO
-, "ARRECADADO NOVEMBRO" ARRECADADO_NOVEMBRO
-, "ARRECADADO DEZEMBRO" ARRECADADO_DEZEMBRO
-, "AJUSTE RECEITA JANEIRO" AJUSTE_RECEITA_JANEIRO
-, "AJUSTE RECEITA FEVEREIRO" AJUSTE_RECEITA_FEVEREIRO
-, "AJUSTE RECEITA MARÇO" AJUSTE_RECEITA_MARÇO
-, "AJUSTE RECEITA ABRIL" AJUSTE_RECEITA_ABRIL
-, "AJUSTE RECEITA MAIO" AJUSTE_RECEITA_MAIO
-, "AJUSTE RECEITA JUNHO" AJUSTE_RECEITA_JUNHO
-, "AJUSTE RECEITA JULHO" AJUSTE_RECEITA_JULHO
-, "AJUSTE RECEITA AGOSTO" AJUSTE_RECEITA_AGOSTO
-, "AJUSTE RECEITA SETEMBRO" AJUSTE_RECEITA_SETEMBRO
-, "AJUSTE RECEITA OUTUBRO" AJUSTE_RECEITA_OUTUBRO
-, "AJUSTE RECEITA NOVEMBRO" AJUSTE_RECEITA_NOVEMBRO
-, "AJUSTE RECEITA DEZEMBRO" AJUSTE_RECEITA_DEZEMBRO
-, REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CONVERT(TRIM(COALESCE("CODIGO DO ORGAO" || '-' || ENTIDADE,'')),'US7ASCII'),' '),'-'),','),'.'),'/') HASHCOMPLETO
-FROM SAFIRA.TRANSPARENCIA_RECEITA TR
-</sql>
+, ORGAO
+, ENTIDADE
+, ANO ANORECEITA
+, DESCRICAO_RECEITA
+, FONTE_RECURSO
+, SUM(COALESCE(PREVISAO_INICIAL, 0)) AS ORCADOINICIAL
+, SUM(COALESCE(ARRECADADO_JANEIRO, 0) + 
+	  COALESCE(ARRECADADO_FEVEREIRO, 0) + 
+ 	  COALESCE(ARRECADADO_MARÇO, 0) + 
+	  COALESCE(ARRECADADO_ABRIL, 0) + 
+	  COALESCE(ARRECADADO_MAIO, 0) + 
+      COALESCE(ARRECADADO_JUNHO, 0) + 
+      COALESCE(ARRECADADO_JULHO, 0) + 
+      COALESCE(ARRECADADO_AGOSTO, 0) + 
+      COALESCE(ARRECADADO_SETEMBRO, 0) + 
+      COALESCE(ARRECADADO_OUTUBRO, 0) + 
+      COALESCE(ARRECADADO_NOVEMBRO, 0) + 
+      COALESCE(ARRECADADO_DEZEMBRO, 0)) AS RECEITAREALIZADA
+, CASE
+  when 
+	SUM(COALESCE(PREVISAO_INICIAL, 0)) - 
+    SUM(COALESCE(ARRECADADO_JANEIRO, 0) + 
+        COALESCE(ARRECADADO_FEVEREIRO, 0) + 
+        COALESCE(ARRECADADO_MARÇO, 0) + 
+        COALESCE(ARRECADADO_ABRIL, 0) + 
+		COALESCE(ARRECADADO_MAIO, 0) + 
+		COALESCE(ARRECADADO_JUNHO, 0) + 
+		COALESCE(ARRECADADO_JULHO, 0) + 
+		COALESCE(ARRECADADO_AGOSTO, 0) + 
+		COALESCE(ARRECADADO_SETEMBRO, 0) + 
+		COALESCE(ARRECADADO_OUTUBRO, 0) + 
+		COALESCE(ARRECADADO_NOVEMBRO, 0) + 
+		COALESCE(ARRECADADO_DEZEMBRO, 0)) > 0 
+  then 
+	SUM(COALESCE(PREVISAO_INICIAL, 0)) - 
+	SUM(COALESCE(ARRECADADO_JANEIRO, 0) + 
+		COALESCE(ARRECADADO_FEVEREIRO, 0) + 
+		COALESCE(ARRECADADO_MARÇO, 0) + 
+		COALESCE(ARRECADADO_ABRIL, 0) + 
+		COALESCE(ARRECADADO_MAIO, 0) + 
+		COALESCE(ARRECADADO_JUNHO, 0) + 
+		COALESCE(ARRECADADO_JULHO, 0) + 
+		COALESCE(ARRECADADO_AGOSTO, 0) + 
+		COALESCE(ARRECADADO_SETEMBRO, 0) + 
+		COALESCE(ARRECADADO_OUTUBRO, 0) + 
+		COALESCE(ARRECADADO_NOVEMBRO, 0) + 
+		COALESCE(ARRECADADO_DEZEMBRO, 0))
+  else 0
+  end AS RECEITAAREALIZAR
+FROM transparenciaDB.receita_geral
+where
+    TIPO = 2 AND 
+	ANO >= 2010
+group by
+    IDENTIDADE,
+    ORGAO,
+    ENTIDADE,
+    ANO,
+    DESCRICAO_RECEITA,
+    FONTE_RECURSO
+order by
+    2,
+    3,
+    4</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -2132,14 +729,14 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>ANO</name>
-        <length>4</length>
+        <name>IDENTIDADE</name>
+        <length>9</length>
         <precision>0</precision>
-        <origin>receitaSafira</origin>
-        <comments>ANO</comments>
+        <origin>cargaRecita</origin>
+        <comments>IDENTIDADE</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2149,7 +746,30 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>ORGAO</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>cargaRecita</origin>
+        <comments>ORGAO</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2160,13 +780,13 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <type>String</type>
             <storagetype>normal</storagetype>
             <name>ENTIDADE</name>
-            <length>350</length>
+            <length>400</length>
             <precision>-1</precision>
-            <origin>receitaSafira</origin>
+            <origin>cargaRecita</origin>
             <comments>ENTIDADE</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -2176,18 +796,18 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
         <name>ENTIDADE</name>
-        <length>350</length>
+        <length>400</length>
         <precision>-1</precision>
-        <origin>receitaSafira</origin>
+        <origin>cargaRecita</origin>
         <comments>ENTIDADE</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2197,45 +817,20 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>ORGAO</name>
-            <length>3</length>
-            <precision>-1</precision>
-            <origin>receitaSafira</origin>
-            <comments>ORGAO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>ORGAO</name>
-        <length>3</length>
-        <precision>-1</precision>
-        <origin>receitaSafira</origin>
-        <comments>ORGAO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>ANORECEITA</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>cargaRecita</origin>
+        <comments>ANORECEITA</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2245,55 +840,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>CODIGO_RECEITA</name>
-            <length>12</length>
-            <precision>-1</precision>
-            <origin>receitaSafira</origin>
-            <comments>CODIGO_RECEITA</comments>
-            <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>CODIGO_RECEITA</name>
-        <length>12</length>
-        <precision>-1</precision>
-        <origin>receitaSafira</origin>
-        <comments>CODIGO_RECEITA</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2304,13 +851,13 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <type>String</type>
             <storagetype>normal</storagetype>
             <name>DESCRICAO_RECEITA</name>
-            <length>525</length>
+            <length>400</length>
             <precision>-1</precision>
-            <origin>receitaSafira</origin>
+            <origin>cargaRecita</origin>
             <comments>DESCRICAO_RECEITA</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -2320,18 +867,18 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
         <name>DESCRICAO_RECEITA</name>
-        <length>525</length>
+        <length>400</length>
         <precision>-1</precision>
-        <origin>receitaSafira</origin>
+        <origin>cargaRecita</origin>
         <comments>DESCRICAO_RECEITA</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2341,17 +888,65 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>binary-string</storagetype>
+        <storage-meta>
+          <value-meta>
+            <type>String</type>
+            <storagetype>normal</storagetype>
+            <name>FONTE_RECURSO</name>
+            <length>400</length>
+            <precision>-1</precision>
+            <origin>cargaRecita</origin>
+            <comments>FONTE_RECURSO</comments>
+            <conversion_Mask/>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
+            <currency_symbol/>
+            <trim_type>none</trim_type>
+            <case_insensitive>N</case_insensitive>
+            <collator_disabled>Y</collator_disabled>
+            <collator_strength>0</collator_strength>
+            <sort_descending>N</sort_descending>
+            <output_padding>N</output_padding>
+            <date_format_lenient>N</date_format_lenient>
+            <date_format_locale>en_US</date_format_locale>
+            <date_format_timezone>America/Bogota</date_format_timezone>
+            <lenient_string_to_number>N</lenient_string_to_number>
+          </value-meta>
+        </storage-meta>
+        <name>FONTE_RECURSO</name>
+        <length>400</length>
+        <precision>-1</precision>
+        <origin>cargaRecita</origin>
+        <comments>FONTE_RECURSO</comments>
+        <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
         <type>BigNumber</type>
         <storagetype>normal</storagetype>
-        <name>TIPO</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>receitaSafira</origin>
-        <comments>TIPO</comments>
+        <name>ORCADOINICIAL</name>
+        <length>42</length>
+        <precision>2</precision>
+        <origin>cargaRecita</origin>
+        <comments>ORCADOINICIAL</comments>
         <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol/>
@@ -2364,43 +959,20 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
-        <type>Integer</type>
+        <type>BigNumber</type>
         <storagetype>normal</storagetype>
-        <name>FONTE_RECURSO</name>
-        <length>4</length>
-        <precision>0</precision>
-        <origin>receitaSafira</origin>
-        <comments>FONTE_RECURSO</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>PREVISAO_INICIAL</name>
-        <length>14</length>
+        <name>RECEITAREALIZADA</name>
+        <length>53</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>PREVISAO_INICIAL</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
+        <origin>cargaRecita</origin>
+        <comments>RECEITAREALIZADA</comments>
+        <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <grouping_symbol/>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2410,20 +982,20 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
-        <type>Number</type>
+        <type>BigNumber</type>
         <storagetype>normal</storagetype>
-        <name>ARRECADADO_JANEIRO</name>
-        <length>14</length>
+        <name>RECEITAAREALIZAR</name>
+        <length>54</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_JANEIRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
+        <origin>cargaRecita</origin>
+        <comments>RECEITAAREALIZAR</comments>
+        <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <grouping_symbol/>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2433,584 +1005,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_FEVEREIRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_FEVEREIRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_MARÇO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_MARÇO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_ABRIL</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_ABRIL</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_MAIO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_MAIO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_JUNHO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_JUNHO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_JULHO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_JULHO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_AGOSTO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_AGOSTO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_SETEMBRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_SETEMBRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_OUTUBRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_OUTUBRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_NOVEMBRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_NOVEMBRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>ARRECADADO_DEZEMBRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>ARRECADADO_DEZEMBRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_JANEIRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_JANEIRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_FEVEREIRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_FEVEREIRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_MARÇO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_MARÇO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_ABRIL</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_ABRIL</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_MAIO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_MAIO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_JUNHO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_JUNHO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_JULHO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_JULHO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_AGOSTO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_AGOSTO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_SETEMBRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_SETEMBRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_OUTUBRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_OUTUBRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_NOVEMBRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_NOVEMBRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>AJUSTE_RECEITA_DEZEMBRO</name>
-        <length>14</length>
-        <precision>2</precision>
-        <origin>receitaSafira</origin>
-        <comments>AJUSTE_RECEITA_DEZEMBRO</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>HASHCOMPLETO</name>
-            <length>370</length>
-            <precision>-1</precision>
-            <origin>receitaSafira</origin>
-            <comments>HASHCOMPLETO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>HASHCOMPLETO</name>
-        <length>370</length>
-        <precision>-1</precision>
-        <origin>receitaSafira</origin>
-        <comments>HASHCOMPLETO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
     </row-meta>
@@ -3023,15 +1018,15 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
-      <yloc>416</yloc>
+      <xloc>176</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step_error_handling>
     <error>
-      <source_step>InsertReceitas</source_step>
-      <target_step>logErro</target_step>
+      <source_step>InsertPagamento</source_step>
+      <target_step>Write to log</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename/>

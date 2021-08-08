@@ -548,23 +548,23 @@
   </connection>
   <order>
     <hop>
-      <from>receitaSafira</from>
+      <from>receitaCividSafira</from>
       <to>ajusteTiposDados</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>ajusteTiposDados</from>
-      <to>Database lookup</to>
+      <to>buscaIDENTIDADE</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Database lookup</from>
+      <from>buscaIDENTIDADE</from>
       <to>InsertReceitas</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>InsertReceitas</from>
-      <to>logErro</to>
+      <to>Write to log</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -582,7 +582,7 @@
     <connection>Portal</connection>
     <schema>transparenciaDB</schema>
     <table>receita_geral</table>
-    <commit>1000</commit>
+    <commit>100</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
@@ -745,6 +745,143 @@
     </GUI>
   </step>
   <step>
+    <name>Write to log</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <loglevel>log_level_detailed</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage/>
+    <fields>
+      <field>
+        <name>ANO</name>
+      </field>
+      <field>
+        <name>ENTIDADE</name>
+      </field>
+      <field>
+        <name>ORGAO</name>
+      </field>
+      <field>
+        <name>CODIGO_RECEITA</name>
+      </field>
+      <field>
+        <name>DESCRICAO_RECEITA</name>
+      </field>
+      <field>
+        <name>TIPO</name>
+      </field>
+      <field>
+        <name>FONTE_RECURSO</name>
+      </field>
+      <field>
+        <name>PREVISAO_INICIAL</name>
+      </field>
+      <field>
+        <name>ARRECADADO_JANEIRO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_FEVEREIRO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_MARÇO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_ABRIL</name>
+      </field>
+      <field>
+        <name>ARRECADADO_MAIO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_JUNHO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_JULHO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_AGOSTO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_SETEMBRO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_OUTUBRO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_NOVEMBRO</name>
+      </field>
+      <field>
+        <name>ARRECADADO_DEZEMBRO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_JANEIRO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_FEVEREIRO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_MARÇO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_ABRIL</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_MAIO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_JUNHO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_JULHO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_AGOSTO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_SETEMBRO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_OUTUBRO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_NOVEMBRO</name>
+      </field>
+      <field>
+        <name>AJUSTE_RECEITA_DEZEMBRO</name>
+      </field>
+      <field>
+        <name>HASHCOMPLETO</name>
+      </field>
+      <field>
+        <name>IDENTIDADE</name>
+      </field>
+      <field>
+        <name>erro</name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>640</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>ajusteTiposDados</name>
     <type>SelectValues</type>
     <description/>
@@ -758,135 +895,102 @@
     <fields>
       <field>
         <name>ANO</name>
-        <rename/>
       </field>
       <field>
         <name>ENTIDADE</name>
-        <rename/>
       </field>
       <field>
         <name>ORGAO</name>
-        <rename/>
       </field>
       <field>
         <name>CODIGO_RECEITA</name>
-        <rename/>
       </field>
       <field>
         <name>DESCRICAO_RECEITA</name>
-        <rename/>
       </field>
       <field>
         <name>TIPO</name>
-        <rename/>
       </field>
       <field>
         <name>FONTE_RECURSO</name>
-        <rename/>
       </field>
       <field>
         <name>PREVISAO_INICIAL</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_JANEIRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_FEVEREIRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_MARÇO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_ABRIL</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_MAIO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_JUNHO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_JULHO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_AGOSTO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_SETEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_OUTUBRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_NOVEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>ARRECADADO_DEZEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_JANEIRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_FEVEREIRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_MARÇO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_ABRIL</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_MAIO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_JUNHO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_JULHO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_AGOSTO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_SETEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_OUTUBRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_NOVEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>AJUSTE_RECEITA_DEZEMBRO</name>
-        <rename/>
       </field>
       <field>
         <name>HASHCOMPLETO</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1466,8 +1570,8 @@
     </GUI>
   </step>
   <step>
-    <name>logErro</name>
-    <type>TextFileOutput</type>
+    <name>buscaIDENTIDADE</name>
+    <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1476,470 +1580,29 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <separator>	</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>${Internal.Transformation.Filename.Directory}/receita_geral</name>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>log</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery/>
-    </file>
-    <fields>
-      <field>
-        <name>ANO</name>
-        <type>Integer</type>
-        <format>####0;-####0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>4</length>
-        <precision>0</precision>
-      </field>
-      <field>
-        <name>ENTIDADE</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>350</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ORGAO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>3</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>CODIGO_RECEITA</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>12</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DESCRICAO_RECEITA</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>525</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TIPO</name>
-        <type>BigNumber</type>
-        <format>######0.0###################;-######0.0###################</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>FONTE_RECURSO</name>
-        <type>Integer</type>
-        <format>####0;-####0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>4</length>
-        <precision>0</precision>
-      </field>
-      <field>
-        <name>PREVISAO_INICIAL</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_JANEIRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_FEVEREIRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_MARÇO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_ABRIL</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_MAIO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_JUNHO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_JULHO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_AGOSTO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_SETEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_OUTUBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_NOVEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>ARRECADADO_DEZEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_JANEIRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_FEVEREIRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_MARÇO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_ABRIL</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_MAIO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_JUNHO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_JULHO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_AGOSTO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_SETEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_OUTUBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_NOVEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>AJUSTE_RECEITA_DEZEMBRO</name>
-        <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
+    <connection>Portal</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema/>
+      <table>entidade</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
         <name>HASHCOMPLETO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>370</length>
-        <precision>-1</precision>
-      </field>
-      <field>
+        <field>HASHCOMPLETO</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
         <name>IDENTIDADE</name>
+        <rename>IDENTIDADE</rename>
+        <default/>
         <type>Integer</type>
-        <format>####0;-####0</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>15</length>
-        <precision>0</precision>
-      </field>
-      <field>
-        <name>HASHCOMPLETO_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>1000</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>erro</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
+      </value>
+    </lookup>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1949,13 +1612,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
+      <xloc>432</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>receitaSafira</name>
+    <name>receitaCividSafira</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -2001,6 +1664,7 @@
 , "AJUSTE RECEITA DEZEMBRO" AJUSTE_RECEITA_DEZEMBRO
 , REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CONVERT(TRIM(COALESCE("CODIGO DO ORGAO" || '-' || ENTIDADE,'')),'US7ASCII'),' '),'-'),','),'.'),'/') HASHCOMPLETO
 FROM SAFIRA.TRANSPARENCIA_RECEITA TR
+WHERE ANO >= 2010
 </sql>
     <limit>0</limit>
     <lookup/>
@@ -2015,11 +1679,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ANO</name>
         <length>4</length>
         <precision>0</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ANO</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2029,7 +1693,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2042,11 +1706,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <name>ENTIDADE</name>
             <length>350</length>
             <precision>-1</precision>
-            <origin>receitaSafira</origin>
+            <origin>receitaCividSafira</origin>
             <comments>ENTIDADE</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -2056,18 +1720,18 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
         <name>ENTIDADE</name>
         <length>350</length>
         <precision>-1</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ENTIDADE</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2077,7 +1741,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2090,11 +1754,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <name>ORGAO</name>
             <length>3</length>
             <precision>-1</precision>
-            <origin>receitaSafira</origin>
+            <origin>receitaCividSafira</origin>
             <comments>ORGAO</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -2104,18 +1768,18 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
         <name>ORGAO</name>
         <length>3</length>
         <precision>-1</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ORGAO</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2125,7 +1789,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2138,11 +1802,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <name>CODIGO_RECEITA</name>
             <length>12</length>
             <precision>-1</precision>
-            <origin>receitaSafira</origin>
+            <origin>receitaCividSafira</origin>
             <comments>CODIGO_RECEITA</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -2152,18 +1816,18 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
         <name>CODIGO_RECEITA</name>
         <length>12</length>
         <precision>-1</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>CODIGO_RECEITA</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2173,7 +1837,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2186,11 +1850,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <name>DESCRICAO_RECEITA</name>
             <length>525</length>
             <precision>-1</precision>
-            <origin>receitaSafira</origin>
+            <origin>receitaCividSafira</origin>
             <comments>DESCRICAO_RECEITA</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -2200,18 +1864,18 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
         <name>DESCRICAO_RECEITA</name>
         <length>525</length>
         <precision>-1</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>DESCRICAO_RECEITA</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2221,7 +1885,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2230,7 +1894,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>TIPO</name>
         <length>-1</length>
         <precision>-1</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>TIPO</comments>
         <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -2244,7 +1908,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2253,11 +1917,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>FONTE_RECURSO</name>
         <length>4</length>
         <precision>0</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>FONTE_RECURSO</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2267,7 +1931,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2276,11 +1940,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>PREVISAO_INICIAL</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>PREVISAO_INICIAL</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2290,7 +1954,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2299,11 +1963,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_JANEIRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_JANEIRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2313,7 +1977,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2322,11 +1986,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_FEVEREIRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_FEVEREIRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2336,7 +2000,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2345,11 +2009,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_MARÇO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_MARÇO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2359,7 +2023,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2368,11 +2032,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_ABRIL</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_ABRIL</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2382,7 +2046,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2391,11 +2055,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_MAIO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_MAIO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2405,7 +2069,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2414,11 +2078,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_JUNHO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_JUNHO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2428,7 +2092,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2437,11 +2101,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_JULHO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_JULHO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2451,7 +2115,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2460,11 +2124,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_AGOSTO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_AGOSTO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2474,7 +2138,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2483,11 +2147,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_SETEMBRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_SETEMBRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2497,7 +2161,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2506,11 +2170,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_OUTUBRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_OUTUBRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2520,7 +2184,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2529,11 +2193,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_NOVEMBRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_NOVEMBRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2543,7 +2207,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2552,11 +2216,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>ARRECADADO_DEZEMBRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>ARRECADADO_DEZEMBRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2566,7 +2230,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2575,11 +2239,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_JANEIRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_JANEIRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2589,7 +2253,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2598,11 +2262,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_FEVEREIRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_FEVEREIRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2612,7 +2276,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2621,11 +2285,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_MARÇO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_MARÇO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2635,7 +2299,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2644,11 +2308,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_ABRIL</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_ABRIL</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2658,7 +2322,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2667,11 +2331,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_MAIO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_MAIO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2681,7 +2345,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2690,11 +2354,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_JUNHO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_JUNHO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2704,7 +2368,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2713,11 +2377,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_JULHO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_JULHO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2727,7 +2391,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2736,11 +2400,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_AGOSTO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_AGOSTO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2750,7 +2414,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2759,11 +2423,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_SETEMBRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_SETEMBRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2773,7 +2437,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2782,11 +2446,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_OUTUBRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_OUTUBRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2796,7 +2460,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2805,11 +2469,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_NOVEMBRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_NOVEMBRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2819,7 +2483,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2828,11 +2492,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <name>AJUSTE_RECEITA_DEZEMBRO</name>
         <length>14</length>
         <precision>2</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>AJUSTE_RECEITA_DEZEMBRO</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2842,7 +2506,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -2855,11 +2519,11 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <name>HASHCOMPLETO</name>
             <length>370</length>
             <precision>-1</precision>
-            <origin>receitaSafira</origin>
+            <origin>receitaCividSafira</origin>
             <comments>HASHCOMPLETO</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -2869,18 +2533,18 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
         <name>HASHCOMPLETO</name>
         <length>370</length>
         <precision>-1</precision>
-        <origin>receitaSafira</origin>
+        <origin>receitaCividSafira</origin>
         <comments>HASHCOMPLETO</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2890,7 +2554,7 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
     </row-meta>
@@ -2908,88 +2572,10 @@ FROM SAFIRA.TRANSPARENCIA_RECEITA TR
       <draw>Y</draw>
     </GUI>
   </step>
-  <step>
-    <name>Database lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Portal</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema/>
-      <table>entidade</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>HASHCOMPLETO</name>
-        <field>HASHCOMPLETO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>IDENTIDADE</name>
-        <rename>IDENTIDADE</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-      <value>
-        <name>ORGAO</name>
-        <rename>ORGAO</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-      <value>
-        <name>ENTIDADE</name>
-        <rename>ENTIDADE</rename>
-        <default/>
-        <type>String</type>
-      </value>
-      <value>
-        <name>NOMEENTIDADE</name>
-        <rename>NOMEENTIDADE</rename>
-        <default/>
-        <type>String</type>
-      </value>
-      <value>
-        <name>SIGLA</name>
-        <rename>SIGLA</rename>
-        <default/>
-        <type>String</type>
-      </value>
-      <value>
-        <name>HASHCOMPLETO</name>
-        <rename>HASHCOMPLETO</rename>
-        <default/>
-        <type>String</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>432</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step_error_handling>
     <error>
       <source_step>InsertReceitas</source_step>
-      <target_step>logErro</target_step>
+      <target_step>Write to log</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename/>

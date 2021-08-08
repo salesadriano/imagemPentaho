@@ -559,10 +559,69 @@
     </hop>
     <hop>
       <from>insertPortal</from>
-      <to>logErro</to>
+      <to>Write to log</to>
       <enabled>Y</enabled>
     </hop>
   </order>
+  <step>
+    <name>Write to log</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <loglevel>log_level_detailed</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage/>
+    <fields>
+      <field>
+        <name>CONTAFINANCEIRA</name>
+      </field>
+      <field>
+        <name>DATAMOVIMENTO</name>
+      </field>
+      <field>
+        <name>ORGAO</name>
+      </field>
+      <field>
+        <name>NUMERODOCUMENTO</name>
+      </field>
+      <field>
+        <name>ANODOCUMENTO</name>
+      </field>
+      <field>
+        <name>TIPODOCUMENTO</name>
+      </field>
+      <field>
+        <name>HISTORICO</name>
+      </field>
+      <field>
+        <name>VALOR</name>
+      </field>
+      <field>
+        <name>NATUREZA</name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>ajusteTiposDados</name>
     <type>SelectValues</type>
@@ -785,7 +844,7 @@
     <connection>Portal</connection>
     <schema>transparenciaDB</schema>
     <table>receita_covid</table>
-    <commit>1000</commit>
+    <commit>100</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
@@ -852,183 +911,6 @@
     </GUI>
   </step>
   <step>
-    <name>logErro</name>
-    <type>TextFileOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <separator>	</separator>
-    <enclosure>"</enclosure>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>Y</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding>UTF-8</encoding>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name>${Internal.Transformation.Filename.Directory}/receita_covid</name>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>N</do_not_open_new_file_init>
-      <extention>log</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery/>
-    </file>
-    <fields>
-      <field>
-        <name>CONTAFINANCEIRA</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>40</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>DATAMOVIMENTO</name>
-        <type>Date</type>
-        <format>yyyy/MM/dd HH:mm:ss.SSS</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>0</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ORGAO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>350</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>NUMERODOCUMENTO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>40</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>ANODOCUMENTO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>40</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>TIPODOCUMENTO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>4</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>HISTORICO</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>225</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>VALOREMPENHADO</name>
-        <type>Number</type>
-        <format>0.00</format>
-        <currency/>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>14</length>
-        <precision>2</precision>
-      </field>
-      <field>
-        <name>NATUREZA</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>erro</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>none</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>496</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>receitaSafira</name>
     <type>TableInput</type>
     <description/>
@@ -1051,6 +933,7 @@
 , VALOR  
 , TRIM (NATUREZA) NATUREZA
 FROM SAFIRA.TCU_FINANCEIRO_COVID19
+WHERE DATAMOVIMENTO >= TO_DATE('2010-01-01', 'YYYY-MM-DD')
 </sql>
     <limit>0</limit>
     <lookup/>
@@ -1072,8 +955,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <origin>receitaSafira</origin>
             <comments>CONTAFINANCEIRA</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -1083,7 +966,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
@@ -1093,8 +976,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <origin>receitaSafira</origin>
         <comments>CONTAFINANCEIRA</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1104,7 +987,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1116,8 +999,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <origin>receitaSafira</origin>
         <comments>DATAMOVIMENTO</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1127,7 +1010,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1143,8 +1026,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <origin>receitaSafira</origin>
             <comments>ORGAO</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -1154,7 +1037,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
@@ -1164,8 +1047,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <origin>receitaSafira</origin>
         <comments>ORGAO</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1175,7 +1058,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1191,8 +1074,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <origin>receitaSafira</origin>
             <comments>NUMERODOCUMENTO</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -1202,7 +1085,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
@@ -1212,8 +1095,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <origin>receitaSafira</origin>
         <comments>NUMERODOCUMENTO</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1223,7 +1106,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1239,8 +1122,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <origin>receitaSafira</origin>
             <comments>ANODOCUMENTO</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -1250,7 +1133,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
@@ -1260,8 +1143,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <origin>receitaSafira</origin>
         <comments>ANODOCUMENTO</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1271,7 +1154,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1287,8 +1170,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <origin>receitaSafira</origin>
             <comments>TIPODOCUMENTO</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -1298,7 +1181,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
@@ -1308,8 +1191,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <origin>receitaSafira</origin>
         <comments>TIPODOCUMENTO</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1319,7 +1202,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1335,8 +1218,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <origin>receitaSafira</origin>
             <comments>HISTORICO</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -1346,7 +1229,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
@@ -1356,8 +1239,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <origin>receitaSafira</origin>
         <comments>HISTORICO</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1367,7 +1250,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1379,8 +1262,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <origin>receitaSafira</origin>
         <comments>VALOR</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1390,7 +1273,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
@@ -1406,8 +1289,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <origin>receitaSafira</origin>
             <comments>NATUREZA</comments>
             <conversion_Mask/>
-            <decimal_symbol>.</decimal_symbol>
-            <grouping_symbol>,</grouping_symbol>
+            <decimal_symbol>,</decimal_symbol>
+            <grouping_symbol>.</grouping_symbol>
             <currency_symbol/>
             <trim_type>none</trim_type>
             <case_insensitive>N</case_insensitive>
@@ -1417,7 +1300,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
             <output_padding>N</output_padding>
             <date_format_lenient>N</date_format_lenient>
             <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Rio_Branco</date_format_timezone>
+            <date_format_timezone>America/Bogota</date_format_timezone>
             <lenient_string_to_number>N</lenient_string_to_number>
           </value-meta>
         </storage-meta>
@@ -1427,8 +1310,8 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <origin>receitaSafira</origin>
         <comments>NATUREZA</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -1438,7 +1321,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
         <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Rio_Branco</date_format_timezone>
+        <date_format_timezone>America/Bogota</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
     </row-meta>
@@ -1459,7 +1342,7 @@ FROM SAFIRA.TCU_FINANCEIRO_COVID19
   <step_error_handling>
     <error>
       <source_step>insertPortal</source_step>
-      <target_step>logErro</target_step>
+      <target_step>Write to log</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename/>
       <descriptions_valuename/>
