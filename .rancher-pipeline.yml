@@ -4,7 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: devseict/etl:${CICD_EXECUTION_SEQUENCE}   
+      tag: etl
 - name: Deploy
   steps:
   - applyYamlConfig:
