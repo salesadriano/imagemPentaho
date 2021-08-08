@@ -22,8 +22,8 @@ spec:
        - name: pipeline-docker-registry
       containers:
       - name: etl
-        image: etl:${CICD_EXECUTION_SEQUENCE}
-        imagePullPolicy: IfNotPresent
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        # imagePullPolicy: IfNotPresent
         resources:
           limits:
             memory: "128Mi"
