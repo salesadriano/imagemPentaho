@@ -22,7 +22,7 @@ spec:
        - name: pipeline-docker-registry
       containers:
       - name: etl
-        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+        image: ${CICD_REGISTRY}/etl:${CICD_EXECUTION_SEQUENCE}
         # imagePullPolicy: IfNotPresent
         resources:
           limits:
