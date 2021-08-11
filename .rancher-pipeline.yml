@@ -6,7 +6,6 @@ stages:
       buildContext: .
       tag: devseict/etl:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      registry: devseict-docker    
 - name: Deploy
   steps:
   - applyYamlConfig:
