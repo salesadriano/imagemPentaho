@@ -4,11 +4,22 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: etl:${CICD_EXECUTION_SEQUENCE}
+      tag: devseict/etl:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
-      registry: index.docker.io
+    envFrom:
+      - sourceName: devseict-docker
+        sourceKey: PLUGIN_EMAIL
+      - sourceName: devseict-docker
+        sourceKey: PLUGIN_PASSWORD
+      - sourceName: devseict-docker
+        sourceKey: PLUGIN_USERNAME
     env:
-      PLUGIN_DEBUG: "true"   
+      PLUGIN_DEBUG: "true"
+      PLUGIN_INSECURE: "true"
+      PLUGIN_EMAIL: PLUGIN_EMAIL
+      PLUGIN_PASSWORD: PLUGIN_PASSWORD
+      PLUGIN_USERNAME: PLUGIN_USERNAME
+
 - name: Deploy
   steps:
   - applyYamlConfig:
