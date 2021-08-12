@@ -10,7 +10,7 @@ stages:
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
-      PLUGIN_PASSWORD: PLUGIN_PASSWORD
+      PLUGIN_PASSWORD: S31ct2021
       PLUGIN_USERNAME: devseict
 - name: Deploy
   steps:
