@@ -10,7 +10,7 @@ stages:
     env:
       DOCKER_DEBUG: "true"
       DOCKER_INSECURE: "true"
-      DOCKER_PASSWORD: S31ct2021
+      DOCKER_PASSWORD: S3ict2021
       DOCKER_USERNAME: devseict
 - name: Deploy
   steps:
