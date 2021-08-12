@@ -10,9 +10,8 @@ stages:
     env:
       PLUGIN_DEBUG: "true"
       PLUGIN_INSECURE: "true"
-      #PLUGIN_EMAIL: PLUGIN_EMAIL
-      #PLUGIN_PASSWORD: PLUGIN_PASSWORD
-      #PLUGIN_USERNAME: PLUGIN_USERNAME
+      PLUGIN_PASSWORD: PLUGIN_PASSWORD
+      PLUGIN_USERNAME: devseict
 - name: Deploy
   steps:
   - applyYamlConfig:
