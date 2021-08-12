@@ -7,10 +7,15 @@ stages:
       tag: devseict/etl:${CICD_EXECUTION_SEQUENCE}
       pushRemote: true
       registry: index.docker.io
+    envFrom:
+      - sourceName: devseict-docker
+        sourceKey: PLUGIN_PASSWORD
+      - sourceName: devseict-docker
+        sourceKey: PLUGIN_USERNAME
     env:
       DOCKER_DEBUG: "true"
       DOCKER_INSECURE: "true"
-      DOCKER_PASSWORD: S3ict2021
+      DOCKER_PASSWORD: PLUGIN_PASSWORD
       DOCKER_USERNAME: devseict
 - name: Deploy
   steps:
