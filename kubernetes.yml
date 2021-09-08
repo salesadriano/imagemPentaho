@@ -22,8 +22,8 @@ spec:
        - name: pipeline-docker-registry
       containers:
       - name: etl
-        image: devseict/etl:${CICD_EXECUTION_SEQUENCE}
-        imagePullPolicy: IfNotPresent
+        image: devseict/java8
+        imagePullPolicy: Always
         resources:
           limits:
             memory: "128Mi"
@@ -31,9 +31,18 @@ spec:
           requests:
             memory: "100Mi"
             cpu: "100m"
-        ports:
-        - containerPort: 80
-        - containerPort: 22
         securityContext:
           privileged: true
-
+        env:
+          - name: GIT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: git-kubernet
+                key: GIT_USERNAME
+          - name: GIT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: git-kubernet
+                key: GIT_PASSWORD        
+          - name: GIT_PATH
+            value: gitlab.acre.gov.br/governoacre/seict/etlpentaho.git
