@@ -21,15 +21,15 @@ spec:
       imagePullSecrets:
        - name: pipeline-docker-registry
       containers:
-      - name: etl
+      - name: etl${CICD_EXECUTION_ID}
         image: devseict/java8
         imagePullPolicy: Always
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "16Gi"
+            cpu: "1500m"
           requests:
-            memory: "100Mi"
+            memory: "128Mi"
             cpu: "100m"
         securityContext:
           privileged: true
@@ -45,4 +45,4 @@ spec:
                 name: git-kubernet
                 key: GIT_PASSWORD        
           - name: GIT_PATH
-            value: gitlab.acre.gov.br/governoacre/seict/etlpentaho.git
+            value: gitlab.ac.gov.br/governoacre/seict/etlpentaho.git

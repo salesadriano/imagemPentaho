@@ -438,13 +438,13 @@
   </notepads>
   <connection>
     <name>Portal</name>
-    <server>127.0.0.1</server>
+    <server>10.1.4.112</server>
     <type>MARIADB</type>
     <access>Native</access>
-    <database>transparenciaDB</database>
+    <database>transparenciadb</database>
     <port>3306</port>
-    <username>root</username>
-    <password>Encrypted 2be98afc86aa7f2e4981ca078dfc3fd89</password>
+    <username>transparencia</username>
+    <password>Encrypted 2be98afc86aa79387ac16b8508dc2ff8c</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -511,7 +511,7 @@
       <schema_name/>
     </partitioning>
     <connection>Portal</connection>
-    <schema>transparenciaDB</schema>
+    <schema>transparenciadb</schema>
     <table>receitas</table>
     <commit>100</commit>
     <truncate>Y</truncate>
@@ -704,7 +704,7 @@
 		COALESCE(ARRECADADO_DEZEMBRO, 0))
   else 0
   end AS RECEITAAREALIZAR
-FROM transparenciaDB.receita_geral
+FROM transparenciadb.receita_geral
 where
     TIPO = 2 AND 
 	ANO >= 2010
