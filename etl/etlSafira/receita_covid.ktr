@@ -438,17 +438,25 @@
   </notepads>
   <connection>
     <name>Portal</name>
-    <server>10.1.4.112</server>
+    <server>127.0.0.1</server>
     <type>MARIADB</type>
     <access>Native</access>
-    <database>transparenciadb</database>
+    <database>transparenciaDB</database>
     <port>3306</port>
-    <username>transparencia</username>
-    <password>Encrypted 2be98afc86aa79387ac16b8508dc2ff8c</password>
+    <username>root</username>
+    <password>Encrypted 2be98afc86aa7f2e4981ca078dfc3fd89</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MARIADB.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MARIADB.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
@@ -842,7 +850,7 @@
       <schema_name/>
     </partitioning>
     <connection>Portal</connection>
-    <schema>transparenciadb</schema>
+    <schema/>
     <table>receita_covid</table>
     <commit>100</commit>
     <truncate>Y</truncate>

@@ -450,6 +450,14 @@
     <index_tablespace/>
     <attributes>
       <attribute>
+        <code>EXTRA_OPTION_MARIADB.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MARIADB.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
       </attribute>
@@ -625,7 +633,7 @@
       <schema_name/>
     </partitioning>
     <connection>Portal</connection>
-    <schema>transparenciaDB</schema>
+    <schema/>
     <table>empenho_consolidado</table>
     <commit>100</commit>
     <truncate>N</truncate>
@@ -2403,7 +2411,7 @@ ORDER BY 44, 3</sql>
             <type>String</type>
             <storagetype>normal</storagetype>
             <name>STATUS</name>
-            <length>1</length>
+            <length>9</length>
             <precision>-1</precision>
             <origin>empenhoSafira</origin>
             <comments>STATUS</comments>
@@ -2424,7 +2432,7 @@ ORDER BY 44, 3</sql>
           </value-meta>
         </storage-meta>
         <name>STATUS</name>
-        <length>1</length>
+        <length>9</length>
         <precision>-1</precision>
         <origin>empenhoSafira</origin>
         <comments>STATUS</comments>

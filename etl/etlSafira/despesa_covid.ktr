@@ -450,6 +450,14 @@
     <index_tablespace/>
     <attributes>
       <attribute>
+        <code>EXTRA_OPTION_MARIADB.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MARIADB.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
       </attribute>
@@ -674,28 +682,13 @@
     <fields>
       <field>
         <name>NUMERODOCUMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>ANODOCUMENTO</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>TIPODOCUMENTO</name>
-        <rename>TIPODOCUMENTO</rename>
-        <type>None</type>
-        <length>13</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
       <meta>
         <name>NUMERODOCUMENTO</name>
         <rename>NUMERODOCUMENTO</rename>
@@ -719,40 +712,6 @@
         <type>None</type>
         <length>4</length>
         <precision>0</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>DATAEMISSAO</name>
-        <rename>DATAEMISSAO</rename>
-        <type>None</type>
-        <length>0</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>VALORDOCUMENTO</name>
-        <rename>VALORDOCUMENTO</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
@@ -801,14 +760,14 @@
       <fail_on_multiple>N</fail_on_multiple>
       <eat_row_on_failure>N</eat_row_on_failure>
       <key>
-        <name>NUMEROEMPENHO</name>
-        <field>NUMERODOCUMENTO</field>
+        <name>NUMERODOCUMENTO</name>
+        <field>NUMEROEMPENHO</field>
         <condition>=</condition>
         <name2/>
       </key>
       <key>
-        <name>ANOEMPENHO</name>
-        <field>ANODOCUMENTO</field>
+        <name>ANODOCUMENTO</name>
+        <field>ANOEMPENHO</field>
         <condition>=</condition>
         <name2/>
       </key>
