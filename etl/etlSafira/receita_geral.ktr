@@ -442,7 +442,7 @@
     <type>MARIADB</type>
     <access>Native</access>
     <database>transparenciaDB</database>
-    <port>3306</port>
+    <port>33060</port>
     <username>root</username>
     <password>Encrypted 2be98afc86aa7f2e4981ca078dfc3fd89</password>
     <servername/>
@@ -471,7 +471,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>3306</attribute>
+        <attribute>33060</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
