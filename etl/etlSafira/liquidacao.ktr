@@ -624,6 +624,10 @@
         <stream_name>ANOLIQUIDACAO</stream_name>
       </field>
       <field>
+        <column_name>MESLIQUIDACAO</column_name>
+        <stream_name>MESLIQUIDACAO</stream_name>
+      </field>
+      <field>
         <column_name>ENTIDADE</column_name>
         <stream_name>ENTIDADE</stream_name>
       </field>
@@ -765,7 +769,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>937</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -800,7 +804,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
+      <xloc>772</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -943,7 +947,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1006</xloc>
+      <xloc>1102</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -962,108 +966,147 @@
     <fields>
       <field>
         <name>NUMEROLIQUIDACAO</name>
+        <rename/>
       </field>
       <field>
         <name>ANOLIQUIDACAO</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MESLIQUIDACAO</name>
+        <rename/>
       </field>
       <field>
         <name>ENTIDADE</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>ANOEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>DATAEMISSAO</name>
+        <rename/>
       </field>
       <field>
         <name>STATUS</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROEMISSOES</name>
+        <rename/>
       </field>
       <field>
         <name>PREVISAOPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>DATAEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>HISTORICO</name>
+        <rename/>
       </field>
       <field>
         <name>TIPOEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGOCREDOR</name>
+        <rename/>
       </field>
       <field>
         <name>RAZAOSOCIAL</name>
+        <rename/>
       </field>
       <field>
         <name>EXERCICIO</name>
+        <rename/>
       </field>
       <field>
         <name>ORGAO</name>
+        <rename/>
       </field>
       <field>
         <name>UNIDADE</name>
+        <rename/>
       </field>
       <field>
         <name>REDUZIDOPROGRAMATICA</name>
+        <rename/>
       </field>
       <field>
         <name>FUNCIONALPROGRAMATICA</name>
+        <rename/>
       </field>
       <field>
         <name>DESPESAORCAMENTARIA</name>
+        <rename/>
       </field>
       <field>
         <name>FONTERECURSO</name>
+        <rename/>
       </field>
       <field>
         <name>VALORDALIQUIDACAO</name>
+        <rename/>
       </field>
       <field>
         <name>ANULADOLIQUIDACAO</name>
+        <rename/>
       </field>
       <field>
         <name>VALOREMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>TOTALALIQUIDAR</name>
+        <rename/>
       </field>
       <field>
         <name>PAGODALIQUIDACAO</name>
+        <rename/>
       </field>
       <field>
         <name>TOTALAPAGAR</name>
+        <rename/>
       </field>
       <field>
         <name>DESCRITIVOLIQUIDACAO</name>
+        <rename/>
       </field>
       <field>
         <name>TIPODOCUMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>DOCUMENTOCOMPROBATORIO</name>
+        <rename/>
       </field>
       <field>
         <name>ANODOCUMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>MESDOCUMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>DATADOCUMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>EVENTOCONTABIL</name>
+        <rename/>
       </field>
       <field>
         <name>HASHCOMPLETO</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1088,6 +1131,23 @@
         <rename>ANOLIQUIDACAO</rename>
         <type>None</type>
         <length>40</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>MESLIQUIDACAO</name>
+        <rename>MESLIQUIDACAO</rename>
+        <type>Integer</type>
+        <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1671,7 +1731,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>341</xloc>
+      <xloc>277</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1731,7 +1791,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
+      <xloc>442</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1803,7 +1863,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>607</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1826,6 +1886,7 @@
 , CONVERT(TRIM(ENTIDADE),'UTF8') ENTIDADE
 , TRIM(NUMEROEMPENHO) NUMEROEMPENHO
 , COALESCE(TRIM(ANOEMPENHO),'0') ANOEMPENHO
+, EXTRACT(month FROM DATAEMISSAO) MESLIQUIDACAO
 , DATAEMISSAO
 , TRIM(STATUS) STATUS
 , TRIM(NUMEROEMISSOES) NUMEROEMISSOES
@@ -2094,6 +2155,29 @@ ORDER BY 35, 5,4</sql>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>BigNumber</type>
+        <storagetype>normal</storagetype>
+        <name>MESLIQUIDACAO</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>liquidacaoSafira</origin>
+        <comments>MESLIQUIDACAO</comments>
+        <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol/>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -3306,7 +3390,7 @@ ORDER BY 35, 5,4</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>112</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>

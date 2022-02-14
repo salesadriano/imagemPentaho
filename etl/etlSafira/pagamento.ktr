@@ -616,7 +616,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>728</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -657,6 +657,10 @@
       <field>
         <column_name>ANOPAGAMENTO</column_name>
         <stream_name>ANOPAGAMENTO</stream_name>
+      </field>
+      <field>
+        <column_name>MESPAGAMENTO</column_name>
+        <stream_name>MESPAGAMENTO</stream_name>
       </field>
       <field>
         <column_name>ENTIDADE</column_name>
@@ -772,7 +776,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>856</xloc>
+      <xloc>890</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -891,7 +895,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>1052</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -910,84 +914,115 @@
     <fields>
       <field>
         <name>NUMEROPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>ANOPAGAMENTO</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MESPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>ENTIDADE</name>
+        <rename/>
       </field>
       <field>
         <name>ANOLIQUIDACAO</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROLIQUIDACAO</name>
+        <rename/>
       </field>
       <field>
         <name>DATAEMISSAO</name>
+        <rename/>
       </field>
       <field>
         <name>DATABORDERO</name>
+        <rename/>
       </field>
       <field>
         <name>DATAPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>DATABAIXA</name>
+        <rename/>
       </field>
       <field>
         <name>STATUS</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGOCREDOR</name>
+        <rename/>
       </field>
       <field>
         <name>RAZAOSOCIAL</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGOBANCO</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGOAGENCIA</name>
+        <rename/>
       </field>
       <field>
         <name>CONTABANCARIA</name>
+        <rename/>
       </field>
       <field>
         <name>CONTAFINANCEIRA</name>
+        <rename/>
       </field>
       <field>
         <name>DESCRICAOPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGONATUREZAPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>DESCRICAONATUREZAPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROEMISSOES</name>
+        <rename/>
       </field>
       <field>
         <name>VALORPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>TOTALCONSIGNACOES</name>
+        <rename/>
       </field>
       <field>
         <name>TOTALDESCONTO</name>
+        <rename/>
       </field>
       <field>
         <name>FORMAPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>TIPOOPERACAOBANCARIA</name>
+        <rename/>
       </field>
       <field>
         <name>DOCUMENTOPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>EVENTOCONTABIL</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1012,6 +1047,23 @@
         <rename>ANOPAGAMENTO</rename>
         <type>None</type>
         <length>40</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>MESPAGAMENTO</name>
+        <rename>MESPAGAMENTO</rename>
+        <type>Integer</type>
+        <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1459,7 +1511,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>312</xloc>
+      <xloc>242</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1519,7 +1571,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
+      <xloc>404</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1579,7 +1631,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>584</xloc>
+      <xloc>566</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1599,6 +1651,7 @@
     <sql>SELECT
   TRIM(NUMEROPAGAMENTO) NUMEROPAGAMENTO
 , TRIM(ANOPAGAMENTO) ANOPAGAMENTO
+, EXTRACT(month FROM DATAPAGAMENTO) MESPAGAMENTO
 , CONVERT(TRIM(ENTIDADE),'UTF8') ENTIDADE
 , TRIM(ANOLIQUIDACAO) ANOLIQUIDACAO
 , TRIM(NUMEROLIQUIDACAO) NUMEROLIQUIDACAO
@@ -1717,6 +1770,29 @@ WHERE DATAEMISSAO >= TO_DATE('2010-01-01', 'YYYY-MM-DD')</sql>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>BigNumber</type>
+        <storagetype>normal</storagetype>
+        <name>MESPAGAMENTO</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>pagamentoSafira</origin>
+        <comments>MESPAGAMENTO</comments>
+        <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol/>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -2764,7 +2840,7 @@ WHERE DATAEMISSAO >= TO_DATE('2010-01-01', 'YYYY-MM-DD')</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
+      <xloc>80</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>

@@ -625,8 +625,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>80</yloc>
+      <xloc>736</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -644,30 +644,43 @@
     <fields>
       <field>
         <name>CONTAFINANCEIRA</name>
+        <rename/>
       </field>
       <field>
         <name>DATAMOVIMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>ORGAO</name>
+        <rename/>
       </field>
       <field>
         <name>NUMERODOCUMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>ANODOCUMENTO</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MESDOCUMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>TIPODOCUMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>HISTORICO</name>
+        <rename/>
       </field>
       <field>
         <name>VALOR</name>
+        <rename/>
       </field>
       <field>
         <name>NATUREZA</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -743,6 +756,23 @@
         <rename>ANODOCUMENTO</rename>
         <type>None</type>
         <length>40</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>MESDOCUMENTO</name>
+        <rename>MESDOCUMENTO</rename>
+        <type>None</type>
+        <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -833,8 +863,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>80</yloc>
+      <xloc>320</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -888,6 +918,10 @@
         <stream_name>ANODOCUMENTO</stream_name>
       </field>
       <field>
+        <column_name>MESDOCUMENTO</column_name>
+        <stream_name>MESDOCUMENTO</stream_name>
+      </field>
+      <field>
         <column_name>TIPODOCUMENTO</column_name>
         <stream_name>TIPODOCUMENTO</stream_name>
       </field>
@@ -913,8 +947,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>80</yloc>
+      <xloc>528</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -936,6 +970,7 @@
 , CONVERT (TRIM(ORGAO),'UTF8') ORGAO
 , TRIM (NUMERODOCUMENTO) NUMERODOCUMENTO
 , TRIM (ANODOCUMENTO) ANODOCUMENTO
+, EXTRACT(month FROM DATAMOVIMENTO) MESDOCUMENTO
 , TRIM (TIPODOCUMENTO) TIPODOCUMENTO
 , CONVERT (TRIM(HISTORICO),'UTF8') HISTORICO
 , VALOR  
@@ -1166,6 +1201,29 @@ WHERE DATAMOVIMENTO >= TO_DATE('2010-01-01', 'YYYY-MM-DD')
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
+        <type>BigNumber</type>
+        <storagetype>normal</storagetype>
+        <name>MESDOCUMENTO</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>receitaSafira</origin>
+        <comments>MESDOCUMENTO</comments>
+        <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
         <type>String</type>
         <storagetype>binary-string</storagetype>
         <storage-meta>
@@ -1343,7 +1401,7 @@ WHERE DATAMOVIMENTO >= TO_DATE('2010-01-01', 'YYYY-MM-DD')
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
-      <yloc>80</yloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

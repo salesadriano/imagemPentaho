@@ -614,6 +614,10 @@
         <stream_name>ANODESPESAEXTRA</stream_name>
       </field>
       <field>
+        <column_name>MESDESPESAEXTRA</column_name>
+        <stream_name>MESDESPESAEXTRA</stream_name>
+      </field>
+      <field>
         <column_name>ENTIDADE</column_name>
         <stream_name>ENTIDADE</stream_name>
       </field>
@@ -743,7 +747,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
+      <xloc>764</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
@@ -877,7 +881,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>976</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
@@ -896,99 +900,135 @@
     <fields>
       <field>
         <name>NUMERODESPESAEXTRA</name>
+        <rename/>
       </field>
       <field>
         <name>ANODESPESAEXTRA</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MESDESPESAEXTRA</name>
+        <rename/>
       </field>
       <field>
         <name>ENTIDADE</name>
+        <rename/>
       </field>
       <field>
         <name>DATAEMISSAO</name>
+        <rename/>
       </field>
       <field>
         <name>DATABORDERO</name>
+        <rename/>
       </field>
       <field>
         <name>DATAPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>DATABAIXA</name>
+        <rename/>
       </field>
       <field>
         <name>STATUS</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROEMISSOES</name>
+        <rename/>
       </field>
       <field>
         <name>ORGAO</name>
+        <rename/>
       </field>
       <field>
         <name>UNIDADE</name>
+        <rename/>
       </field>
       <field>
         <name>TIPOGUIA</name>
+        <rename/>
       </field>
       <field>
         <name>CONTAEXTRAORCAMENTARIA</name>
+        <rename/>
       </field>
       <field>
         <name>HISTORICO</name>
+        <rename/>
       </field>
       <field>
         <name>DESCRICAO</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGOCREDOR</name>
+        <rename/>
       </field>
       <field>
         <name>RAZAOSOCIAL</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGOCLASSECREDOR</name>
+        <rename/>
       </field>
       <field>
         <name>NOMECLASSECREDOR</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGOBANCO</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGOAGENCIA</name>
+        <rename/>
       </field>
       <field>
         <name>CONTABANCARIA</name>
+        <rename/>
       </field>
       <field>
         <name>NATUREZAPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>VALORDESPESAEXTRA</name>
+        <rename/>
       </field>
       <field>
         <name>TOTALANULADODESPESAEXTRA</name>
+        <rename/>
       </field>
       <field>
         <name>CONTAFINANCEIRA</name>
+        <rename/>
       </field>
       <field>
         <name>FORMAPAGAMENTO</name>
+        <rename/>
       </field>
       <field>
         <name>TIPOOPERACAOBANCARIA</name>
+        <rename/>
       </field>
       <field>
         <name>DOCUMENTODESPESAEXTRA</name>
+        <rename/>
       </field>
       <field>
         <name>TAC</name>
+        <rename/>
       </field>
       <field>
         <name>EVENTOCONTABIL</name>
+        <rename/>
       </field>
       <field>
         <name>HASHCOMPLETO</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1030,6 +1070,23 @@
         <rename>ENTIDADE</rename>
         <type>None</type>
         <length>350</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>MESDESPESAEXTRA</name>
+        <rename>MESDESPESAEXTRA</rename>
+        <type>None</type>
+        <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1545,7 +1602,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
+      <xloc>340</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1593,7 +1650,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>552</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1613,6 +1670,7 @@
     <sql>SELECT distinct
   TRIM(NUMERODESPESAEXTRA) NUMERODESPESAEXTRA
 , TRIM(ANODESPESAEXTRA) ANODESPESAEXTRA
+, EXTRACT(month FROM DATAEMISSAO) MESDESPESAEXTRA
 , CONVERT(TRIM(ENTIDADE),'UTF8') ENTIDADE
 , DATAEMISSAO
 , DATABORDERO
@@ -1737,6 +1795,29 @@ ORDER BY 32</sql>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>BigNumber</type>
+        <storagetype>normal</storagetype>
+        <name>MESDESPESAEXTRA</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>despesaExtraSafira</origin>
+        <comments>MESDESPESAEXTRA</comments>
+        <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol/>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -3049,7 +3130,7 @@ ORDER BY 32</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>128</xloc>
       <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>

@@ -495,129 +495,15 @@
       </attribute>
     </attributes>
   </connection>
-  <connection>
-    <name>safira</name>
-    <server/>
-    <type>ORACLE</type>
-    <access>Native</access>
-    <database>(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.81.0.2)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = safira)(FAILOVER_MODE =(TYPE = SELECT)(METHOD = BASIC)(RETRIES = 180)(DELAY = 5))))</database>
-    <port>-1</port>
-    <username>transparencia</username>
-    <password>Encrypted 405470dff6dcb80bd5978aa810af228ec3f6fa</password>
-    <servername/>
-    <data_tablespace/>
-    <index_tablespace/>
-    <attributes>
-      <attribute>
-        <code>EXTRA_OPTION_ORACLE.SET NAMES</code>
-        <attribute>utf8</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>PORT_NUMBER</code>
-        <attribute>-1</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>STRICT_NUMBER_38_INTERPRETATION</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
-      </attribute>
-    </attributes>
-  </connection>
   <order>
-    <hop>
-      <from>diariaSafira</from>
-      <to>ajusteTiposDadosDiaria</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>ajusteTiposDadosDiaria</from>
-      <to>buscaIDEMPENHO</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>buscaIDEMPENHO</from>
-      <to>filtraEMPENHOS</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>buscaIDLIQUIDACAO</from>
-      <to>filtraLiquidacao</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>filtraLiquidacao</from>
-      <to>buscaIDPAGAMENTO</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>buscaIDPAGAMENTO</from>
-      <to>filtraPagamento</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>filtraEMPENHOS</from>
-      <to>buscaIDCONTRATO</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>buscaIDCONTRATO</from>
-      <to>filtraCONTRATOS</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>filtraCONTRATOS</from>
-      <to>buscaIDLIQUIDACAO</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>filtraPagamento</from>
-      <to>buscaIDDIARIA</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>buscaIDDIARIA</from>
-      <to>filtraNovos</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>filtraNovos</from>
-      <to>insertDIARIA</to>
-      <enabled>Y</enabled>
-    </hop>
     <hop>
       <from>insertDIARIA</from>
       <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>diariaSafira</from>
+      <to>insertDIARIA</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -641,432 +527,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>736</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>ajusteTiposDadosDiaria</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>NUMEROEMPENHO</name>
-      </field>
-      <field>
-        <name>ANOEMPENHO</name>
-      </field>
-      <field>
-        <name>DATAEMPENHO</name>
-      </field>
-      <field>
-        <name>CPFCNPJCREDOR</name>
-      </field>
-      <field>
-        <name>HASHCOMPLETO</name>
-      </field>
-      <field>
-        <name>HISTORICO</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>NUMEROEMPENHO</name>
-        <rename>NUMEROEMPENHO</rename>
-        <type>None</type>
-        <length>40</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ANOEMPENHO</name>
-        <rename>ANOEMPENHO</rename>
-        <type>None</type>
-        <length>40</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>DATAEMPENHO</name>
-        <rename>DATAEMPENHO</rename>
-        <type>Date</type>
-        <length>0</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy/MM/dd HH:mm:ss.SSS</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>CPFCNPJCREDOR</name>
-        <rename>CPFCNPJCREDOR</rename>
-        <type>Integer</type>
-        <length>14</length>
-        <precision>-2</precision>
-        <conversion_mask>#</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>HASHCOMPLETO</name>
-        <rename>HASHCOMPLETO</rename>
-        <type>None</type>
-        <length>370</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>HISTORICO</name>
-        <rename>HISTORICO</rename>
-        <type>None</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>buscaIDCONTRATO</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Portal</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>transparenciaDB</schema>
-      <table>contratos</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>CPFCNPJCREDOR</name>
-        <field>CPFSERVIDOR</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>IDCONTRATO</name>
-        <rename>IDCONTRATO</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>buscaIDDIARIA</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Portal</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>transparenciaDB</schema>
-      <table>diaria</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>IDEMPENHO</name>
-        <field>IDEMPENHO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>IDDIARIA</name>
-        <rename>IDDIARIA</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>buscaIDEMPENHO</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Portal</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>transparenciaDB</schema>
-      <table>empenho_consolidado</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>HASHCOMPLETO</name>
-        <field>HASHCOMPLETO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>NUMEROEMPENHO</name>
-        <field>NUMEROEMPENHO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>ANOEMPENHO</name>
-        <field>ANOEMPENHO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>IDEMPENHO</name>
-        <rename>IDEMPENHO</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>buscaIDLIQUIDACAO</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Portal</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>transparenciaDB</schema>
-      <table>liquidacao</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>NUMEROEMPENHO</name>
-        <field>NUMEROEMPENHO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>ANOEMPENHO</name>
-        <field>ANOEMPENHO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>DATAEMPENHO</name>
-        <field>DATAEMPENHO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>IDLIQUIDACAO</name>
-        <rename>IDLIQUIDACAO</rename>
-        <default/>
-        <type>None</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>560</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>buscaIDPAGAMENTO</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Portal</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>transparenciaDB</schema>
-      <table>pagamento</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>IDLIQUIDACAO</name>
-        <field>IDLIQUIDACAO</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>DATAPAGAMENTO</name>
-        <rename>DATAPAGAMENTO</rename>
-        <default/>
-        <type>None</type>
-      </value>
-      <value>
-        <name>VALORPAGAMENTO</name>
-        <rename>VALORPAGAMENTO</rename>
-        <default/>
-        <type>None</type>
-      </value>
-      <value>
-        <name>IDPAGAMENTO</name>
-        <rename>IDPAGAMENTO</rename>
-        <default/>
-        <type>None</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>112</xloc>
-      <yloc>336</yloc>
+      <xloc>640</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1081,18 +543,22 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>safira</connection>
-    <sql>
-SELECT Distinct
-  TRIM(NUMEROEMPENHO) NUMEROEMPENHO
-, TRIM(ANOEMPENHO) ANOEMPENHO
-, DATAEMPENHO
-, TRIM(CPFCNPJCREDOR) CPFCNPJCREDOR
-, CONVERT(TRIM(HISTORICO),'UTF8') HISTORICO
-, REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CONVERT(TRIM(COALESCE(ORGAO || '-' || ENTIDADE,'')),'US7ASCII'),' '),'-'),','),'.'),'/') HASHCOMPLETO
-FROM SAFIRA.TRANSPARENCIA_EMPENHO EC
-WHERE DATAEMPENHO >= TO_DATE('2010-01-01', 'YYYY-MM-DD') AND UPPER(CONVERT(TRIM(MOTIVOEMPENHO),'US7ASCII')) LIKE '%DIARIA%'
-</sql>
+    <connection>Portal</connection>
+    <sql>SELECT Distinct
+  ec.IDEMPENHO 
+, c.CPFSERVIDOR 
+, ec.HISTORICO
+, p.DATAPAGAMENTO 
+, p.VALORPAGAMENTO 
+FROM empenho_consolidado ec 
+INNER JOIN contratos c 
+  ON c.CPFSERVIDOR = ec.CPFCNPJCREDOR_ 
+INNER JOIN liquidacao l 
+  ON l.IDEMPENHO = ec.IDEMPENHO  
+INNER JOIN pagamento p 
+  ON p.IDLIQUIDACAO = l.IDLIQUIDACAO 
+WHERE UPPER(TRIM(MOTIVOEMPENHO)) LIKE '%DI%RIA%'
+  AND ec.IDEMPENHO NOT IN (SELECT DISTINCT IDEMPENHO FROM diaria)</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1101,110 +567,14 @@ WHERE DATAEMPENHO >= TO_DATE('2010-01-01', 'YYYY-MM-DD') AND UPPER(CONVERT(TRIM(
     <cached_row_meta_active>N</cached_row_meta_active>
     <row-meta>
       <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>NUMEROEMPENHO</name>
-            <length>40</length>
-            <precision>-1</precision>
-            <origin>diariaSafira</origin>
-            <comments>NUMEROEMPENHO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>NUMEROEMPENHO</name>
-        <length>40</length>
-        <precision>-1</precision>
-        <origin>diariaSafira</origin>
-        <comments>NUMEROEMPENHO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>ANOEMPENHO</name>
-            <length>40</length>
-            <precision>-1</precision>
-            <origin>diariaSafira</origin>
-            <comments>ANOEMPENHO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>ANOEMPENHO</name>
-        <length>40</length>
-        <precision>-1</precision>
-        <origin>diariaSafira</origin>
-        <comments>ANOEMPENHO</comments>
-        <conversion_Mask/>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Bogota</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Timestamp</type>
+        <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>DATAEMPENHO</name>
-        <length>0</length>
-        <precision>-1</precision>
+        <name>IDEMPENHO</name>
+        <length>15</length>
+        <precision>0</precision>
         <origin>diariaSafira</origin>
-        <comments>DATAEMPENHO</comments>
-        <conversion_Mask/>
+        <comments>IDEMPENHO</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
@@ -1220,39 +590,14 @@ WHERE DATAEMPENHO >= TO_DATE('2010-01-01', 'YYYY-MM-DD') AND UPPER(CONVERT(TRIM(
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>CPFCNPJCREDOR</name>
-            <length>14</length>
-            <precision>-1</precision>
-            <origin>diariaSafira</origin>
-            <comments>CPFCNPJCREDOR</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>CPFCNPJCREDOR</name>
-        <length>14</length>
-        <precision>-1</precision>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>CPFSERVIDOR</name>
+        <length>15</length>
+        <precision>0</precision>
         <origin>diariaSafira</origin>
-        <comments>CPFCNPJCREDOR</comments>
-        <conversion_Mask/>
+        <comments>CPFSERVIDOR</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
@@ -1275,7 +620,7 @@ WHERE DATAEMPENHO >= TO_DATE('2010-01-01', 'YYYY-MM-DD') AND UPPER(CONVERT(TRIM(
             <type>String</type>
             <storagetype>normal</storagetype>
             <name>HISTORICO</name>
-            <length>1875</length>
+            <length>500</length>
             <precision>-1</precision>
             <origin>diariaSafira</origin>
             <comments>HISTORICO</comments>
@@ -1296,7 +641,7 @@ WHERE DATAEMPENHO >= TO_DATE('2010-01-01', 'YYYY-MM-DD') AND UPPER(CONVERT(TRIM(
           </value-meta>
         </storage-meta>
         <name>HISTORICO</name>
-        <length>1875</length>
+        <length>500</length>
         <precision>-1</precision>
         <origin>diariaSafira</origin>
         <comments>HISTORICO</comments>
@@ -1316,39 +661,37 @@ WHERE DATAEMPENHO >= TO_DATE('2010-01-01', 'YYYY-MM-DD') AND UPPER(CONVERT(TRIM(
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
-        <type>String</type>
-        <storagetype>binary-string</storagetype>
-        <storage-meta>
-          <value-meta>
-            <type>String</type>
-            <storagetype>normal</storagetype>
-            <name>HASHCOMPLETO</name>
-            <length>370</length>
-            <precision>-1</precision>
-            <origin>diariaSafira</origin>
-            <comments>HASHCOMPLETO</comments>
-            <conversion_Mask/>
-            <decimal_symbol>,</decimal_symbol>
-            <grouping_symbol>.</grouping_symbol>
-            <currency_symbol/>
-            <trim_type>none</trim_type>
-            <case_insensitive>N</case_insensitive>
-            <collator_disabled>Y</collator_disabled>
-            <collator_strength>0</collator_strength>
-            <sort_descending>N</sort_descending>
-            <output_padding>N</output_padding>
-            <date_format_lenient>N</date_format_lenient>
-            <date_format_locale>en_US</date_format_locale>
-            <date_format_timezone>America/Bogota</date_format_timezone>
-            <lenient_string_to_number>N</lenient_string_to_number>
-          </value-meta>
-        </storage-meta>
-        <name>HASHCOMPLETO</name>
-        <length>370</length>
+        <type>Timestamp</type>
+        <storagetype>normal</storagetype>
+        <name>DATAPAGAMENTO</name>
+        <length>0</length>
         <precision>-1</precision>
         <origin>diariaSafira</origin>
-        <comments>HASHCOMPLETO</comments>
+        <comments>DATAPAGAMENTO</comments>
         <conversion_Mask/>
+        <decimal_symbol>,</decimal_symbol>
+        <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Number</type>
+        <storagetype>normal</storagetype>
+        <name>VALORPAGAMENTO</name>
+        <length>15</length>
+        <precision>2</precision>
+        <origin>diariaSafira</origin>
+        <comments>VALORPAGAMENTO</comments>
+        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
         <currency_symbol/>
@@ -1373,204 +716,8 @@ WHERE DATAEMPENHO >= TO_DATE('2010-01-01', 'YYYY-MM-DD') AND UPPER(CONVERT(TRIM(
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>filtraCONTRATOS</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>buscaIDLIQUIDACAO</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>IDCONTRATO</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>filtraEMPENHOS</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>buscaIDCONTRATO</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>IDEMPENHO</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>filtraLiquidacao</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>buscaIDPAGAMENTO</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>IDLIQUIDACAO</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>filtraNovos</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>insertDIARIA</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>IDDIARIA</leftvalue>
-        <function>IS NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>736</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>filtraPagamento</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>buscaIDDIARIA</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>IDPAGAMENTO</leftvalue>
-            <function>IS NOT NULL</function>
-            <rightvalue/>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>VALORPAGAMENTO</leftvalue>
-            <function>&gt;</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Number</type>
-              <text>0.0</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask>####0.0#########;-####0.0#########</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>336</yloc>
+      <xloc>128</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1609,7 +756,7 @@ WHERE DATAEMPENHO >= TO_DATE('2010-01-01', 'YYYY-MM-DD') AND UPPER(CONVERT(TRIM(
       </field>
       <field>
         <column_name>CPFCNPJCREDOR</column_name>
-        <stream_name>CPFCNPJCREDOR</stream_name>
+        <stream_name>CPFSERVIDOR</stream_name>
       </field>
       <field>
         <column_name>DATAPAGAMENTO</column_name>
@@ -1633,8 +780,8 @@ WHERE DATAEMPENHO >= TO_DATE('2010-01-01', 'YYYY-MM-DD') AND UPPER(CONVERT(TRIM(
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>432</yloc>
+      <xloc>352</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

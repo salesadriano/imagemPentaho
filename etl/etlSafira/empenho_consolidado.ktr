@@ -616,7 +616,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
+      <xloc>756</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -633,7 +633,7 @@
       <schema_name/>
     </partitioning>
     <connection>Portal</connection>
-    <schema/>
+    <schema>transparenciaDB</schema>
     <table>empenho_consolidado</table>
     <commit>100</commit>
     <truncate>N</truncate>
@@ -657,6 +657,10 @@
       <field>
         <column_name>ANOEMPENHO</column_name>
         <stream_name>ANOEMPENHO</stream_name>
+      </field>
+      <field>
+        <column_name>MESEMPENHO</column_name>
+        <stream_name>MESEMPENHO</stream_name>
       </field>
       <field>
         <column_name>ENTIDADE</column_name>
@@ -840,7 +844,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
+      <xloc>913</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1010,7 +1014,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
+      <xloc>1070</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1029,135 +1033,183 @@
     <fields>
       <field>
         <name>NUMEROEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>ANOEMPENHO</name>
+        <rename/>
+      </field>
+      <field>
+        <name>MESEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>ENTIDADE</name>
+        <rename/>
       </field>
       <field>
         <name>DATAEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>TIPOEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>DATAPROGRAMACAO</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROEMISSOES</name>
+        <rename/>
       </field>
       <field>
         <name>STATUS</name>
+        <rename/>
       </field>
       <field>
         <name>MOTIVOEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROCONTRATO</name>
+        <rename/>
       </field>
       <field>
         <name>PEDIDOEMPENHO</name>
+        <rename/>
       </field>
       <field>
         <name>DATAPEDIDO</name>
+        <rename/>
       </field>
       <field>
         <name>MODALIDADELICITACAO</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROLICITACAO</name>
+        <rename/>
       </field>
       <field>
         <name>HISTORICO</name>
+        <rename/>
       </field>
       <field>
         <name>CODIGOCREDOR</name>
+        <rename/>
       </field>
       <field>
         <name>RAZAOSOCIAL</name>
+        <rename/>
       </field>
       <field>
         <name>CPFCNPJCREDOR</name>
+        <rename/>
       </field>
       <field>
         <name>CPFCNPJCREDOR_</name>
+        <rename/>
       </field>
       <field>
         <name>CLASSECREDOR</name>
+        <rename/>
       </field>
       <field>
         <name>BANCO</name>
+        <rename/>
       </field>
       <field>
         <name>BANCO_</name>
+        <rename/>
       </field>
       <field>
         <name>AGENCIA</name>
+        <rename/>
       </field>
       <field>
         <name>AGENCIA_</name>
+        <rename/>
       </field>
       <field>
         <name>CONTA</name>
+        <rename/>
       </field>
       <field>
         <name>CONTA_</name>
+        <rename/>
       </field>
       <field>
         <name>ORGAO</name>
+        <rename/>
       </field>
       <field>
         <name>UNIDADE</name>
+        <rename/>
       </field>
       <field>
         <name>REDUZIDOFUNCIONAL</name>
+        <rename/>
       </field>
       <field>
         <name>FUNCIONALPROGRAMATICA</name>
+        <rename/>
       </field>
       <field>
         <name>DESPESAORCAMENTARIA</name>
+        <rename/>
       </field>
       <field>
         <name>FONTERECURSO</name>
+        <rename/>
       </field>
       <field>
         <name>DETALHAMENTOFONTE</name>
+        <rename/>
       </field>
       <field>
         <name>VALOREMPENHADO</name>
+        <rename/>
       </field>
       <field>
         <name>NATUREZARECURSO</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROCONVENIO</name>
+        <rename/>
       </field>
       <field>
         <name>ANOCONVENIO</name>
+        <rename/>
       </field>
       <field>
         <name>NUMEROPROCESSO</name>
+        <rename/>
       </field>
       <field>
         <name>ANOPROCESSO</name>
+        <rename/>
       </field>
       <field>
         <name>EVENTOCONTABIL</name>
+        <rename/>
       </field>
       <field>
         <name>TOTALLIQUIDADO</name>
+        <rename/>
       </field>
       <field>
         <name>TOTALPAGO</name>
+        <rename/>
       </field>
       <field>
         <name>COMPLETO</name>
+        <rename/>
       </field>
       <field>
         <name>HASHCOMPLETO</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1199,6 +1251,23 @@
         <rename>ENTIDADE</rename>
         <type>None</type>
         <length>350</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>MESEMPENHO</name>
+        <rename>MESEMPENHO</rename>
+        <type>Integer</type>
+        <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
@@ -1918,7 +1987,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>285</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1984,7 +2053,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
+      <xloc>599</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2032,7 +2101,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
+      <xloc>442</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2053,6 +2122,7 @@
 SELECT Distinct
   TRIM(NUMEROEMPENHO) NUMEROEMPENHO
 , TRIM(ANOEMPENHO) ANOEMPENHO
+, EXTRACT(month FROM DATAEMPENHO) MESEMPENHO
 , CONVERT(TRIM(ENTIDADE),'UTF8') ENTIDADE
 , DATAEMPENHO
 , TRIM(TIPOEMPENHO) TIPOEMPENHO
@@ -2201,6 +2271,29 @@ ORDER BY 44, 3</sql>
         <conversion_Mask/>
         <decimal_symbol>,</decimal_symbol>
         <grouping_symbol>.</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Bogota</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>BigNumber</type>
+        <storagetype>normal</storagetype>
+        <name>MESEMPENHO</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>empenhoSafira</origin>
+        <comments>MESEMPENHO</comments>
+        <conversion_Mask>######0.0###################;-######0.0###################</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol/>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -4089,7 +4182,7 @@ ORDER BY 44, 3</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
+      <xloc>128</xloc>
       <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>

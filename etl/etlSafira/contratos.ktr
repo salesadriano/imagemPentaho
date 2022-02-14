@@ -574,8 +574,8 @@
       <schema_name/>
     </partitioning>
     <connection>Portal</connection>
-    <schema>transparenciaDB</schema>
-    <table>contratos</table>
+    <schema/>
+    <table>contrato</table>
     <commit>100</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
