@@ -567,11 +567,19 @@
     <database>transparenciadb</database>
     <port>3306</port>
     <username>adriano.santos</username>
-    <password>Encrypted 2be98afc86aa79387ac16b8508ec1ff82</password>
+    <password>Encrypted 2be98afc86aa7f2b78b15ab638fcafe88</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
     <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.defaultFetchSize</code>
+        <attribute>500</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MYSQL.useCursorFetch</code>
+        <attribute>true</attribute>
+      </attribute>
       <attribute>
         <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
         <attribute>N</attribute>
