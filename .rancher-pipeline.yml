@@ -8,10 +8,3 @@ branch:
   - master
   exclude:
   - develop
-notification:
-  recipients:
-  - recipient: dev.seict@ac.gov.br
-    notifier: c-m-pbcp2k2k:n-5jrjk
-  condition:
-  - Success
-  - Failed
