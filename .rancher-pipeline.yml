@@ -14,12 +14,6 @@ stages:
   steps:
   - applyYamlConfig:
       path: ./kubernetes.yml
-      env:
-        - name:  dominio
-          valueFrom:
-            secretKeyRef:
-              name:  variaveis
-              key:  dominio
     env:
       dominio: novoacre.gov.br
     envFrom:
@@ -28,4 +22,10 @@ stages:
 branch:
   include:
   - develop
-notification: {}
+notification:
+  recipients:
+  - recipient: dev.seict@ac.gov.br
+    notifier: c-m-pbcp2k2k:n-5jrjk
+  condition:
+  - Success
+  - Failed
