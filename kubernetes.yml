@@ -1,67 +1,48 @@
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: etl
-  namespace: default
+  namespace: seict
+  labels:
+    allow.http: "false"
+    application: etl
 spec:
-  selector:
-    matchLabels:
-      app: etl
   replicas: 1
   strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
+    type: Recreate  
+  selector:
+    matchLabels:
+      application: etl
   template:
     metadata:
       labels:
-        app: etl
+        application: etl
     spec:
       imagePullSecrets:
-      - name: pipeline-docker-registry
+       - name: pipeline-docker-registry
       containers:
-        - name: etl
-          image: etl 
-          # imagePullPolicy: Never
-          ports:
-            - containerPort: 80              
-      restartPolicy: Always
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: etl
-  namespace: default
-spec:
-  selector:
-    app: etl
-  ports:
-  - name: http
-    port: 80
-    targetPort: 80
-    protocol: TCP
-
----
-kind: Ingress
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: etl
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: default
-spec:
-  rules:
-    - host: etl.ac.gov.br
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: etl
-                port:
-                  number: 80
-
+      - name: etl${CICD_EXECUTION_ID}
+        image: devseict/java8
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "16Gi"
+            cpu: "1500m"
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+        securityContext:
+          privileged: true
+        env:
+          - name: GIT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: git-kubernet
+                key: GIT_USERNAME
+          - name: GIT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: git-kubernet
+                key: GIT_PASSWORD        
+          - name: GIT_PATH
+            value: gitlab.ac.gov.br/governoacre/seict/etlpentaho.git
