@@ -20,7 +20,7 @@ spec:
       imagePullSecrets:
        - name: pipeline-docker-registry
       containers:
-      - name: etl${CICD_EXECUTION_ID}
+      - name: ett
         image: devseict/java8
         imagePullPolicy: Always
         resources:
