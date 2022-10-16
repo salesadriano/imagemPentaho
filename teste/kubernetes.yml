@@ -1,3 +1,4 @@
+kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: etl
@@ -20,7 +21,7 @@ spec:
       imagePullSecrets:
        - name: pipeline-docker-registry
       containers:
-      - name: ett
+      - name: etl${CICD_EXECUTION_ID}
         image: devseict/java8
         imagePullPolicy: Always
         resources:

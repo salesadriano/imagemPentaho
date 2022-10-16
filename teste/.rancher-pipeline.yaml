@@ -1,0 +1,11 @@
+stages:
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./kubernetes.yml
+branch:
+  include:
+  - master
+  exclude:
+  - develop
+notification: {}
