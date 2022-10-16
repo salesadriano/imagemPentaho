@@ -2,7 +2,7 @@ stages:
 - name: Deploy
   steps:
   - applyYamlConfig:
-      path: ./kubernetes.yml
+      path: ../kubernetes.yml
 branch:
   include:
   - master
