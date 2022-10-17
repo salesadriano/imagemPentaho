@@ -1,9 +1,11 @@
 build:
   image: docker:20.10.16
-  services:
-    - name: docker:20.10.16-dind
-      alias: docker
   stage: build
+  services:
+    - docker:20.10.16-dind
+  variables:
+    IMAGE_TAG: etl:$CI_COMMIT_REF_SLUG
   script:
-    - docker build -t my-docker-image .
-    - docker run my-docker-image /script/to/run/tests
+    - docker login -u devseict -p S3ict2021
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
