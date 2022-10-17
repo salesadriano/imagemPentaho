@@ -1,7 +1,6 @@
 FROM nginx
 
 ADD etl  /etl
-ADD sources.list /etc/apt
 ADD cron.list /
 ADD todas.sh /
 
