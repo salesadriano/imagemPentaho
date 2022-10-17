@@ -4,6 +4,6 @@ build:
   services:
     - docker:20.10.16-dind
   variables:
-    IMAGE_TAG: etl:$CI_COMMIT_REF_SLUG
+    IMAGE_TAG: e
   script:    
-    - docker build -t $IMAGE_TAG .
+    - docker build -t etl .
