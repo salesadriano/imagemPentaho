@@ -2,7 +2,7 @@ FROM nginx
 
 ADD etl  /etl
 ADD cron.list /
-ADD todas.sh /
+#ADD todas.sh /
 
 RUN mkdir  /usr/share/man/man1 && \
     apt -y update && \ 
