@@ -1,11 +1,10 @@
-FROM nginx
+FROM nginx:1.23.1
 
 ADD etl  /etl
 ADD cron.list /
-#ADD todas.sh /
+ADD scripts/todas.sh /
 
-RUN mkdir  /usr/share/man/man1 && \
-    apt -y update && \ 
+RUN apt -y update && \ 
     apt -y install apt-transport-https \
           ca-certificates wget dirmngr ntp cron \
           gnupg software-properties-common && \
