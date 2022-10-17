@@ -1,8 +1,8 @@
 build:
-  image: docker
+  image: docker:20.10.16
   stage: build
   services:
-    - docker-dind
+    - docker:20.10.16-dind
   variables:
     IMAGE_TAG: etl:$CI_COMMIT_REF_SLUG
   script:
