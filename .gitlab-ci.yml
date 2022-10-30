@@ -10,7 +10,7 @@ publish:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build . -t $CI_REGISTRY/$CI_REGISTRY_USER/$CI_PROJECT_NAME --pull
     - docker push $CI_REGISTRY/$CI_REGISTRY_USER/$CI_PROJECT_NAME
-    - /publicar.sh
+    - /publicar.sh rancher/kubernetes.yml
   only:
     - master
 
