@@ -21,7 +21,7 @@ spec:
       imagePullSecrets:
        - name: pipeline-docker-registry
       containers:
-      - name: etl1
+      - name: etl
         image: devseict/java8
         imagePullPolicy: Always
         resources:
@@ -33,16 +33,3 @@ spec:
             cpu: "100m"
         securityContext:
           privileged: true
-        env:
-          - name: GIT_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: git-kubernet
-                key: GIT_USERNAME
-          - name: GIT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: git-kubernet
-                key: GIT_PASSWORD        
-          - name: GIT_PATH
-            value: gitlab.ac.gov.br/governoacre/seict/etlpentaho.git

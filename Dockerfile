@@ -1,8 +1,9 @@
-FROM nginx:1.23.1
+FROM debian:11-slim
 
 ADD etl  /etl
 ADD cron.list /
 ADD scripts/todas.sh /
+ADD start.sh /
 
 RUN apt -y update && \ 
     apt -y install apt-transport-https \
@@ -21,10 +22,8 @@ RUN apt -y update && \
     mv data-integration/* pentaho/ && \
     rm -Rf data-integration pentaho.zip && \
     ln -sf /usr/share/zoneinfo/America/Rio_Branco /etc/localtime && \
-    chmod 755 /todas.sh &&  \
-    printf "# priority=10\nservice ntp start\n" > /docker-entrypoint.d/10-ntpd.sh && \
-    chmod 755 /docker-entrypoint.d/10-ntpd.sh &&  \
-    printf "# priority=10\nservice cron start\n" > /docker-entrypoint.d/10-crond.sh && \
-    chmod 755 /docker-entrypoint.d/10-crond.sh && \
-    crontab /cron.list
+    chmod 755 /todas.sh && \     
+    chmod 755 /start.sh       
 ADD ./drivers/* /pentaho/lib/
+
+CMD [ "/start.sh" ]
