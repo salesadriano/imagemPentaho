@@ -4,4 +4,4 @@ do
     /pentaho/kitchen.sh -file:$tmp
 done
 
-/pentaho/pan.sh -file:/etl/etlSafira/cargaSafira.ktr 
+/pentaho/pan.sh -file:/etl/[projeto]/[etapa].ktr 
